@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>digital-agency</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+     <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+
+ 
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+      <!-- HEADER -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <!-- Left: Logo -->
+    <a class="logo" href="#"><span class="logo-dot"></span>stackly</a>
+
+    <!-- Hamburger (mobile only) -->
+    <button id="menuToggle"
+            class="hamburger"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Center: nav (desktop) / drawer (mobile) -->
+    <div id="mobileNav" class="nav-shelf" role="navigation">
+      <nav class="nav">
+
+        <!-- HOME -->
+        <div class="nav-item has-menu">
+          <a href="home.html" class="nav-link" data-text="Home">
+            <span class="t">Home</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <!-- caret shows only on mobile -->
+            <button class="caret" aria-label="Expand Home"></button>
+          </a>
+          <div class="dropdown">
+            <a href="main.html">Main home</a>
+            <a href="creativeagency.html">Creative Agency</a>
+            <a href="digitalagency.html">Digital Agency</a>
+            <a href="modernagency.html">Modern Agency</a>
+            <a href="desginstudio.html">Design Studio</a>
+            <a href="portoflio.html">Creative Portfolio</a>
+            <a href="freelancer.html">Freelancer</a>
+            <a href="personal.html">Personal</a>
+          </div>
+        </div>
+
+        <!-- PAGES -->
+        <div class="nav-item has-menu">
+          <a href="#services" class="nav-link" data-text="Pages">
+            <span class="t">Pages</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Pages"></button>
+          </a>
+          <div class="dropdown">
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Our Team</a>
+            <a href="#">Pricing</a>
+            <a href="#">FAQs</a>
+            <a href="#contact">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- WORKS -->
+        <div class="nav-item has-menu">
+          <a href="#works" class="nav-link" data-text="Works">
+            <span class="t">Works</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Works"></button>
+          </a>
+          <div class="dropdown">
+            <a href="#">Parallax Slider</a>
+            <a href="#">Carousel</a>
+            <a href="#">Parallax</a>
+            <a href="#">Cards</a>
+            <a href="#">Elegant</a>
+            <a href="#">Interactive</a>
+            <a href="#">Work Grids</a>
+            <a href="#">Gallery</a>
+            <a href="#">Project Details</a>
+          </div>
+        </div>
+
+        <!-- BLOGS -->
+        <div class="nav-item has-menu">
+          <a href="#blog" class="nav-link" data-text="Blogs">
+            <span class="t">Blogs</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Blogs"></button>
+          </a>
+          <div class="dropdown">
+            <a href="#">Blogs</a>
+            <a href="#">Blog Details</a>
+          </div>
+        </div>
+
+        <!-- CONTACT (no dropdown) -->
+        <div class="nav-item">
+          <a href="#contact" class="nav-link" data-text="Contact Us">
+            <span class="t">Contact Us</span><span class="orb"></span>
+          </a>
+        </div>
+
+      </nav>
+    </div>
+  </div>
+
+  <!-- Backdrop for mobile drawer -->
+  <div id="navBackdrop" class="nav-backdrop" hidden></div>
+</header>
+
+
+
+
+    <section class="shore-hero">
+  <div class="shore-hero__inner">
+    <!-- Left: giant headline -->
+    <h1 class="shore-hero__title">
+      We empower leading <span class="underline">brands</span>
+      to produce more content, faster 🚀 & smarter.
+    </h1>
+
+    <!-- Right: supporting copy -->
+    <p class="shore-hero__copy">
+      Shore is a design production agency offering unlimited access to a
+      creative team for a fixed monthly fee.
+    </p>
+  </div>
+</section>
+
+
+
+    
+<section class="stackly-marquee-section">
+  <div class="stackly-marquee">
+    <span>STACKLY CREATIVE AGENCY</span>
+    <span class="stackly-star"></span>
+    <span>UI/UX DESIGN</span>
+    <span class="stackly-star"></span>
+    <span>WEB DEVELOPMENT</span>
+    <span class="stackly-star"></span>
+    <span>APP DEVELOPMENT</span>
+    <span class="stackly-star"></span>
+    <span>BRANDING & STRATEGY</span>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="spread-gallery">
+  <!-- 1 -->
+  <article class="sg-card">
+    <img src="assets/images/robo4.jpg" alt="Unerio Residential">
+    <div class="sg-overlay">
+      <h3 class="sg-title">Unerio Residential <span>(UI/UX Design)</span></h3>
+      <span class="sg-br tl"></span>
+      <span class="sg-br tr"></span>
+      <span class="sg-br bl"></span>
+      <span class="sg-br br"></span>
+    </div>
+  </article>
+
+  <!-- 2 -->
+  <article class="sg-card">
+    <img src="assets/images/girl.jpg" alt="Jorger Clarkson">
+    <div class="sg-overlay">
+      <h3 class="sg-title">Jorger Clarkson <span>(Branding)</span></h3>
+      <span class="sg-br tl"></span>
+      <span class="sg-br tr"></span>
+      <span class="sg-br bl"></span>
+      <span class="sg-br br"></span>
+    </div>
+  </article>
+
+  <!-- 3 -->
+  <article class="sg-card">
+    <img src="assets/images/tree.jpg" alt="Festonax Card">
+    <div class="sg-overlay">
+      <h3 class="sg-title">Festonax Card <span>(Design)</span></h3>
+      <span class="sg-br tl"></span>
+      <span class="sg-br tr"></span>
+      <span class="sg-br bl"></span>
+      <span class="sg-br br"></span>
+    </div>
+  </article>
+
+  <!-- 4 -->
+  <article class="sg-card">
+    <img src="assets/images/stickymobile.jpg" alt="Simple Logistics">
+    <div class="sg-overlay">
+      <h3 class="sg-title">Simple Logistics <span>(Development)</span></h3>
+      <span class="sg-br tl"></span>
+      <span class="sg-br tr"></span>
+      <span class="sg-br bl"></span>
+      <span class="sg-br br"></span>
+    </div>
+  </article>
+</section>
+
+
+
+
+<section class="value-section">
+  <div class="value-grid container">
+
+    <!-- LEFT: media column -->
+    <aside class="vs-left">
+      <!-- top image -->
+      <figure class="vs-media">
+        <img src="assets/images/cirle logo.jpg" alt="Showcase" loading="lazy">
+      </figure>
+
+      <!-- bottom can be VIDEO or IMAGE -->
+      <figure class="vs-media vs-media--card">
+        <!-- Option A: VIDEO (remove the img if you use video) -->
+        <video class="vs-video" src="assets/videos/graphics.mp4" autoplay muted loop playsinline></video>
+
+        <!-- Option B: IMAGE (comment video, use image) -->
+        <!-- <img src="assets/images/left-bottom.jpg" alt="Brand essence"> -->
+
+        <figcaption>We help to build the essence of your brand</figcaption>
+      </figure>
+    </aside>
+
+    <!-- RIGHT: headline + stats -->
+    <div class="vs-right">
+      <h2 class="vs-title">
+        We help business elevate their value through custom software
+        development, product design, QA & consulting services.
+      </h2>
+
+      <div class="vs-stats">
+        <!-- Stat 1 -->
+        <article class="vs-stat">
+          <header class="vs-stat-head">
+            <span>SATISFIED CUSTOMERS</span>
+            <span class="vs-line"></span>
+          </header>
+          <p class="vs-number" data-count="98" data-suffix="%">0%</p>
+          <p class="vs-note">My goal is to capture the real, raw emotions</p>
+        </article>
+
+        <!-- Stat 2 -->
+        <article class="vs-stat">
+          <header class="vs-stat-head">
+            <span>PROJECTS COMPLETED</span>
+            <span class="vs-line"></span>
+          </header>
+          <p class="vs-number" data-count="2000" data-format="k+">0</p>
+          <p class="vs-note">My goal is to capture the real, raw emotions</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+(() => {
+  const els = document.querySelectorAll('.vs-number');
+  if (!('IntersectionObserver' in window)) return;
+
+  const format = (val, el) => {
+    if (el.dataset.suffix) return `${val}${el.dataset.suffix}`;
+    if (el.dataset.format === 'k+') return (Math.round(val/100)/10) + 'k+';
+    return String(val);
+  };
+
+  const animate = (el) => {
+    const target = +el.dataset.count;
+    const dura = 900; // ms
+    const t0 = performance.now();
+
+    const step = (t) => {
+      const p = Math.min(1, (t - t0) / dura);
+      const cur = Math.floor(target * (0.2 + 0.8 * p)); // ease start a bit
+      el.textContent = format(cur, el);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = format(target, el);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      animate(e.target);
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.4 });
+
+  els.forEach(el => io.observe(el));
+})();
+</script>
+
+
+
+<section class="dm-hero">
+  <div class="dm-card">
+    
+    <div class="dm-wrap">
+      
+      <!-- LEFT CONTENT -->
+      <div class="dm-left">
+        <span class="dm-num">001</span>
+        <h1 class="dm-title">Digital<br>Marketing</h1>
+        <p class="dm-lead">
+          Maximise your online presence with our performance-driven
+          digital marketing services.
+        </p>
+
+        <div class="dm-tags">
+          <a href="#">SEO</a>
+          <a href="#">Marketing Automation</a>
+          <a href="#">Digital Strategy</a>
+          <a href="#">Email Marketing</a>
+        </div>
+
+        <a href="#" class="dm-cta">GET STARTED</a>
+      </div>
+
+      <!-- RIGHT IMAGE -->
+      <div class="dm-right">
+        <img src="assets/images/roboblack.jpg" alt="">
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="dm-hero">
+  <div class="dm-card dm-card--lime">
+    <div class="dm-wrap">
+      <!-- LEFT -->
+      <div class="dm-left">
+        <span class="dm-num">002</span>
+        <h1 class="dm-title">Product<br>design</h1>
+        <p class="dm-lead">
+          Digital designs that help brands move faster and convert better.
+        </p>
+
+        <div class="dm-tags">
+          <a href="#">Brand Identity</a>
+          <a href="#">Graphic Design</a>
+          <a href="#">Creative Direction</a>
+        </div>
+
+        <a href="#" class="dm-cta dm-cta--dark">GET STARTED</a>
+      </div>
+
+      <!-- RIGHT (your image) -->
+      <div class="dm-right">
+        <img src="assets/images/ai.jpg" alt="AI hands">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="dm-hero">
+  <div class="dm-card dm-card--white">
+    <div class="dm-wrap">
+
+      <!-- LEFT SIDE -->
+      <div class="dm-left">
+        <span class="dm-num">003</span>
+        <h1 class="dm-title">Branding<br>Strategy</h1>
+        <p class="dm-lead">
+          Maximise your online presence with our performance-
+          driven digital marketing services.
+        </p>
+
+        <div class="dm-tags">
+          <a href="#">Mobile App</a>
+          <a href="#">Brand Identity</a>
+          <a href="#">Digital Strategy</a>
+        </div>
+
+        <a href="#" class="dm-cta dm-cta--white">GET STARTED</a>
+      </div>
+
+      <!-- RIGHT IMAGE -->
+      <div class="dm-right">
+        <img src="assets/images/b.jpg" alt="Branding AI Graphic">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="dm-hero">
+  <div class="dm-card dm-card--purple">
+    <div class="dm-wrap">
+
+      <!-- LEFT CONTENT -->
+      <div class="dm-left">
+        <span class="dm-num">004</span>
+        <h1 class="dm-title">Search Engine<br>Optimization</h1>
+
+        <p class="dm-lead">
+          From brand strategy to immersive digital experiences,
+          we offer end-to-end creative solutions.
+        </p>
+
+        <div class="dm-tags">
+          <a href="#">SEO</a>
+          <a href="#">Marketing Automation</a>
+          <a href="#">Digital Strategy</a>
+          <a href="#">Email Marketing</a>
+        </div>
+
+        <a href="#" class="dm-cta dm-cta--dark">GET STARTED</a>
+      </div>
+
+      <!-- RIGHT IMAGE -->
+      <div class="dm-right">
+        <img src="assets/images/hand.jpg" alt="SEO AI Graphic">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<section id="approach" class="approach">
+  <!-- sticky viewport -->
+  <div class="approach-sticky">
+    <div class="approach-bg">APPROACH</div>
+
+    <!-- cards layer -->
+    <div class="approach-cards">
+      <!-- Group A: top 2 -->
+      <article class="ap-card ap-a">
+       <img class="ap-thumb" src="assets/images/bad-removebg-preview.png" alt="">
+
+        <h3>Innovative Creativity</h3>
+        <p>We merge art and technology to create solutions that break the mold and capture attention.</p>
+      </article>
+
+      <article class="ap-card ap-a ap-right card-white">
+        <img class="ap-thumb" src="assets/images/dev-removebg-preview.png" alt="">
+
+        <h3>Collaborative Partnership</h3>
+        <p>Your vision unite to form a powerful team, ensuring that every project reflects your unique identity..</p>
+      </article>
+
+      <!-- Group B: middle 1 -->
+      <article class="ap-card ap-b ap-center">
+        <img class="ap-thumb" src="assets/images/kav-removebg-preview.png" alt="">
+
+        <h3>Results-Driven Strategy</h3>
+        <p>We focus on delivering tangible, measurable results that drive your brand’s succes.</p>
+      </article>
+
+      <!-- Group C: bottom 2 -->
+      <article class="ap-card ap-c card-green">
+        <img class="ap-thumb" src="assets/images/sad-removebg-preview.png" alt="">
+
+        <h3>Transparent Communication</h3>
+        <p>We maintain open, honest dialogue throughout every step of the ensuring you’re always.</p>
+      </article>
+
+      <article class="ap-card ap-c ap-right">
+        <img class="ap-thumb" src="assets/images/sev-removebg-preview.png" alt="">
+
+        <h3>Passion for Impact</h3>
+        <p>Driven by creativity and a commitment to excellence, that not only look impressive.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="mivon-stats-grid">
+  <!-- ROW 1 — 4 columns -->
+  <!-- (1) Image -->
+  <article class="mg-card mg-image">
+    <img src="assets/images/robo4.jpg" alt="Media 1">
+  </article>
+
+  <!-- (2) 60+ stat -->
+  <article class="mg-card mg-stat mg-dark">
+    <div class="mg-stat-wrap">
+      <p class="mg-big">60+</p>
+      <p class="mg-sub">Brands Launched<br>or Rebranded</p>
+    </div>
+  </article>
+
+  <!-- (3) Image -->
+  <article class="mg-card mg-image">
+    <img src="assets/images/handsome.jpg" alt="Media 3">
+  </article>
+
+  <!-- (4) 97% stat (purple) -->
+  <article class="mg-card mg-stat mg-purple">
+    <div class="mg-stat-wrap">
+      <p class="mg-big">97%</p>
+      <p class="mg-sub dark">Rating by 200k+<br>clients world-wide</p>
+    </div>
+  </article>
+
+  <!-- ROW 2 — each spans 2 columns -->
+  <!-- (5) Lime “2k+” + small button -->
+  <article class="mg-card mg-wide mg-lime">
+    <div class="mg-wide-left">
+      <img class="mg-deco" src="assets/images/imghi-removebg-preview.png" alt="">
+    </div>
+    <div class="mg-wide-right">
+      <p class="mg-xxbig">2k+</p>
+      <p class="mg-note">Successfully<br>completed projects</p>
+      <a class="mg-pill" href="#">Facts & Numbers</a>
+    </div>
+  </article>
+
+  <!-- (6) Dark “80%” + avatars + right image -->
+  <article class="mg-card mg-wide mg-deep">
+    <div class="mg-wide-left">
+      <div class="mg-avatars">
+       <img src="assets/images/team.png" alt="">
+      </div>
+      <p class="mg-xxbig light">80%</p>
+      <p class="mg-note">Of customers recommend<br>awesome services.</p>
+    </div>
+    <div class="mg-wide-right media-right">
+      <img src="assets/images/skeleton.jpg" alt="Robot">
+    </div>
+  </article>
+</section>
+
+
+
+
+<section class="big-showcase">
+  <div class="showcase-frame">
+    <img src="assets/images/big.jpg" alt="Showcase" class="showcase-img">
+  </div>
+</section>
+
+
+
+<h2 class="section-head">clients testimonials</h2>
+
+<section class="t-viewport" id="testRail">
+  <div class="t-track" id="tTrack">
+    <!-- Slide 1 -->
+    <article class="t-card">
+      <div class="t-top">
+        <div class="t-person">
+          <img class="t-avatar" src="assets/images/boy1.jpg" alt="">
+          <div>
+            <div class="t-name">Denis Slavska</div>
+            <div class="t-role">CTO, Alltic</div>
+          </div>
+        </div>
+        <img src="assets/images/logo2.png" alt="" class="brand-logo">
+
+      </div>
+      <p class="t-quote">“Working with was an outstanding experience. Their ability to understand our vision.”</p>
+      <div class="t-meta">New York City, New York</div>
+    </article>
+
+    <!-- Slide 2 -->
+    <article class="t-card">
+      <div class="t-top">
+        <div class="t-person">
+          <img class="t-avatar" src="assets/images/boy2.jpg" alt="">
+          <div>
+            <div class="t-name">Carol Buyers</div>
+            <div class="t-role">Project Manager, Buildwave</div>
+          </div>
+        </div>
+        <img src="assets/images/logo2.png" alt="" class="brand-logo">
+
+      </div>
+      <p class="t-quote">“They captured our brand perfectly and kept delivery on point. Highly recommended.”</p>
+      <div class="t-meta">New York City, New York</div>
+    </article>
+
+    <!-- Slide 3 -->
+    <article class="t-card">
+      <div class="t-top">
+        <div class="t-person">
+          <img class="t-avatar" src="assets/images/boy3.jpg" alt="">
+          <div>
+            <div class="t-name">B. Gordon</div>
+            <div class="t-role">Operations, Archin</div>
+          </div>
+        </div>
+       <img src="assets/images/logo2.png" alt="" class="brand-logo">
+
+      </div>
+      <p class="t-quote">“Awesome! Working with the team transformed our operations.”</p>
+      <div class="t-meta">London, UK</div>
+    </article>
+
+    <!-- Slide 4 -->
+    <article class="t-card">
+      <div class="t-top">
+        <div class="t-person">
+          <img class="t-avatar" src="assets/images/gir1.jpg" alt="">
+          <div>
+            <div class="t-name">Priya N.</div>
+            <div class="t-role">Marketing Head, Auric</div>
+          </div>
+        </div>
+   <img src="assets/images/logo2.png" alt="" class="brand-logo">
+
+      </div>
+      <p class="t-quote">“From strategy to execution everything felt thoughtful and high quality.”</p>
+      <div class="t-meta">Bengaluru, India</div>
+    </article>
+  </div>
+</section>
+
+<script>
+(() => {
+  const viewport = document.getElementById('testRail');
+  const track    = document.getElementById('tTrack');
+
+  // Duplicate slides once for seamless loop
+  const originals = Array.from(track.children);
+  originals.forEach(slide => track.appendChild(slide.cloneNode(true)));
+
+  let index = 0;
+  let stepSize = 0; // pixel distance per slide (card width + gap)
+
+  function computeStep() {
+    const first = track.children[0];
+    const cardW = first.getBoundingClientRect().width;
+    const gap   = parseFloat(getComputedStyle(track).getPropertyValue('--gap')) || 0;
+    stepSize = cardW + gap;
+  }
+  computeStep();
+  window.addEventListener('resize', computeStep);
+
+  function goNext() {
+    index++;
+    track.style.transition = 'transform .60s cubic-bezier(.2,.7,0,1)';
+    track.style.transform  = `translateX(${-index * stepSize}px)`;
+
+    // when we cross the original set, snap back to start
+    if (index === originals.length) {
+      setTimeout(() => {
+        track.style.transition = 'none';
+        index = 0;
+        track.style.transform = 'translateX(0)';
+      }, 610);
+    }
+  }
+
+  let timer = setInterval(goNext, 2000);
+
+  // Pause on hover
+  viewport.addEventListener('mouseenter', () => clearInterval(timer));
+  viewport.addEventListener('mouseleave', () => (timer = setInterval(goNext, 2000)));
+})();
+</script>
+
+
+
+
+
+
+
+<section class="blog-hero">
+  <div class="blog-top-row">
+
+    <!-- Left Title Section -->
+    <div class="blog-left">
+      <span class="blog-label">• OUR BLOG</span>
+      <h1 class="blog-heading">
+        LATEST<br>
+        CREATIVE THINKING<br>
+        JOURNALS.
+      </h1>
+    </div>
+
+    <!-- Right Link Button -->
+    <div class="blog-right">
+      <a href="blog.html" class="all-posts-btn">ALL POSTS</a>
+      <button class="arrow-btn">→</button>
+    </div>
+  </div>
+
+<section class="works-4up" id="works4">
+  <div class="w4-viewport">
+    <div class="w4-track">
+      <!-- 8+ cards total. 4 are visible, the rest hidden in the viewport -->
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj.jpg" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">The top Digital Marketing for business growth</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj2.jpg" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">How to furnish and decorate a creative agency</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj3.jpg" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">The top Digital Marketing for business growth</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj4.jpg" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">Campaign strategy that actually converts</h3>
+      </article>
+
+      <!-- hidden initially, will appear on slide -->
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj5.jpg" alt=""></div>
+        <div class="w4-meta">Branding | 12 Sep 2024</div>
+        <h3 class="w4-title">Product shots with minimal light</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj6.jpg" alt=""></div>
+        <div class="w4-meta">UI/UX | 04 Oct 2024</div>
+        <h3 class="w4-title">Mobile app interface exploration</h3>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- ================= HERO SECTION ================= -->
+ <!--footer page-->
+<section class="hero-wrapper">
+
+  <!-- LEFT SIDE -->
+  <div class="hero-left">
+    <p class="mini-title">Let’s</p>
+    <h1 class="big-title">Start your project</h1>
+    <hr class="hero-line">
+
+    <h2 class="brand-name">Stackly</h2>
+    <p class="tagline">
+      WE HOPE TO EMPOWER USER AND SIMPLIFY<br>
+      THEIR EVERYDAY LIVES
+    </p>
+
+    <div class="hero-tags">
+      <a href="#">services</a>
+      <a href="#">portfolio</a>
+      <a href="#">about us</a>
+      <a href="#">blog</a>
+      <a href="#">contact</a>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="hero-right">
+    <a href="home.html" class="hero-btn">
+      GET IN TOUCH <span><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+
+    <h3 class="right-title">Explore the Socials<br>of Stackly</h3>
+
+    <div class="social-icons">
+      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+
+    <p class="newsletter-label"><i class="fa-regular fa-envelope"></i> Newsletter</p>
+    <div class="newsletter-box">
+      <input type="email" placeholder="Enter your email address">
+      <button><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+    <p class="privacy-text">By subscribing, you're accept our <a href="#">Privacy Policy</a></p>
+  </div>
+
+</section>
+<footer class="footer">
+  <p>© <span id="year"></span> Stackly Creative Agency — All rights reserved.</p>
+</footer>
+
+
+<!-- ================= FOOTER ================= -->
+
+
+<script src="app.js"></script>
+    
+    
+</body>
+</html>

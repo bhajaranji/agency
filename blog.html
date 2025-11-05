@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Stackly — Creative Agency</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+     <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+
+ 
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <!-- Left: Logo -->
+    <a class="logo" href="#"><span class="logo-dot"></span>stackly</a>
+
+    <!-- Hamburger (mobile only) -->
+    <button id="menuToggle"
+            class="hamburger"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Center: nav (desktop) / drawer (mobile) -->
+    <div id="mobileNav" class="nav-shelf" role="navigation">
+      <nav class="nav">
+
+        <!-- HOME -->
+        <div class="nav-item has-menu">
+          <a href="home.html" class="nav-link" data-text="Home">
+            <span class="t">Home</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <!-- caret shows only on mobile -->
+            <button class="caret" aria-label="Expand Home"></button>
+          </a>
+          <div class="dropdown">
+            <a href="main.html">Main home</a>
+            <a href="creativeagency.html">Creative Agency</a>
+            <a href="digitalagency.html">Digital Agency</a>
+            <a href="modernagency.html">Modern Agency</a>
+            <a href="desginstudio.html">Design Studio</a>
+            <a href="portoflio.html">Creative Portfolio</a>
+            <a href="freelancer.html">Freelancer</a>
+            <a href="personal.html">Personal</a>
+          </div>
+        </div>
+
+        <!-- PAGES -->
+        <div class="nav-item has-menu">
+          <a href="#services" class="nav-link" data-text="Pages">
+            <span class="t">Pages</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Pages"></button>
+          </a>
+          <div class="dropdown">
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Our Team</a>
+            <a href="#">Pricing</a>
+            <a href="#">FAQs</a>
+            <a href="#contact">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- WORKS -->
+        <div class="nav-item has-menu">
+          <a href="#works" class="nav-link" data-text="Works">
+            <span class="t">Works</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Works"></button>
+          </a>
+          <div class="dropdown">
+            <a href="#">Parallax Slider</a>
+            <a href="#">Carousel</a>
+            <a href="#">Parallax</a>
+            <a href="#">Cards</a>
+            <a href="#">Elegant</a>
+            <a href="#">Interactive</a>
+            <a href="#">Work Grids</a>
+            <a href="#">Gallery</a>
+            <a href="#">Project Details</a>
+          </div>
+        </div>
+
+        <!-- BLOGS -->
+        <div class="nav-item has-menu">
+          <a href="blog.html" class="nav-link" data-text="Blogs">
+            <span class="t">Blogs</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Blogs"></button>
+          </a>
+          <div class="dropdown">
+            <a href="blog.html">Blogs</a>
+            <a href="#">Blog Details</a>
+          </div>
+        </div>
+
+        <!-- CONTACT (no dropdown) -->
+        <div class="nav-item">
+          <a href="#contact" class="nav-link" data-text="Contact Us">
+            <span class="t">Contact Us</span><span class="orb"></span>
+          </a>
+        </div>
+
+      </nav>
+    </div>
+  </div>
+
+  <!-- Backdrop for mobile drawer -->
+  <div id="navBackdrop" class="nav-backdrop hidden" ></div>
+</header>
+
+
+
+<!-- BLOG HERO (button + big title) -->
+<section class="blog-hero">
+  <button class="pill-btn"><span></span> Our Blogs</button>
+  <h1>Modern design create<br>timeless brand identities.</h1>
+</section>
+
+<!-- BLOG GRID -->
+<section class="blog-grid">
+  <div class="container">
+    <!-- LEFT: MAIN FEED -->
+    <main class="feed">
+
+      <!-- Post Card 1 -->
+      <article class="post-card">
+        <div class="post-media">
+          <img src="assets/images/blog1.jpg" alt="Post cover">
+          
+        </div>
+
+        <div class="post-meta">
+          <span>Design</span>
+          <span>By : Ethan Richards</span>
+        </div>
+
+        <h2 class="post-title">
+          The top Digital Marketing strategies for business growth
+        </h2>
+        <hr class="post-divider">
+      </article>
+
+      <!-- Post Card 2 (robot img) -->
+      <article class="post-card">
+        <div class="post-media">
+          <img src="assets/images/blog2.jpg" alt="Post cover">
+          
+        </div>
+
+        <div class="post-meta">
+          <span>Design</span>
+          <span>By : Ethan Richards</span>
+        </div>
+
+        <h2 class="post-title">
+          Navigating the Complexities of Digital Marketing in the Tech Industry
+        </h2>
+        <hr class="post-divider">
+      </article>
+
+      <!-- Post Card 3 (orange box img) -->
+      <article class="post-card">
+        <div class="post-media">
+          <img src="assets/images/blog3.jpg" alt="Post cover">
+         
+        </div>
+
+        <div class="post-meta">
+          <span>Design</span>
+          <span>By : Ethan Richards</span>
+        </div>
+
+        <h2 class="post-title">
+          Understanding User Experience: What Makes a Website Great?
+        </h2>
+        <hr class="post-divider">
+      </article>
+
+
+   
+      <article class="post-card">
+        <div class="post-media">
+          <img src="assets/images/blog4.jpg" alt="Post cover">
+         
+        </div>
+
+        <div class="post-meta">
+          <span>Design</span>
+          <span>By : Ethan Richards</span>
+        </div>
+
+        <h2 class="post-title">
+          Understanding User Experience: What Makes a Website Great?
+        </h2>
+        <hr class="post-divider">
+      </article>
+
+      <!-- 👇 Add more (4th/5th) by duplicating .post-card and swapping the image/text -->
+    </main>
+
+    <!-- RIGHT: SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- Search -->
+      <section class="widget search-widget">
+        <h3>SEARCH HERE</h3>
+        <div class="search-box">
+          <input type="text" placeholder="Search">
+          <button aria-label="Search">
+            <!-- magnifier -->
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8L20 22l2-2-6.5-6.5Zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14Z"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- Categories -->
+      <section class="widget categories-widget">
+        <h3>CATEGORIES</h3>
+        <ul class="cat-list">
+          <li><a href="#">Business</a><span>33</span></li>
+          <li><a href="#">Lifestyle</a><span>05</span></li>
+          <li><a href="#">Creative</a><span>28</span></li>
+          <li><a href="#">WordPress</a><span>17</span></li>
+          <li class="active"><a href="#">Design</a><span>45</span></li>
+        </ul>
+      </section>
+
+      <!-- Latest Posts -->
+      <section class="widget latest-widget">
+        <h3>LATEST POSTS</h3>
+
+        <a class="latest-item" href="#">
+          <img src="assets/images/blogsmall.jpg" alt="">
+          <div class="latest-info">
+            <span class="tag">Web Design</span>
+            <p>ways to quickly increase traffic to your website</p>
+          </div>
+        </a>
+
+        <a class="latest-item" href="#">
+          <img src="assets/images/blogsamll2.jpg" alt="">
+          <div class="latest-info">
+            <span class="tag">Web Design</span>
+            <p>breaking the rules: using sqlite to demo web</p>
+          </div>
+        </a>
+
+        <a class="latest-item" href="#">
+          <img src="assets/images/blogsmall3.jpg" alt="">
+          <div class="latest-info">
+            <span class="tag">Web Design</span>
+            <p>building better ui designs with layout grids</p>
+          </div>
+        </a>
+      </section>
+
+      <!-- Tags -->
+      <section class="widget tags-widget">
+        <h3>TAGS</h3>
+        <div class="tags">
+          <a href="#" class="chip">Creative</a>
+          <a href="#" class="chip">Design</a>
+          <a href="#" class="chip">Dark &amp; Light</a>
+          <a href="#" class="chip">Minimal</a>
+          <a href="#" class="chip">Infolio</a>
+        </div>
+      </section>
+
+    </aside>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- ================= HERO SECTION ================= -->
+ <!--footer page-->
+<section class="hero-wrapper">
+
+  <!-- LEFT SIDE -->
+  <div class="hero-left">
+    <p class="mini-title">Let’s</p>
+    <h1 class="big-title">Start your project</h1>
+    <hr class="hero-line">
+
+    <h2 class="brand-name">Stackly</h2>
+    <p class="tagline">
+      WE HOPE TO EMPOWER USER AND SIMPLIFY<br>
+      THEIR EVERYDAY LIVES
+    </p>
+
+    <div class="hero-tags">
+      <a href="#">services</a>
+      <a href="#">portfolio</a>
+      <a href="#">about us</a>
+      <a href="#">blog</a>
+      <a href="#">contact</a>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="hero-right">
+    <a href="home.html" class="hero-btn">
+      GET IN TOUCH <span><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+
+    <h3 class="right-title">Explore the Socials<br>of Stackly</h3>
+
+    <div class="social-icons">
+      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+
+    <p class="newsletter-label"><i class="fa-regular fa-envelope"></i> Newsletter</p>
+    <div class="newsletter-box">
+      <input type="email" placeholder="Enter your email address">
+      <button><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+    <p class="privacy-text">By subscribing, you're accept our <a href="#">Privacy Policy</a></p>
+  </div>
+
+</section>
+<footer class="footer">
+  <p>© <span id="year"></span> Stackly Creative Agency — All rights reserved.</p>
+</footer>
+
+
+<!-- ================= FOOTER ================= -->
+
+
+<script src="app.js"></script>
+    
+    
+</body>
+</html>

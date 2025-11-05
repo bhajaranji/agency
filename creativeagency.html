@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Creative-agency</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+     <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+
+ 
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+       <!-- HEADER -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <!-- Left: Logo -->
+    <a class="logo" href="#"><span class="logo-dot"></span>stackly</a>
+
+    <!-- Hamburger (mobile only) -->
+    <button id="menuToggle"
+            class="hamburger"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Center: nav (desktop) / drawer (mobile) -->
+    <div id="mobileNav" class="nav-shelf" role="navigation">
+      <nav class="nav">
+
+        <!-- HOME -->
+        <div class="nav-item has-menu">
+          <a href="home.html" class="nav-link" data-text="Home">
+            <span class="t">Home</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <!-- caret shows only on mobile -->
+            <button class="caret" aria-label="Expand Home"></button>
+          </a>
+          <div class="dropdown">
+            <a href="main.html">Main home</a>
+            <a href="creativeagency.html">Creative Agency</a>
+            <a href="digitalagency.html">Digital Agency</a>
+            <a href="modernagency.html">Modern Agency</a>
+            <a href="desginstudio.html">Design Studio</a>
+            <a href="portoflio.html">Creative Portfolio</a>
+            <a href="freelancer.html">Freelancer</a>
+            <a href="personal.html">Personal</a>
+          </div>
+        </div>
+
+        <!-- PAGES -->
+        <div class="nav-item has-menu">
+          <a href="#services" class="nav-link" data-text="Pages">
+            <span class="t">Pages</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Pages"></button>
+          </a>
+          <div class="dropdown">
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Our Team</a>
+            <a href="#">Pricing</a>
+            <a href="#">FAQs</a>
+            <a href="#contact">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- WORKS -->
+        <div class="nav-item has-menu">
+          <a href="#works" class="nav-link" data-text="Works">
+            <span class="t">Works</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Works"></button>
+          </a>
+          <div class="dropdown">
+            <a href="#">Parallax Slider</a>
+            <a href="#">Carousel</a>
+            <a href="#">Parallax</a>
+            <a href="#">Cards</a>
+            <a href="#">Elegant</a>
+            <a href="#">Interactive</a>
+            <a href="#">Work Grids</a>
+            <a href="#">Gallery</a>
+            <a href="#">Project Details</a>
+          </div>
+        </div>
+
+        <!-- BLOGS -->
+        <div class="nav-item has-menu">
+          <a href="#blog" class="nav-link" data-text="Blogs">
+            <span class="t">Blogs</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Blogs"></button>
+          </a>
+          <div class="dropdown">
+            <a href="#">Blogs</a>
+            <a href="#">Blog Details</a>
+          </div>
+        </div>
+
+        <!-- CONTACT (no dropdown) -->
+        <div class="nav-item">
+          <a href="#contact" class="nav-link" data-text="Contact Us">
+            <span class="t">Contact Us</span><span class="orb"></span>
+          </a>
+        </div>
+
+      </nav>
+    </div>
+  </div>
+
+  <!-- Backdrop for mobile drawer -->
+  <div id="navBackdrop" class="nav-backdrop" hidden></div>
+</header>
+
+
+
+
+
+
+
+<section class="hero-only">
+  <div class="top-row">
+    <p class="subtext">Creating timeless brands that inspire.</p>
+    <a class="show-link" href="#">SHOW PORTFOLIO</a>
+  </div>
+  <h1 class="big-text">Strategies</h1>
+
+ 
+</section>
+
+
+
+<section class="section-brand">
+  <div class="brand-grid">
+    <!-- LEFT: Big S + pills -->
+    <div class="brand-left">
+      
+      <div class="stackly-tags">
+        <a href="#">UI/UX Design</a>
+        <a href="#">Development</a>
+        <a href="#">Branding</a>
+        <a href="#">Marketing</a>
+         <a href="#">Social Media</a>
+          <a href="#">Mobile app</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Tagline -->
+    <div class="brand-right">
+      <p class="brand-tagline">For branding.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="mivon-hero-img">
+  <img src="assets/images/robo3.jpg" alt="hero" />
+</section>
+
+
+
+<section class="about-section">
+
+  <div class="about-left-title">
+    <h4>ABOUT STUDIO</h4>
+  </div>
+
+  <div class="about-content">
+    <h2 class="about-main-text">
+      An independent web design and branding agency in Manchester set up in 2010 who care, build relationships, have industry experience, and win awards.
+    </h2>
+
+    <div class="about-bottom">
+ <span class="about-dot"></span> 
+    
+
+      <p class="about-subtext">
+        We believe a website isn’t just a digital presence —
+        it’s a powerful tool that tells your story.
+      </p>
+
+      <ul class="about-list">
+        <li>Innovations</li>
+        <li>Excellence</li>
+        <li>Creativity</li>
+        <li>Experience</li>
+        <li>Passion</li>
+      </ul>
+
+      <ul class="about-list">
+        <li>Competence</li>
+        <li>Web design</li>
+        <li>Development</li>
+        <li>Branding</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+
+
+<section class="stats-section">
+  <div class="stats-grid">
+
+    <div class="stat-card white">
+      <div class="stat-content">
+        <h2>98%</h2>
+        <p>Satisfied customers</p>
+      </div>
+    </div>
+
+    <div class="stat-card dark">
+      <div class="stat-content img-box">
+         <img src="assets/images/imghi-removebg-preview.png" alt="" style="height:70px;">
+      </div>
+    </div>
+
+    <div class="stat-card yellow">
+      <div class="stat-content">
+        <h2>2k+</h2>
+        <p>Product launch</p>
+      </div>
+    </div>
+
+    <div class="stat-card dark">
+      <div class="stat-content">
+        <h2>35+</h2>
+        <p>Ready team mates</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+<section class="capabilities">
+<div class="cap-head">
+<div class="cap-left-label">
+<span class="dot"></span>
+<h4>OUR CAPABILITIES</h4>
+</div>
+
+
+<a class="cap-pricing" href="#">
+SEE PRICING
+<span class="arrow" aria-hidden="true">➜</span>
+</a>
+</div>
+
+
+<div class="cap-grid">
+<!-- LEFT: preview card -->
+<article class="cap-card" id="capCard">
+<div class="cap-card-media">
+<img id="capImg" src="assets/images/brandhi.jpg" alt="Product design preview" width="520" height="390" loading="lazy">
+</div>
+<p class="cap-card-text" id="capText">
+We tailor portfolio design services that empower modern creatives to showcase work effectively and confidently.
+</p>
+<a class="cap-card-cta" href="#">
+READ MORE <span class="cta-arrow" aria-hidden="true">➜</span>
+</a>
+</article>
+
+
+<!-- RIGHT: services list -->
+<nav class="cap-list" aria-label="Capabilities">
+<button class="cap-item is-active" data-img="assets/images/brandhi.jpg"
+data-alt="Product design preview"
+data-text="We build product experiences from concept to ship.">Product design</button>
+
+
+<button class="cap-item" data-img="assets/images/uiux.jpg"
+data-alt="Web design preview"
+data-text="High-performance websites with clean, accessible UI.">Web design</button>
+
+
+<button class="cap-item" data-img="assets/images/mobilehi.jpg"
+data-alt="UI/UX design preview"
+data-text="UI systems, user flows, and research-driven UX.">UI/UX design</button>
+
+
+<button class="cap-item" data-img="assets/images/webs.jpg"
+data-alt="Branding preview"
+data-text="Identity, guidelines, and on-brand storytelling.">Branding</button>
+</nav>
+</div>
+</section>
+
+
+
+
+<script>
+const items = document.querySelectorAll('.cap-item');
+const img = document.getElementById('capImg');
+const text = document.getElementById('capText');
+
+
+function swapFrom(el){
+const src = el.getAttribute('data-img');
+const alt = el.getAttribute('data-alt') || '';
+const copy = el.getAttribute('data-text') || '';
+
+
+if (!src && !copy) return;
+
+
+// fade out
+img.style.opacity = 0;
+text.style.opacity = 0;
+
+
+// small delay lets opacity animate
+setTimeout(() => {
+if (src) { img.src = src; img.alt = alt; }
+if (copy) { text.textContent = copy; }
+// when image finishes loading, fade in
+if (img.complete) {
+img.style.opacity = 1;
+} else {
+img.onload = () => (img.style.opacity = 1);
+}
+text.style.opacity = 1;
+}, 120);
+}
+
+
+// hover/focus interactions + active state
+items.forEach(btn => {
+btn.addEventListener('mouseenter', () => {
+items.forEach(i=>i.classList.remove('is-active'));
+btn.classList.add('is-active');
+swapFrom(btn);
+});
+btn.addEventListener('focus', () => {
+items.forEach(i=>i.classList.remove('is-active'));
+btn.classList.add('is-active');
+swapFrom(btn); // keyboard support
+});
+});
+
+
+// (optional) Preload images for instant swaps
+items.forEach(b => { const s=b.dataset.img; if(s){ const i=new Image(); i.src=s; }});
+</script>
+
+
+<!-- ⬇️ SLIDER SECTION (overlay is pinned only here) -->
+<section class="vps" id="vps">
+  <div class="vps-overlay">
+    <div class="vps-left">
+      <h1 id="vpsTitle" class="vps-title"></h1>
+    </div>
+
+    <div class="vps-center">
+      <div class="vps-circle">
+        <img id="vpsCircle" src="assets/images/carback.jpg" alt="circle">
+      </div>
+    </div>
+
+    <div class="vps-right">
+      <div class="vps-tags">
+        <button class="vps-tag">Branding</button>
+        <button class="vps-tag">Web design</button>
+        <button class="vps-tag">Development</button>
+        <button class="vps-tag">Mobile app</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="vps-slides">
+    <section class="vps-slide"
+      data-title="Kantha"
+      data-circle="assets/images/carback.jpg"
+      style="--slide-bg:url('assets/images/carcircle.jpg')">
+      <span class="vps-num">001</span>
+    </section>
+
+    <section class="vps-slide"
+      data-title="Matts Studios"
+      data-circle="assets/images/refreshmobile.jpg"
+      style="--slide-bg:url('assets/images/refresh.jpg')">
+      <span class="vps-num">002</span>
+    </section>
+
+    <section class="vps-slide"
+      data-title="Inkzio Branding"
+      data-circle="assets/images/framercircle.jpg"
+      style="--slide-bg:url('assets/images/framerstudioback.jpg')">
+      <span class="vps-num">003</span>
+    </section>
+
+    <section class="vps-slide"
+      data-title="Wizard Illustrations"
+      data-circle="assets/images/happycircle.jpg"
+      style="--slide-bg:url('assets/images/happyback.jpg')">
+      <span class="vps-num">004</span>
+    </section>
+  </div>
+</section>
+
+
+<script>
+// --- Scoped to the slider section only ---
+const slider    = document.getElementById('vps');
+if (!slider) throw new Error('#vps not found');
+
+const slides    = slider.querySelectorAll('.vps-slide');
+const titleEl   = slider.querySelector('#vpsTitle');
+const circleImg = slider.querySelector('#vpsCircle');
+
+// Helper: swap circle image safely
+function swapCircle(src) {
+  if (!src) return;
+  // If it's already the same file, skip
+  const current = circleImg.getAttribute('src');
+  if (current === src) return;
+
+  circleImg.style.opacity = '0';
+  // Small delay to let the fade-out start
+  setTimeout(() => {
+    circleImg.src = src;
+    if (circleImg.complete) {
+      circleImg.style.opacity = '1';
+    } else {
+      circleImg.onload = () => (circleImg.style.opacity = '1');
+    }
+  }, 80);
+}
+
+// IntersectionObserver scoped to the slider (no page-wide effects)
+const io = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const s = entry.target;
+      const nextTitle  = s.dataset.title  || '';
+      const nextCircle = s.dataset.circle || '';
+
+      // Update title text inside the slider only
+      if (titleEl && titleEl.textContent !== nextTitle) {
+        titleEl.textContent = nextTitle;
+      }
+
+      // Update circle image
+      if (circleImg && nextCircle) {
+        swapCircle(nextCircle);
+      }
+    });
+  },
+  {
+    // Observe relative to the viewport, but only react when the slide is centered-ish
+    root: null,
+    rootMargin: '-30% 0px -30% 0px',
+    threshold: 0.25
+  }
+);
+
+// Bind each slide
+slides.forEach((s) => io.observe(s));
+
+</script>
+
+
+
+
+
+
+<div class="three-grid-wrap">
+  
+  <!-- Left image card -->
+  <div class="grid-card grid-img">
+    <img src="assets/images/team1.jpg" alt="creative">
+ <a href="creative.html" class="grid-btn">CREATIVE MINDS →</a>
+
+  </div>
+
+  <!-- Middle neon card -->
+  <div class="grid-card grid-neon">
+    <img src="assets/images/star-removebg-preview.png" class="" alt="">
+   
+    <p class="sub">GLOBAL RECOGNITION</p>
+    <h3>We thrive to create design that make
+      impact not just impressions.</h3>
+  </div>
+
+  <!-- Right rating card -->
+  <div class="grid-card grid-rating">
+    <p class="sub">(RATING)</p>
+    <h1>4.9/5</h1>
+    <p class="trust">By 200k+ clients worldwide</p>
+    <img src="assets/images/trust.jpg" class="trust-logo" alt="">
+  </div>
+
+</div>
+
+
+
+
+
+<section class="clients-section">
+  <div class="clients-track">
+
+    <div class="client-card">
+      <img src="assets/images/github-removebg-preview.png" alt="Client">
+    </div>
+
+    <div class="client-card">
+      <img src="assets/images/zumarcons-removebg-preview.png" alt="Client">
+    </div>
+
+    <div class="client-card">
+      <img src="assets/images/matw-removebg-preview.png" alt="Client">
+    </div>
+
+    <div class="client-card">
+      <img src="assets/images/125-removebg-preview.png" alt="Client">
+    
+    </div>
+
+    <div class="client-card">
+      <img src="assets/images/archin-removebg-preview.png" alt="Client">
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="approach-section">
+  <div class="approach-grid">
+
+    <!-- Card 1 -->
+    <div class="approach-card">
+      <h3>Discover<br>& Research</h3>
+      <img src="assets/images/tum-removebg-preview.png" class="ap-icon" alt="">
+      <p>We dive deep into your brand, audience, and goals.</p>
+    </div>
+
+    <!-- Card 2 Active (Highlighted) -->
+    <div class="approach-card active">
+      <h3>Strategy<br>Development</h3>
+      <img src="assets/images/twere-removebg-preview.png" class="ap-icon" alt="">
+      <p>Using insights, we craft a custom strategic plan.</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="approach-card-white">
+      <h3>Creative<br>Execution</h3>
+      <img src="assets/images/hum-removebg-preview.png" class="ap-icon" alt="">
+      <p>Our team brings ideas to life through compelling content, design, campaigns.</p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="approach-card">
+      <h3>Launch<br>& Activation</h3>
+      <img src="assets/images/me-removebg-preview.png" class="ap-icon" alt="">
+      <p>
+We deploy campaigns across chosen channels - social, SEO,PPC, email..</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="blog-hero">
+  <div class="blog-top-row">
+
+    <!-- Left Title Section -->
+    <div class="blog-left">
+      <span class="blog-label">• OUR BLOG</span>
+      <h1 class="blog-heading">
+        LATEST<br>
+        CREATIVE THINKING<br>
+        JOURNALS.
+      </h1>
+    </div>
+
+    <!-- Right Link Button -->
+    <div class="blog-right">
+      <a href="blog.html" class="all-posts-btn">ALL POSTS</a>
+      <button class="arrow-btn">→</button>
+    </div>
+  </div>
+
+<section class="works-4up" id="works4">
+  <div class="w4-viewport">
+    <div class="w4-track">
+      <!-- 8+ cards total. 4 are visible, the rest hidden in the viewport -->
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj.jpg" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">The top Digital Marketing for business growth</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj2.jpg" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">How to furnish and decorate a creative agency</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj3.jpg" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">The top Digital Marketing for business growth</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj4.jpg" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">Campaign strategy that actually converts</h3>
+      </article>
+
+      <!-- hidden initially, will appear on slide -->
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj5.jpg" alt=""></div>
+        <div class="w4-meta">Branding | 12 Sep 2024</div>
+        <h3 class="w4-title">Product shots with minimal light</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj6.jpg" alt=""></div>
+        <div class="w4-meta">UI/UX | 04 Oct 2024</div>
+        <h3 class="w4-title">Mobile app interface exploration</h3>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================= HERO SECTION ================= -->
+ <!--footer page-->
+<section class="hero-wrapper">
+
+  <!-- LEFT SIDE -->
+  <div class="hero-left">
+    <p class="mini-title">Let’s</p>
+    <h1 class="big-title">Start your project</h1>
+    <hr class="hero-line">
+
+    <h2 class="brand-name">Stackly</h2>
+    <p class="tagline">
+      WE HOPE TO EMPOWER USER AND SIMPLIFY<br>
+      THEIR EVERYDAY LIVES
+    </p>
+
+    <div class="hero-tags">
+      <a href="#">services</a>
+      <a href="#">portfolio</a>
+      <a href="#">about us</a>
+      <a href="#">blog</a>
+      <a href="#">contact</a>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="hero-right">
+    <a href="home.html" class="hero-btn">
+      GET IN TOUCH <span><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+
+    <h3 class="right-title">Explore the Socials<br>of Stackly</h3>
+
+    <div class="social-icons">
+      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+
+    <p class="newsletter-label"><i class="fa-regular fa-envelope"></i> Newsletter</p>
+    <div class="newsletter-box">
+      <input type="email" placeholder="Enter your email address">
+      <button><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+    <p class="privacy-text">By subscribing, you're accept our <a href="#">Privacy Policy</a></p>
+  </div>
+
+</section>
+<footer class="footer">
+  <p>© <span id="year"></span> Stackly Creative Agency — All rights reserved.</p>
+</footer>
+
+
+<!-- ================= FOOTER ================= -->
+
+
+<script src="app.js"></script>
+    
+    
+</body>
+</html>

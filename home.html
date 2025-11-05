@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Stackly — Creative Agency</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <!-- Left: Logo (outside the nav box) -->
+        <a class="logo" href="#"><span class="logo-dot"></span>stackly</a>
+<!-- Center: Shadow-box navigation -->
+<div class="nav-shelf">
+  <nav class="nav">
+
+    <!-- HOME -->
+    <div class="nav-item has-menu">
+      <a href="#" class="nav-link" data-text="Home">
+        <span class="t">Home</span><span class="orb"></span>
+         <span class="arrow"></span>
+      </a>
+      <div class="dropdown">
+        <a href="main.html">Main home</a>
+        <a href="creativeagency.html">Creative Agency</a>
+        <a href="digitalagency.html">Digital Agency</a>
+        <a href="modernagency.html">Modern Agency</a>
+        <a href="desginstudio.html">Design Studio</a>
+        <a href="portoflio.html">Creative Portfolio</a>
+        <a href="freelancer.html">Freelancer</a>
+        <a href="personal.html">Personal</a>
+      </div>
+    </div>
+
+    <!-- PAGES -->
+    <div class="nav-item has-menu">
+      <a href="#services" class="nav-link" data-text="Pages">
+        <span class="t">Pages</span><span class="orb"></span>
+         <span class="arrow"></span>
+      </a>
+      <div class="dropdown">
+        <a href="#">About Us</a>
+        <a href="#">Services</a>
+        <a href="#">Our Team</a>
+        <a href="#">Pricing</a>
+        <a href="#">FAQs</a>
+        <a href="contact.htm">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- WORKS -->
+    <div class="nav-item has-menu">
+      <a href="#works" class="nav-link" data-text="Works">
+        <span class="t">Works</span><span class="orb"></span>
+         <span class="arrow"></span>
+      </a>
+      <div class="dropdown">
+        <a href="#">Parallax Slider</a>
+        <a href="#">Carousel</a>
+        <a href="#">Parallax</a>
+        <a href="#">Cards</a>
+        <a href="#">Elegant</a>
+        <a href="#">Interactive</a>
+        <a href="#">Work Grids</a>
+        <a href="#">Gallery</a>
+        <a href="#">Project Details</a>
+      </div>
+    </div>
+
+    <!-- BLOGS -->
+    <div class="nav-item has-menu">
+      <a href="#blog" class="nav-link" data-text="Blogs">
+        <span class="t">Blogs</span><span class="orb"></span>
+         <span class="arrow"></span>
+      </a>
+      <div class="dropdown">
+        <a href="#">Blogs</a>
+        <a href="#">Blog Details</a>
+      </div>
+    </div>
+
+    <!-- CONTACT (no dropdown) -->
+    <div class="nav-item">
+      <a href="contact.html" class="nav-link" data-text="Contact Us">
+        <span class="t">Contact Us</span><span class="orb"></span>
+      </a>
+    </div>
+
+  </nav>
+</div>
+
+
+        <!-- Right: Purchase button (outside the nav box) -->
+        <a href="#contact" class="btn accent btn-shutter">Purchase</a>
+      </div>
+    </header>
+
+    <section class="hero">
+  <div class="container">
+    
+    <p class="kicker" data-reveal="fade">YOUR AWESOME WEBSITE HERE!</p>
+
+    <h1 class="hero-title" data-reveal="up">
+    Build powerful creative websites
+          <br />
+      <span class="brand">with Stackly — HTML Template</span>
+    </h1>
+
+   <div class="hero-grid-2">
+
+  <div class="img-slot img-left" data-sr="zoom-left" data-sr-delay="0">
+    <img src="assets/images/homepage1.jpg" alt="Hero Image 1">
+  </div>
+
+  <div class="img-slot img-right" data-sr="zoom-right" data-sr-delay="120">
+    <img src="assets/images/homepage2.jpg" alt="Hero Image 2">
+  </div>
+
+</div>
+
+</section>
+
+
+      <section id="services" class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2 data-reveal="up">What we do</h2>
+            <p data-reveal="fade">Design-first websites where creativity meets functionality. Smooth animations, bold typography, blazing performance.</p>
+          </div>
+
+          <div class="features">
+            <div class="feature" data-reveal="up">
+              <span class="badge">UI/UX</span>
+              <h3>Product Design</h3>
+              <p>Wireframes to pixel-perfect designs using design tokens and scalable systems.</p>
+            </div>
+            <div class="feature" data-reveal="up" data-reveal-delay="120">
+              <span class="badge">DEV</span>
+              <h3>Frontend Engineering</h3>
+              <p>Semantic HTML, modular CSS and micro-interactions that feel alive.</p>
+            </div>
+            <div class="feature" data-reveal="up" data-reveal-delay="240">
+              <span class="badge">BRAND</span>
+              <h3>Identity</h3>
+              <p>Logo marks, color systems and tone—consistent across every touchpoint.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="contact">
+      <div class="container foot">
+        <p>© <span id="year"></span> Stackly. All rights reserved.</p>
+        <a class="btn tiny ghost" href="#">Contact</a>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
