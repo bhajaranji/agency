@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Stackly — Creative Agency</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+     <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+
+ 
+<link rel="icon" type="image/png" href="assets/images/logo1.webp">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <!-- Left: Logo -->
+   <a class="logo" href="home.html">
+  <img src="assets/images/logobogo.webp" alt="Stackly logo">
+</a>
+    <!-- Hamburger (mobile only) -->
+    <button id="menuToggle"
+            class="hamburger"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Center: nav (desktop) / drawer (mobile) -->
+    <div id="mobileNav" class="nav-shelf" role="navigation">
+      <nav class="nav">
+
+        <!-- HOME -->
+        <div class="nav-item has-menu">
+          <a href="home.html" class="nav-link" data-text="Home">
+            <span class="t">Home</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <!-- caret shows only on mobile -->
+            <button class="caret" aria-label="Expand Home"></button>
+          </a>
+          <div class="dropdown">
+            <a href="main.html">Main home</a>
+            <a href="creativeagency.html">Creative Agency</a>
+            <a href="digitalagency.html">Digital Agency</a>
+            <a href="modernagency.html">Modern Agency</a>
+            <a href="desginstudio.html">Design Studio</a>
+            <a href="portoflio.html">Creative Portfolio</a>
+            <a href="freelancer.html">Freelancer</a>
+            <a href="personal.html">Personal</a>
+          </div>
+        </div>
+
+        <!-- PAGES -->
+        <div class="nav-item has-menu">
+          <a href="#services" class="nav-link" data-text="Pages">
+            <span class="t">Pages</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Pages"></button>
+          </a>
+          <div class="dropdown">
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="ourteam.html">Our Team</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="faq.html">FAQs</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- WORKS -->
+        <div class="nav-item has-menu">
+          <a href="#works" class="nav-link" data-text="Works">
+            <span class="t">Works</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Works"></button>
+          </a>
+          <div class="dropdown">
+            <a href="parallexslider.html">Parallax Slider</a>
+            <a href="carousel.html">Carousel</a>
+            <a href="parallax.html">Parallax</a>
+            <a href="cards.html">Cards</a>
+            <a href="elegant.html">Elegant</a>
+             <a href="dashborad.html">DashBoard</a>
+          </div>
+        </div>
+
+        <!-- BLOGS -->
+        <div class="nav-item has-menu">
+          <a href="blog.html" class="nav-link" data-text="Blogs">
+            <span class="t">Blogs</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Blogs"></button>
+          </a>
+          <div class="dropdown">
+            <a href="blog.html">Blogs</a>
+            <a href="blogdetails.html">Blog Details</a>
+          </div>
+        </div>
+
+        <!-- CONTACT (no dropdown) -->
+        <div class="nav-item">
+          <a href="contact.html" class="nav-link" data-text="Contact Us">
+            <span class="t">Contact Us</span><span class="orb"></span>
+          </a>
+        </div>
+
+      </nav>
+    </div>
+  </div>
+
+  <!-- Backdrop for mobile drawer -->
+  <div id="navBackdrop" class="nav-backdrop hidden" ></div>
+</header>
+
+
+
+<section class="team-hero-text">
+    <button class="team-btn">• Our Team</button>
+
+    <h1 class="team-heading">
+        Modern design create <br>
+        timeless brand identities.
+    </h1>
+</section>
+
+
+<div class="big-hero-img">
+  <img src="assets/images/aboutbig.webp" alt="Team working with brand circles">
+</div>
+
+
+
+
+<!-- ===== TEAM SECTION ===== -->
+<section class="team-wrap">
+  <div class="team-top">
+    <span class="team-tag">• OUR TEAM</span>
+    <h2 class="team-title">
+      MEET OUR<br>
+      <span>TEAM BEHIND THE WORK.</span>
+    </h2>
+  </div>
+
+  <div class="team-grid">
+    <!-- Card 1 -->
+    <article class="team-card">
+      <div class="team-media">
+        <img src="assets/images/team11.webp" alt="Member 1">
+        
+      </div>
+      <div class="team-meta">
+        <h3>Liam Carter</h3>
+        <span>Webflow Designer</span>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="team-card">
+      <div class="team-media">
+        <img src="assets/images/team12.webp" alt="Member 2">
+        
+      </div>
+      <div class="team-meta">
+        <h3>Ethan Brooks</h3>
+        <span>product Designer</span>
+      </div>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="team-card">
+      <div class="team-media">
+        <img src="assets/images/team13.webp" alt="Member 3">
+        
+      </div>
+      <div class="team-meta">
+        <h3>Daniel Reyes</h3>
+        <span>Graphic Designer</span>
+      </div>
+    </article>
+  
+
+
+
+    <article class="team-card">
+      <div class="team-media">
+        <img src="assets/images/team14.webp " alt="Member 4">
+      </div>
+      <div class="team-meta">
+        <h3>Ava Mitchell</h3>
+        <span>UI/UX Designer</span>
+      </div>
+    </article>
+
+    <article class="team-card">
+      <div class="team-media">
+        <img src="assets/images/team15.webp" alt="Member 5">
+      </div>
+      <div class="team-meta">
+        <h3>Noah Parker</h3>
+        <span>Brand Strategist</span>
+      </div>
+    </article>
+
+    <article class="team-card">
+      <div class="team-media">
+        <img src="assets/images/team17.webp" alt="Member 6">
+      </div>
+      <div class="team-meta">
+        <h3>Sophia Bennett</h3>
+        <span>Illustrator</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+
+
+
+<section class="mivon-stats-grid">
+  <!-- ROW 1 — 4 columns -->
+  <!-- (1) Image -->
+  <article class="mg-card mg-image">
+    <img src="assets/images/robo4.webp" alt="Media 1">
+  </article>
+
+  <!-- (2) 60+ stat -->
+  <article class="mg-card mg-stat mg-dark">
+    <div class="mg-stat-wrap">
+      <p class="mg-big">60+</p>
+      <p class="mg-sub">Brands Launched<br>or Rebranded</p>
+    </div>
+  </article>
+
+  <!-- (3) Image -->
+  <article class="mg-card mg-image">
+    <img src="assets/images/handsome.webp" alt="Media 3">
+  </article>
+
+  <!-- (4) 97% stat (purple) -->
+  <article class="mg-card mg-stat mg-purple">
+    <div class="mg-stat-wrap">
+      <p class="mg-big">97%</p>
+      <p class="mg-sub dark">Rating by 200k+<br>clients world-wide</p>
+    </div>
+  </article>
+
+  <!-- ROW 2 — each spans 2 columns -->
+  <!-- (5) Lime “2k+” + small button -->
+  <article class="mg-card mg-wide mg-lime">
+    <div class="mg-wide-left">
+      <img class="mg-deco" src="assets/images/imghi-removebg-preview.webp" alt="">
+    </div>
+    <div class="mg-wide-right">
+      <p class="mg-xxbig">2k+</p>
+      <p class="mg-note">Successfully<br>completed projects</p>
+      <a class="mg-pill" href="#">Facts & Numbers</a>
+    </div>
+  </article>
+
+  <!-- (6) Dark “80%” + avatars + right image -->
+  <article class="mg-card mg-wide mg-deep">
+    <div class="mg-wide-left">
+      <div class="mg-avatars">
+       <img src="assets/images/team.webp" alt="">
+      </div>
+      <p class="mg-xxbig light">80%</p>
+      <p class="mg-note">Of customers recommend<br>awesome services.</p>
+    </div>
+    <div class="mg-wide-right media-right">
+      <img src="assets/images/skeleton.webp" alt="Robot">
+    </div>
+  </article>
+</section>
+
+
+
+
+
+<section class="blog-hero">
+  <div class="blog-top-row">
+
+    <!-- Left Title Section -->
+    <div class="blog-left">
+      <span class="blog-label">• OUR BLOG</span>
+      <h1 class="blog-heading">
+        LATEST<br>
+        CREATIVE THINKING<br>
+        JOURNALS.
+      </h1>
+    </div>
+
+    <!-- Right Link Button -->
+    <div class="blog-right">
+      <a href="blog.html" class="all-posts-btn">ALL POSTS</a>
+      <button class="arrow-btn">→</button>
+    </div>
+  </div>
+
+<section class="works-4up" id="works4">
+  <div class="w4-viewport">
+    <div class="w4-track">
+      <!-- 8+ cards total. 4 are visible, the rest hidden in the viewport -->
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj.webp" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">The top Digital Marketing for business growth</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj2.webp" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">How to furnish and decorate a creative agency</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj3.webp" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">The top Digital Marketing for business growth</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj4.webp" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">Campaign strategy that actually converts</h3>
+      </article>
+
+      <!-- hidden initially, will appear on slide -->
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj5.webp" alt=""></div>
+        <div class="w4-meta">Branding | 12 Sep 2024</div>
+        <h3 class="w4-title">Product shots with minimal light</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj6.webp" alt=""></div>
+        <div class="w4-meta">UI/UX | 04 Oct 2024</div>
+        <h3 class="w4-title">Mobile app interface exploration</h3>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================= HERO SECTION ================= -->
+ <!--footer page-->
+<section class="hero-wrapper">
+
+  <!-- LEFT SIDE -->
+  <div class="hero-left">
+    <p class="mini-title">Let’s</p>
+    <h1 class="big-title">Start your project</h1>
+    <hr class="hero-line">
+
+    <h2 class="brand-name">Stackly</h2>
+    <p class="tagline">
+      WE HOPE TO EMPOWER USER AND SIMPLIFY<br>
+      THEIR EVERYDAY LIVES
+    </p>
+
+    <div class="hero-tags">
+      <a href="services.html">services</a>
+      <a href="portoflio.html">portfolio</a>
+      <a href="about.html">about us</a>
+      <a href="blog.html">blog</a>
+      <a href="contact.html">contact</a>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="hero-right">
+    <a href="home.html" class="hero-btn">
+      GET IN TOUCH <span><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+
+    <h3 class="right-title">Explore the Socials<br>of Stackly</h3>
+
+    <div class="social-icons">
+      <a href="404page.html"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-facebook-f"></i></a>
+
+      <a href="404page.html"><i class="fa-brands fa-instagram"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+
+    <p class="newsletter-label"><i class="fa-regular fa-envelope"></i> Newsletter</p>
+    <div class="newsletter-box">
+      <input type="email" placeholder="Enter your email address">
+      <button><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+    <p class="privacy-text">By subscribing, you're accept our <a href="#">Privacy Policy</a></p>
+  </div>
+
+</section>
+<footer class="footer">
+  <p>© <span id="year"></span> Stackly Creative Agency — All rights reserved.</p>
+</footer>
+
+
+<!-- ================= FOOTER ================= -->
+
+
+<script src="app.js"></script>
+    
+    
+</body>
+</html>

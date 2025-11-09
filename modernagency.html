@@ -16,7 +16,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 
- 
+ <link rel="icon" type="image/png" href="assets/images/logo1.webp">
 
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -25,9 +25,9 @@
 <header class="site-header">
   <div class="container nav-wrap">
     <!-- Left: Logo -->
-    <a class="logo" href="#"><span class="logo-dot"></span>stackly</a>
-
-    <!-- Hamburger (mobile only) -->
+    <a class="logo" href="home.html">
+  <img src="assets/images/logobogo.webp" alt="Stackly logo">
+</a>
     <button id="menuToggle"
             class="hamburger"
             aria-label="Open menu"
@@ -68,12 +68,12 @@
             <button class="caret" aria-label="Expand Pages"></button>
           </a>
           <div class="dropdown">
-            <a href="#">About Us</a>
-            <a href="#">Services</a>
-            <a href="#">Our Team</a>
-            <a href="#">Pricing</a>
-            <a href="#">FAQs</a>
-            <a href="#contact">Contact Us</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="ourteam.html">Our Team</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="faq.html">FAQs</a>
+            <a href="contact.html">Contact Us</a>
           </div>
         </div>
 
@@ -85,34 +85,32 @@
             <button class="caret" aria-label="Expand Works"></button>
           </a>
           <div class="dropdown">
-            <a href="#">Parallax Slider</a>
-            <a href="#">Carousel</a>
-            <a href="#">Parallax</a>
-            <a href="#">Cards</a>
-            <a href="#">Elegant</a>
-            <a href="#">Interactive</a>
-            <a href="#">Work Grids</a>
-            <a href="#">Gallery</a>
-            <a href="#">Project Details</a>
+            <a href="parallexslider.html">Parallax Slider</a>
+            <a href="carousel.html">Carousel</a>
+            <a href="parallax.html">Parallax</a>
+            <a href="cards.html">Cards</a>
+            <a href="elegant.html">Elegant</a>
+             <a href="dashborad.html">DashBoard</a>
+            
           </div>
         </div>
 
         <!-- BLOGS -->
         <div class="nav-item has-menu">
-          <a href="#blog" class="nav-link" data-text="Blogs">
+          <a href="blog.html" class="nav-link" data-text="Blogs">
             <span class="t">Blogs</span><span class="orb"></span>
             <span class="arrow"></span>
             <button class="caret" aria-label="Expand Blogs"></button>
           </a>
           <div class="dropdown">
-            <a href="#">Blogs</a>
-            <a href="#">Blog Details</a>
+            <a href="blog.html">Blogs</a>
+            <a href="blogdetails.html">Blog Details</a>
           </div>
         </div>
 
         <!-- CONTACT (no dropdown) -->
         <div class="nav-item">
-          <a href="#contact" class="nav-link" data-text="Contact Us">
+          <a href="contact.html" class="nav-link" data-text="Contact Us">
             <span class="t">Contact Us</span><span class="orb"></span>
           </a>
         </div>
@@ -124,6 +122,428 @@
   <!-- Backdrop for mobile drawer -->
   <div id="navBackdrop" class="nav-backdrop" hidden></div>
 </header>
+
+
+
+<section class="hero">
+  <!-- LEFT: big image -->
+  <figure class="tile tile--big">
+    <img src="assets/images/modern1.webp" alt="Main image">
+  </figure>
+
+  <!-- RIGHT COLUMN (2 rows) -->
+  <div class="right-col">
+
+    <!-- RIGHT TOP: static image -->
+    <figure class="tile">
+      <img src="assets/images/robo4.webp" alt="Right top">
+    </figure>
+
+    <!-- RIGHT BOTTOM: carousel -->
+    <figure class="tile carousel">
+      <div class="c-track">
+        <div class="c-slide is-active">
+          <img src="assets/images/modern3.1.webp" alt="Slide 1">
+        </div>
+        <div class="c-slide">
+          <img src="assets/images/modern3.2.webp" alt="Slide 2">
+        </div>
+        <div class="c-slide">
+          <img src="assets/images/modern3.3.webp" alt="Slide 3">
+        </div>
+      </div>
+
+      <!-- ✅ 3 dots for 3 slides -->
+      <div class="dots" aria-label="carousel navigation">
+        <button class="dot is-active" aria-label="slide 1"></button>
+        <button class="dot" aria-label="slide 2"></button>
+        <button class="dot" aria-label="slide 3"></button>
+      </div>
+    </figure>
+
+  </div>
+</section>
+
+
+
+<script>
+  // tiny autoplay + dots for the bottom-right 2-slide carousel
+  (function(){
+    const carousel = document.querySelector('.carousel');
+    if(!carousel) return;
+
+    const slides = Array.from(carousel.querySelectorAll('.c-slide'));
+    const dots = Array.from(carousel.querySelectorAll('.dot'));
+    let i = 0, timer;
+
+    function go(n){
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s,idx)=> s.classList.toggle('is-active', idx===i));
+      dots.forEach((d,idx)=> d.classList.toggle('is-active', idx===i));
+    }
+    function play(){
+      clearInterval(timer);
+      timer = setInterval(()=> go(i+1), 3000); // change every 3s
+    }
+
+    dots.forEach((d,idx)=> d.addEventListener('click', ()=>{ go(idx); play(); }));
+
+    play();
+  })();
+</script>
+
+
+<section class="projects">
+  <div class="proj-head">
+    <span class="dot"></span>
+    <h2>OUR PROJECTS</h2>
+  </div>
+  <hr class="proj-rule"/>
+
+  <div class="prj-grid">
+    <!-- Row 1 -->
+    <article class="card a">
+      <img src="assets/images/grid.webp" alt="Project 1">
+      <div class="badges">
+        <span>Branding</span><span>UI/UX</span><span>Motion</span>
+      </div>
+      <h3 class="title">Newz – Magazine Site</h3>
+      
+    </article>
+
+    <article class="card b">
+      <img src="assets/images/grid2.webp" alt="Project 2">
+       <div class="badges"><span>Branding</span></div>
+      <h3 class="title">LW Rebrand</h3>
+      
+    </article>
+
+    <!-- Row 2 (full width) -->
+    <article class="card c">
+      <img src="assets/images/grid3.webp" alt="Project 3">
+     
+     
+    </article>
+
+    <!-- Row 3 -->
+    <article class="card d">
+      <img src="assets/images/grid4.webp" alt="Project 4">
+      <div class="badges"><span>Branding</span></div>
+      <h3 class="title">LW Rebrand</h3>
+      
+    </article>
+
+    <article class="card e">
+      <img src="assets/images/grid5.webp" alt="Project 5">
+       <div class="badges"><span>Branding</span><span>UI/UX</span><span>Motion</span></div>
+      <h3 class="title">Newz – Magazine Site</h3>
+      
+    </article>
+
+    <!-- Row 4 -->
+    <article class="card f">
+      <img src="assets/images/grid6.webp" alt="Project 6">
+      <div class="badges"><span>Branding</span></div>
+      <h3 class="title">LW Rebrand</h3>
+      
+    </article>
+
+    <article class="card g">
+      <img src="assets/images/aj4.webp" alt="Project 7">
+        <div class="badges"><span>UI/UX</span><span>Webflow</span></div>
+      <h3 class="title">ZumarCons Firm</h3>
+      
+    </article>
+  </div>
+</section>
+
+
+
+
+<section class="feat-wrap">
+
+  <!-- Top: tag + heading -->
+  <div class="feat-head">
+    <span class="feat-tag">• OUR SERVICES</span>
+    <h2 class="feat-title">
+      REACH OUR<br>FEATURED SERVICES
+    </h2>
+  </div>
+
+  <!-- Rows -->
+  <div class="feat-list" id="featList">
+
+    <!-- 1 -->
+    <article class="feat-item" data-img="assets/images/brandhi.webp">
+      <div class="feat-col feat-no">01</div>
+      <div class="feat-col feat-title-txt">UI/UX Design</div>
+      <div class="feat-col feat-mini">
+        <div>+ UI/UX Design</div>
+        <div>+ Web Development</div>
+        <div>+ Marketing</div>
+      </div>
+      <button class="feat-col feat-cta" aria-label="Open"><span>➜</span></button>
+    </article>
+
+    <!-- 2 -->
+    <article class="feat-item" data-img="assets/images/uiux.webp">
+      <div class="feat-col feat-no">02</div>
+      <div class="feat-col feat-title-txt">User Research</div>
+      <div class="feat-col feat-mini">
+        <div>+ UI/UX Design</div>
+        <div>+ Web Development</div>
+        <div>+ Marketing</div>
+      </div>
+      <button class="feat-col feat-cta" aria-label="Open"><span>➜</span></button>
+    </article>
+
+    <!-- 3 -->
+    <article class="feat-item" data-img="assets/images/webs.webp">
+      <div class="feat-col feat-no">03</div>
+      <div class="feat-col feat-title-txt">Branding</div>
+      <div class="feat-col feat-mini">
+        <div>+ UI/UX Design</div>
+        <div>+ Web Development</div>
+        <div>+ Marketing</div>
+      </div>
+      <button class="feat-col feat-cta" aria-label="Open"><span>➜</span></button>
+    </article>
+
+    <!-- 4 -->
+    <article class="feat-item" data-img="assets/images/mobile.webp">
+      <div class="feat-col feat-no">04</div>
+      <div class="feat-col feat-title-txt">3D & Motion</div>
+      <div class="feat-col feat-mini">
+        <div>+ UI/UX Design</div>
+        <div>+ Web Development</div>
+        <div>+ Marketing</div>
+      </div>
+      <button class="feat-col feat-cta" aria-label="Open"><span>➜</span></button>
+    </article>
+
+    <!-- floating preview image -->
+    <div class="feat-preview" id="featPreview">
+      <img id="featPreviewImg" src="assets/images/mobile.webp" alt="Preview">
+    </div>
+  </div>
+
+<div class="services-btn-wrap">
+  <a href="services.html" class="services-btn">
+    VIEW ALL SERVICES
+    <span class="arrow">→</span>
+  </a>
+</div>
+
+</section>
+
+
+<script>
+  (function(){
+    const list = document.getElementById('featList');
+    const preview = document.getElementById('featPreview');
+    const img = document.getElementById('featPreviewImg');
+
+    // only enable on wider screens
+    const enablePreview = () => window.matchMedia('(min-width: 901px)').matches;
+
+    function movePreviewTo(item){
+      if(!enablePreview()) return;
+      const rect = item.getBoundingClientRect();
+      const parentRect = list.getBoundingClientRect();
+      const y = rect.top - parentRect.top + rect.height/2 - preview.offsetHeight/2;
+      preview.style.top = Math.max(20, y) + 'px';
+      const nextSrc = item.getAttribute('data-img');
+      if(nextSrc && img.getAttribute('src') !== nextSrc){
+        img.src = nextSrc;
+      }
+      preview.classList.add('is-on');
+    }
+
+    function hidePreview(){
+      preview.classList.remove('is-on');
+    }
+
+    // init
+    if(enablePreview()){
+      preview.style.display = 'block';
+      preview.classList.add('is-on');
+    }
+
+    list.querySelectorAll('.feat-item').forEach((item, i)=>{
+      item.addEventListener('mouseenter', () => movePreviewTo(item));
+      item.addEventListener('focusin', () => movePreviewTo(item));
+      item.addEventListener('mouseleave', hidePreview);
+      item.addEventListener('focusout', hidePreview);
+      // keyboard
+      item.setAttribute('tabindex','0');
+    });
+
+    // update on resize
+    window.addEventListener('resize', ()=>{
+      if(enablePreview()){
+        preview.style.display = 'block';
+      }else{
+        preview.style.display = 'none';
+      }
+    });
+  })();
+</script>
+<section class="process-section">
+  <!-- LEFT: your image -->
+  <div class="process-left">
+    <img src="assets/images/WHITE.webp" alt="Process Image">
+  </div>
+
+  <!-- RIGHT: steps -->
+  <div class="process-right">
+
+    <div class="process-step">
+      <span class="num">1.</span>
+      <div class="p-text">
+        <h3>Research</h3>
+        <p>Once the wireframe gets approved at step 1, we’ll build prototype design to visually the idea.</p>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <span class="num">2.</span>
+      <div class="p-text">
+        <h3>Concept Design</h3>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <span class="num">3.</span>
+      <div class="p-text">
+        <h3>Implementation</h3>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <span class="num">4.</span>
+      <div class="p-text">
+        <h3>Testing</h3>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="team-hero">
+
+  <!-- LEFT COLUMN -->
+  <div class="left-col">
+
+    <!-- Circle profile card -->
+    <div class="profile-card">
+      <div class="p-img-wrap">
+        <img src="assets/images/team11.webp" alt="Profile">
+      </div>
+
+      <h3 class="p-name">Logan Dang</h3>
+      <p class="p-role">CEO Founder</p>
+
+      <div class="p-socials">
+        <a href="404page.html">X</a>
+        <a href="404page.html">IG</a>
+        <a href="404page.html">Dr</a>
+        <a href="404page.html">Be</a>
+      </div>
+
+      <div class="p-footer">
+        Our Leaders
+        <div class="p-nav">
+          <button>‹</button>
+          <button>›</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Purple job card -->
+    <div class="job-card">
+      <p class="job-mini">Join our team</p>
+
+      <a href="#" class="job-arrow">→</a>
+
+      <h3 class="job-title">Remote UI/UX Designer</h3>
+      <p class="job-sub">
+        Work on anywhere with high benefits and salary up to $3000
+      </p>
+    </div>
+
+  </div>
+
+  <!-- RIGHT BIG IMAGE -->
+  <div class="right-big">
+    <img src="assets/images/team1.webp" alt="Hero">
+    <div class="right-text">
+      <h1>Geek and<br>Heat</h1>
+      <p>Work Hard, Play Hard is<br>mivon's philosophy</p>
+
+      <h2 class="count">25+</h2>
+      <p class="count-sub">MULTIDISCIPLINARY DESIGNERS<br>AND MANAGERS</p>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- LATEST NEWS -->
+<section class="news-wrap">
+  <!-- Heading -->
+  <div class="news-head">
+    <span class="dot"></span>
+    <h2>LATEST NEWS</h2>
+  </div>
+  <hr class="news-rule" />
+
+  <div class="news-grid">
+    <!-- LEFT: Featured article -->
+    <article class="news-feature">
+      <header class="nf-meta">
+        <div class="nf-author">
+          <img class="avatar" src="assets/images/baby.jpg" alt="Author">  <!-- your circle image -->
+          <div class="who">
+            <strong>M Moussa</strong>
+            <span>Editor</span>
+          </div>
+        </div>
+        <div class="nf-time">⏱ 12 hours ago</div>
+      </header>
+
+      <figure class="nf-media">
+        <img src="assets/images/there.webp" alt="Featured"> <!-- your right/big image -->
+      </figure>
+
+      <h3 class="nf-title">
+        Building a Strong Brand Identity Through Visual Storytelling.
+      </h3>
+    </article>
+
+    <!-- RIGHT: List -->
+    <aside class="news-list">
+      <a class="nl-item" href="404page.html">
+        <span class="when">⏱ 2 days ago</span>
+        <h4>Rebrand vs Resesh: 10 Minutes on Brand with Hubfolio</h4>
+      </a>
+      <a class="nl-item" href="404page.html">
+        <span class="when">⏱ 15 days ago</span>
+        <h4>How to build culture for young office?</h4>
+      </a>
+      <a class="nl-item" href="404page.html">
+        <span class="when">⏱ 1 month ago</span>
+        <h4>Case Study: Crafting a UX Strategy for Compelling Messaging</h4>
+      </a>
+      <a class="nl-item" href="404page.html">
+        <span class="when">⏱ 2 months ago</span>
+        <h4>UI & UX: What is important?</h4>
+      </a>
+    </aside>
+  </div>
+</section>
+
 
 
 
@@ -146,11 +566,11 @@
     </p>
 
     <div class="hero-tags">
-      <a href="#">services</a>
-      <a href="#">portfolio</a>
-      <a href="#">about us</a>
-      <a href="#">blog</a>
-      <a href="#">contact</a>
+      <a href="services.html">services</a>
+      <a href="portoflio.html">portfolio</a>
+      <a href="about.html">about us</a>
+      <a href="blog.html">blog</a>
+      <a href="contact.html">contact</a>
     </div>
   </div>
 
@@ -163,11 +583,11 @@
     <h3 class="right-title">Explore the Socials<br>of Stackly</h3>
 
     <div class="social-icons">
-      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-facebook-f"></i></a>
 
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-instagram"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-linkedin-in"></i></a>
     </div>
 
     <p class="newsletter-label"><i class="fa-regular fa-envelope"></i> Newsletter</p>

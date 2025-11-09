@@ -17,7 +17,7 @@
 
 
  
-
+<link rel="icon" type="image/png" href="assets/images/logo1.webp">
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -26,8 +26,9 @@
 <header class="site-header">
   <div class="container nav-wrap">
     <!-- Left: Logo -->
-    <a class="logo" href="#"><span class="logo-dot"></span>stackly</a>
-
+     <a class="logo" href="home.html">
+  <img src="assets/images/logobogo.webp" alt="Stackly logo">
+</a>
     <!-- Hamburger (mobile only) -->
     <button id="menuToggle"
             class="hamburger"
@@ -69,12 +70,12 @@
             <button class="caret" aria-label="Expand Pages"></button>
           </a>
           <div class="dropdown">
-            <a href="#">About Us</a>
-            <a href="#">Services</a>
-            <a href="#">Our Team</a>
-            <a href="#">Pricing</a>
-            <a href="#">FAQs</a>
-            <a href="#contact">Contact Us</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="ourteam.html">Our Team</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="faq.html">FAQs</a>
+            <a href="contact.html">Contact Us</a>
           </div>
         </div>
 
@@ -86,34 +87,32 @@
             <button class="caret" aria-label="Expand Works"></button>
           </a>
           <div class="dropdown">
-            <a href="#">Parallax Slider</a>
-            <a href="#">Carousel</a>
-            <a href="#">Parallax</a>
-            <a href="#">Cards</a>
-            <a href="#">Elegant</a>
-            <a href="#">Interactive</a>
-            <a href="#">Work Grids</a>
-            <a href="#">Gallery</a>
-            <a href="#">Project Details</a>
+            <a href="parallexslider.html">Parallax Slider</a>
+            <a href="carousel.html">Carousel</a>
+            <a href="parallax.html">Parallax</a>
+            <a href="cards.html">Cards</a>
+            <a href="elegant.html">Elegant</a>
+            <a href="dashborad.html">DashBoard</a>
+            
           </div>
         </div>
 
         <!-- BLOGS -->
         <div class="nav-item has-menu">
-          <a href="#blog" class="nav-link" data-text="Blogs">
+          <a href="blog.html" class="nav-link" data-text="Blogs">
             <span class="t">Blogs</span><span class="orb"></span>
             <span class="arrow"></span>
             <button class="caret" aria-label="Expand Blogs"></button>
           </a>
           <div class="dropdown">
-            <a href="#">Blogs</a>
-            <a href="#">Blog Details</a>
+            <a href="blog.html">Blogs</a>
+            <a href="blogdetails.html">Blog Details</a>
           </div>
         </div>
 
         <!-- CONTACT (no dropdown) -->
         <div class="nav-item">
-          <a href="#contact" class="nav-link" data-text="Contact Us">
+          <a href="contact.html" class="nav-link" data-text="Contact Us">
             <span class="t">Contact Us</span><span class="orb"></span>
           </a>
         </div>
@@ -125,6 +124,271 @@
   <!-- Backdrop for mobile drawer -->
   <div id="navBackdrop" class="nav-backdrop" hidden></div>
 </header>
+
+
+
+
+<section class="hero">
+
+  <!-- LEFT: heading + button -->
+  <div class="heading">
+    <h1>
+      Hello<br>
+      Everyone! I'm<br>
+      Gabriel.
+    </h1>
+    <a class="cta" href="404page.html">
+      VIEW PROJECTS
+      <span class="icon">➜</span>
+    </a>
+  </div>
+
+  <!-- CENTER: oval image + badge -->
+  <div class="portrait">
+    <div class="oval">
+      <!-- TODO: replace with your image -->
+      <img src="assets/images/white man.webp" alt="Portrait">
+    </div>
+
+    <div class="badge">
+      <b>12+</b>
+      <small>Years of<br>experience</small>
+    </div>
+  </div>
+
+  <!-- RIGHT: small paragraph + social links -->
+  <aside class="aside">
+    <p class="intro">
+      A passionate web designer with a knack<br>
+      for turning ideas into visually stunning,<br>
+      user-friendly websites.
+    </p>
+
+    <ul class="links">
+      <li><a href="404page.html">Facebook</a></li>
+      <li><a href="404page.html">twitter</a></li>
+      <li><a href="404page.html">LinkedIn</a></li>
+      <li><a href="404page.html">Behance</a></li>
+    </ul>
+  </aside>
+</section>
+
+
+    
+<section class="stackly-marquee-section">
+  <div class="stackly-marquee">
+    <span>STACKLY CREATIVE AGENCY</span>
+    <span class="stackly-star"></span>
+    <span>UI/UX DESIGN</span>
+    <span class="stackly-star"></span>
+    <span>WEB DEVELOPMENT</span>
+    <span class="stackly-star"></span>
+    <span>APP DEVELOPMENT</span>
+    <span class="stackly-star"></span>
+    <span>BRANDING & STRATEGY</span>
+  </div>
+</section>
+
+
+<section class="works-hero">
+    <div class="heading">
+        <h1>Works</h1>
+    </div>
+</section>
+
+
+
+<section class="stack">
+  <article class="card">
+    <img src="assets/images/sand.webp" alt="Work 1">
+   
+  </article>
+
+  <article class="card">
+    <img src="assets/images/grenn.webp" alt="Work 2">
+
+  </article>
+
+  <article class="card">
+    <img src="assets/images/red.webp" alt="Work 3">
+
+  </article>
+
+  <article class="card">
+    <img src="assets/images/cap.webp" alt="Work 4">
+  
+  </article>
+</section>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('is-active');
+      }else{
+        e.target.classList.remove('is-active');
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0.6,                 // when ~60% of the card is in view
+    rootMargin: '-20% 0px -40% 0px' // makes it “activate” near the sticky top
+  });
+  cards.forEach(c=>io.observe(c));
+</script>
+
+
+<script>
+document.querySelectorAll('.stack').forEach(sec=>{
+  sec.style.setProperty('--cards', sec.querySelectorAll('.card').length);
+});
+</script>
+
+
+<section class="about-me">
+
+    <div class="about-left">
+        <span class="about-label">ABOUT ME</span>
+    </div>
+
+    <div class="about-right">
+
+        <h2 class="about-title">
+            My goal is to craft websites that not only look beautiful but also 
+            function seamlessly, providing an exceptional user experience.
+        </h2>
+
+        <p class="intro-text">
+            <span>We believe a website isn’t just a digital presence</span> — 
+            it’s a powerful tool that tells your story.
+        </p>
+
+        <div class="about-lists">
+            
+            <ul>
+                <li>Innovations</li>
+                <li>Excellence</li>
+                <li>Creativity</li>
+                <li>Experience</li>
+                <li>Passion</li>
+            </ul>
+
+            <ul>
+                <li>Competence</li>
+                <li>Web design</li>
+                <li>Development</li>
+                <li>Branding</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="skills-grid">
+
+    <div class="skill-card">
+        <img src="assets/images/figma.webp" alt="">
+        <h3>98%</h3>
+        <p>FIGMA</p>
+    </div>
+
+    <div class="skill-card">
+        <img src="assets/images/code.webp" alt="">
+        <h3>95%</h3>
+        <p>CODE</p>
+    </div>
+
+    <div class="skill-card">
+        <img src="assets/images/wordpress.jpg" alt="">
+        <h3>88%</h3>
+        <p>WORDPRESS</p>
+    </div>
+
+    <div class="skill-card">
+        <img src="assets/images/sketch.webp" alt="">
+        <h3>80%</h3>
+        <p>SKETCH</p>
+    </div>
+
+    <div class="skill-card">
+        <img src="assets/images/photoshop.jpg" alt="">
+        <h3>92%</h3>
+        <p>PHOTOSHOP</p>
+    </div>
+
+    
+</section>
+
+<div class="big-hero-img">
+  <img src="assets/images/white man.webp" alt="Team working with brand circles">
+</div>
+
+
+
+
+<!-- LATEST NEWS -->
+<section class="news-wrap">
+  <!-- Heading -->
+  <div class="news-head">
+    <span class="dot"></span>
+    <h2>LATEST NEWS</h2>
+  </div>
+  <hr class="news-rule" />
+
+  <div class="news-grid">
+    <!-- LEFT: Featured article -->
+    <article class="news-feature">
+      <header class="nf-meta">
+        <div class="nf-author">
+          <img class="avatar" src="assets/images/baby.jpg" alt="Author">  <!-- your circle image -->
+          <div class="who">
+            <strong>M Moussa</strong>
+            <span>Editor</span>
+          </div>
+        </div>
+        <div class="nf-time">⏱ 12 hours ago</div>
+      </header>
+
+      <figure class="nf-media">
+        <img src="assets/images/there.webp" alt="Featured"> <!-- your right/big image -->
+      </figure>
+
+      <h3 class="nf-title">
+        Building a Strong Brand Identity Through Visual Storytelling.
+      </h3>
+    </article>
+
+    <!-- RIGHT: List -->
+    <aside class="news-list">
+      <a class="nl-item" href="#">
+        <span class="when">⏱ 2 days ago</span>
+        <h4>Rebrand vs Resesh: 10 Minutes on Brand with Hubfolio</h4>
+      </a>
+      <a class="nl-item" href="#">
+        <span class="when">⏱ 15 days ago</span>
+        <h4>How to build culture for young office?</h4>
+      </a>
+      <a class="nl-item" href="#">
+        <span class="when">⏱ 1 month ago</span>
+        <h4>Case Study: Crafting a UX Strategy for Compelling Messaging</h4>
+      </a>
+      <a class="nl-item" href="#">
+        <span class="when">⏱ 2 months ago</span>
+        <h4>UI & UX: What is important?</h4>
+      </a>
+    </aside>
+  </div>
+</section>
+
+
+
+
+
+
 
 
 
@@ -147,11 +411,11 @@
     </p>
 
     <div class="hero-tags">
-      <a href="#">services</a>
-      <a href="#">portfolio</a>
-      <a href="#">about us</a>
-      <a href="#">blog</a>
-      <a href="#">contact</a>
+      <a href="services.html">services</a>
+      <a href="portoflio.html">portfolio</a>
+      <a href="about.html">about us</a>
+      <a href="blog.html">blog</a>
+      <a href="contact.html">contact</a>
     </div>
   </div>
 
@@ -164,11 +428,11 @@
     <h3 class="right-title">Explore the Socials<br>of Stackly</h3>
 
     <div class="social-icons">
-      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-facebook-f"></i></a>
 
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-instagram"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-linkedin-in"></i></a>
     </div>
 
     <p class="newsletter-label"><i class="fa-regular fa-envelope"></i> Newsletter</p>

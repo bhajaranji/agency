@@ -15,7 +15,7 @@
   <!-- Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-
+<link rel="icon" type="image/png" href="assets/images/logo1.webp">
  
 
     <link rel="stylesheet" href="styles.css" />
@@ -24,9 +24,9 @@
        <!-- HEADER -->
 <header class="site-header">
   <div class="container nav-wrap">
-    <!-- Left: Logo -->
-    <a class="logo" href="#"><span class="logo-dot"></span>stackly</a>
-
+  <a class="logo" href="home.html">
+  <img src="assets/images/logobogo.webp" alt="Stackly logo">
+</a>
     <!-- Hamburger (mobile only) -->
     <button id="menuToggle"
             class="hamburger"
@@ -68,12 +68,12 @@
             <button class="caret" aria-label="Expand Pages"></button>
           </a>
           <div class="dropdown">
-            <a href="#">About Us</a>
-            <a href="#">Services</a>
-            <a href="#">Our Team</a>
-            <a href="#">Pricing</a>
-            <a href="#">FAQs</a>
-            <a href="#contact">Contact Us</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="ourteam.html">Our Team</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="faq.html">FAQs</a>
+            <a href="contact.html">Contact Us</a>
           </div>
         </div>
 
@@ -85,15 +85,13 @@
             <button class="caret" aria-label="Expand Works"></button>
           </a>
           <div class="dropdown">
-            <a href="#">Parallax Slider</a>
-            <a href="#">Carousel</a>
-            <a href="#">Parallax</a>
-            <a href="#">Cards</a>
-            <a href="#">Elegant</a>
-            <a href="#">Interactive</a>
-            <a href="#">Work Grids</a>
-            <a href="#">Gallery</a>
-            <a href="#">Project Details</a>
+            <a href="parallexslider.html">Parallax Slider</a>
+            <a href="carousel.html">Carousel</a>
+            <a href="parallax.html">Parallax</a>
+            <a href="cards.html">Cards</a>
+            <a href="elegant.html">Elegant</a>
+            <a href="dashborad.html">DashBoard</a>
+            
           </div>
         </div>
 
@@ -105,14 +103,14 @@
             <button class="caret" aria-label="Expand Blogs"></button>
           </a>
           <div class="dropdown">
-            <a href="#">Blogs</a>
-            <a href="#">Blog Details</a>
+            <a href="blog.htmls">Blogs</a>
+            <a href="blogdetails.html">Blog Details</a>
           </div>
         </div>
 
         <!-- CONTACT (no dropdown) -->
         <div class="nav-item">
-          <a href="#contact" class="nav-link" data-text="Contact Us">
+          <a href="contact.html" class="nav-link" data-text="Contact Us">
             <span class="t">Contact Us</span><span class="orb"></span>
           </a>
         </div>
@@ -125,11 +123,469 @@
   <div id="navBackdrop" class="nav-backdrop" hidden></div>
 </header>
 
+  
+
+
+<div class="stack" id="stack">
+  <!-- SLIDE 1 (top-most z) -->
+  <section class="panel" style="--z:3">
+    <div class="left">
+      <img src="assets/images/black.webp" alt="">
+      <span class="pill">UI/UX Design</span>
+      <div>
+        <h1 class="title">Jorger Clarkson</h1>
+        
+      </div>
+    </div>
+    <div class="right">
+      <div class="egg-wrap"><img src="assets/images/egg1.webp" alt=""></div>
+      <div class="index">001</div>
+    </div>
+    <span class="split-dot"></span>
+  </section>
+
+  <!-- SLIDE 2 -->
+  <section class="panel" style="--z:4">
+    <div class="left">
+      <img src="assets/images/card.webp" alt="">
+   
+      <div>
+        
+       
+      </div>
+    </div>
+    <div class="right">
+      <div class="egg-wrap"><img src="assets/images/egg2.webp" alt=""></div>
+      <div class="index">002</div>
+    </div>
+    <span class="split-dot"></span>
+  </section>
+
+  <!-- SLIDE 3 (highest z) -->
+  <section class="panel" style="--z:5">
+    <div class="left">
+      <img src="assets/images/card1.webp" alt="">
+    
+      <div>
+       
+      </div>
+    </div>
+    <div class="right">
+      <div class="egg-wrap"><img src="assets/images/egg3.webp" alt=""></div>
+      <div class="index">003</div>
+    </div>
+    <span class="split-dot"></span>
+  </section>
+</div>
+
+<script>
+  // Snap exactly one slide at a time (on body scroll) + parallax + index
+  const panels = [...document.querySelectorAll('.panel')];
+  const steps = panels.map((_, i) => i * window.innerHeight);
+  let current = 0, lock = false;
+
+  function snapTo(i){
+    i = Math.max(0, Math.min(panels.length - 1, i));
+    current = i;
+    window.scrollTo({ top: steps[i], behavior: 'smooth' });
+  }
+
+  // Wheel / trackpad
+  window.addEventListener('wheel', (e)=>{
+    if(lock) return;
+    lock = true;
+    const dir = e.deltaY > 0 ? 1 : -1;
+    snapTo(current + dir);
+    setTimeout(()=> lock = false, 600);
+    e.preventDefault();
+  }, { passive:false });
+
+  // Keyboard
+  window.addEventListener('keydown', (e)=>{
+    if(['ArrowDown','PageDown',' '].includes(e.key)){ e.preventDefault(); snapTo(current+1); }
+    if(['ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); snapTo(current-1); }
+    if(e.key === 'Home'){ e.preventDefault(); snapTo(0); }
+    if(e.key === 'End'){ e.preventDefault(); snapTo(panels.length-1); }
+  });
+
+// ...keep the rest of your script
+
+// SAFE parallax on the egg images
+const eggs = document.querySelectorAll('.egg-wrap img');
+
+function updateParallax(){
+  eggs.forEach((img)=>{
+    const wrap = img.closest('.egg-wrap');
+    if (!wrap) return; // guard: markup might not be there yet
+    const r = wrap.getBoundingClientRect();
+    const center = (r.top + r.bottom) / 2;
+    const delta  = (window.innerHeight / 2) - center;
+    img.style.setProperty('--parallax', `${delta * 0.06}px`);
+  });
+}
+
+const scroller = document.getElementById('scroller') || window;
+scroller.addEventListener('scroll', updateParallax, { passive:true });
+window.addEventListener('resize', updateParallax, { passive:true });
+updateParallax();
+</script>
 
 
 
 
+<section class="about-section">
 
+  <div class="about-left-title">
+    <h4>ABOUT STUDIO</h4>
+  </div>
+
+  <div class="about-content">
+    <h2 class="about-main-text">
+      An independent web design and branding agency in Manchester set up in 2010 who care, build relationships, have industry experience, and win awards.
+    </h2>
+
+    <div class="about-bottom">
+ <span class="about-dot"></span> 
+    
+
+      <p class="about-subtext">
+        We believe a website isn’t just a digital presence —
+        it’s a powerful tool that tells your story.
+      </p>
+
+      <ul class="about-list">
+        <li>Innovations</li>
+        <li>Excellence</li>
+        <li>Creativity</li>
+        <li>Experience</li>
+        <li>Passion</li>
+      </ul>
+
+      <ul class="about-list">
+        <li>Competence</li>
+        <li>Web design</li>
+        <li>Development</li>
+        <li>Branding</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+
+
+<section class="stats-section">
+  <div class="stats-grid">
+
+    <div class="stat-card white">
+      <div class="stat-content">
+        <h2>98%</h2>
+        <p>Satisfied customers</p>
+      </div>
+    </div>
+
+    <div class="stat-card dark">
+      <div class="stat-content img-box">
+         <img src="assets/images/imghi-removebg-preview.webp" alt="" style="height:70px;">
+      </div>
+    </div>
+
+    <div class="stat-card yellow">
+      <div class="stat-content">
+        <h2>2k+</h2>
+        <p>Product launch</p>
+      </div>
+    </div>
+
+    <div class="stat-card dark">
+      <div class="stat-content">
+        <h2>35+</h2>
+        <p>Ready team mates</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="cap-section">
+
+  <!-- Header row -->
+  <div class="cap-header">
+  <p class="cap-left">• SERVICES</p>
+
+  <h2 class="cap-center">OUR CAPABILITIES.</h2>
+
+  <a href="pricing.html" class="cap-right-btn">
+    SEE PRICING <span>→</span>
+  </a>
+</div>
+
+
+  <!-- Cards -->
+ <div class="cap-row">
+
+  <div class="cap-card">
+    <h3 class="cap-title">Branding Design & Identity</h3>
+    <p class="cap-desc">Crafting engaging and functional digital solutions, tailored to enhance user interaction.</p>
+    <img src="assets/images/brandimg.webp" class="cap-img">
+    <a href="404page.html" class="cap-cta">KNOW MORE <span>→</span></a>
+  </div>
+
+  <div class="cap-card light-card">
+    <h3 class="cap-title">Website & Digital Design</h3>
+    <p class="cap-desc">Crafting engaging and functional digital solutions, tailored to enhance user interaction.</p>
+    <img src="assets/images/website.webp" class="cap-img">
+    <a href="404page.html" class="cap-cta">KNOW MORE <span>→</span></a>
+  </div>
+
+  <div class="cap-card">
+    <h3 class="cap-title">Strategy & Bold Consulting</h3>
+    <p class="cap-desc">Crafting engaging and functional digital solutions, tailored to enhance user interaction.</p>
+    <img src="assets/images/stragey.webp" class="cap-img">
+    <a href="404page.html" class="cap-cta">KNOW MORE <span>→</span></a>
+  </div>
+
+</div>
+</section>
+
+<section class="snake-grid">
+
+  <article class="card">
+    <img src="assets/images/webs.webp" alt="">
+    <div class="info"><span>2024 • DESIGN</span><h3>Furniture designed to the extent</h3></div>
+  </article>
+
+  <article class="card">
+    <img src="assets/images/biscuit.webp" alt="">
+    <div class="info"><span>2024 • DESIGN</span><h3>Gary Neville's digital presence</h3></div>
+  </article>
+
+  <article class="card">
+    <img src="assets/images/black.webp" alt="">
+    <div class="info"><span>2024 • DESIGN</span><h3>Cookie Packaging Concept</h3></div>
+  </article>
+
+  <article class="card">
+    <img src="assets/images/cyculeboy.webp" alt="">
+    <div class="info"><span>2024 • DESIGN</span><h3>Redefining a leading talent group</h3></div>
+  </article>
+
+  <article class="card">
+    <img src="assets/images/happy.webp" alt="">
+    <div class="info"><span>2024 • DESIGN</span><h3>The Art of Digital Storytelling</h3></div>
+  </article>
+
+  <article class="card">
+    <img src="assets/images/hand.webp" alt="">
+    <div class="info"><span>2024 • DESIGN</span><h3>Elevating Visual Narratives</h3></div>
+  </article>
+
+</section>
+
+
+
+
+<section class="awards-wrap">
+  <div class="awards">
+    <!-- ITEM 1 -->
+    <button class="award" data-img="assets/images/team11.webp">
+      <span class="award__year">2025</span>
+      <span class="award__title">Liam Carter</span>
+      <span class="award__meta">Webflow Designer</span>
+      <span class="award__arrow" aria-hidden="true">↗</span>
+    </button>
+
+    <!-- ITEM 2 -->
+    <button class="award" data-img="assets/images/team12.webp">
+      <span class="award__year">2024</span>
+      <span class="award__title">Ethan Brooks</span>
+      <span class="award__meta">product designer</span>
+      <span class="award__arrow" aria-hidden="true">↗</span>
+    </button>
+
+    <!-- ITEM 3 -->
+    <button class="award" data-img="assets/images/team13.webp">
+      <span class="award__year">2023</span>
+      <span class="award__title">Daniel Reyes</span>
+      <span class="award__meta">Founder</span>
+      <span class="award__arrow" aria-hidden="true">↗</span>
+    </button>
+
+    <!-- ITEM 4 -->
+    <button class="award" data-img="assets/images/team14.webp">
+      <span class="award__year">2022</span>
+      <span class="award__title">Ava Mitchel</span>
+      <span class="award__meta">Graphic design</span>
+      <span class="award__arrow" aria-hidden="true">↗</span>
+    </button>
+
+    <!-- ITEM 5 -->
+    <button class="award" data-img="assets/images/team17.webp">
+      <span class="award__year">2021</span>
+      <span class="award__title">Sophia Bennett</span>
+      <span class="award__meta">webflow designer</span>
+      <span class="award__arrow" aria-hidden="true">↗</span>
+    </button>
+
+    <!-- ITEM 6 -->
+    <button class="award" data-img="assets/images/team15.webp">
+      <span class="award__year">2024</span>
+      <span class="award__title">Noah Parker</span>
+      <span class="award__meta">UI/UX design</span>
+      <span class="award__arrow" aria-hidden="true">↗</span>
+    </button>
+  </div>
+
+  <!-- floating preview (auto-filled by JS) -->
+  <figure class="hover-card" aria-hidden="true">
+    <img alt="">
+  </figure>
+</section>
+
+
+
+<script>
+(() => {
+  const list = document.querySelector('.awards');
+  const items = [...document.querySelectorAll('.award')];
+  const card = document.querySelector('.hover-card');
+  const cardImg = card.querySelector('img');
+
+  // helper: set active visual state
+  const setActive = (el, on) => el.classList.toggle('is-active', on);
+
+  // Desktop hover preview
+  const isTouch = matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  if (!isTouch){
+    items.forEach(item => {
+      item.addEventListener('mouseenter', e => {
+        // activate pill
+        setActive(item, true);
+
+        // set preview image
+        const src = item.getAttribute('data-img');
+        if (src){ cardImg.src = src; }
+
+        // place card above the row, centered horizontally on the row
+        const r = item.getBoundingClientRect();
+        const cx = r.left + r.width/2;
+        const cy = r.top - 20; // a bit above the pill
+        card.style.left = cx + 'px';
+        card.style.top = cy + 'px';
+        card.classList.add('show');
+      });
+
+      item.addEventListener('mousemove', e => {
+        // follow horizontally a little for a lively feel
+        const r = item.getBoundingClientRect();
+        const t = Math.max(window.scrollY, 0);
+        const cx = e.clientX;
+        const cy = r.top - 20;
+        card.style.left = cx + 'px';
+        card.style.top = cy + 'px';
+      });
+
+      item.addEventListener('mouseleave', e => {
+        setActive(item, false);
+        card.classList.remove('show');
+      });
+    });
+  } else {
+    // Mobile: tap to expand & show inline image (no floating card)
+    // Create inline holders after each item
+    items.forEach(item => {
+      const holder = document.createElement('div');
+      holder.className = 'award-inline';
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.src = item.getAttribute('data-img') || '';
+      holder.appendChild(img);
+      item.insertAdjacentElement('afterend', holder);
+
+      item.addEventListener('click', () => {
+        // toggle this, close others
+        items.forEach(x => setActive(x, x === item ? !x.classList.contains('is-active') : false));
+      });
+    });
+  }
+})();
+</script>
+
+
+<div class="big-hero-img">
+  <img src="assets/images/bigmobile.webp" alt="Team working with brand circles">
+</div>
+
+
+
+<section class="blog-hero">
+  <div class="blog-top-row">
+
+    <!-- Left Title Section -->
+    <div class="blog-left">
+      <span class="blog-label">• OUR BLOG</span>
+      <h1 class="blog-heading">
+        LATEST<br>
+        CREATIVE THINKING<br>
+        JOURNALS.
+      </h1>
+    </div>
+
+    <!-- Right Link Button -->
+    <div class="blog-right">
+      <a href="blog.html" class="all-posts-btn">ALL POSTS</a>
+      <button class="arrow-btn">→</button>
+    </div>
+  </div>
+
+<section class="works-4up" id="works4">
+  <div class="w4-viewport">
+    <div class="w4-track">
+      <!-- 8+ cards total. 4 are visible, the rest hidden in the viewport -->
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj.webp" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">The top Digital Marketing for business growth</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj2.webp" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">How to furnish and decorate a creative agency</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj3.webp" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">The top Digital Marketing for business growth</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj4.webp" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">Campaign strategy that actually converts</h3>
+      </article>
+
+      <!-- hidden initially, will appear on slide -->
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj5.webp" alt=""></div>
+        <div class="w4-meta">Branding | 12 Sep 2024</div>
+        <h3 class="w4-title">Product shots with minimal light</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj6.webp" alt=""></div>
+        <div class="w4-meta">UI/UX | 04 Oct 2024</div>
+        <h3 class="w4-title">Mobile app interface exploration</h3>
+      </article>
+
+    </div>
+  </div>
+</section>
 
 
 
@@ -150,11 +606,11 @@
     </p>
 
     <div class="hero-tags">
-      <a href="#">services</a>
-      <a href="#">portfolio</a>
-      <a href="#">about us</a>
-      <a href="#">blog</a>
-      <a href="#">contact</a>
+      <a href="services.htmls">services</a>
+      <a href="portoflio.html">portfolio</a>
+      <a href="about.html">about us</a>
+      <a href="blog.html">blog</a>
+      <a href="contact.html">contact</a>
     </div>
   </div>
 
@@ -167,11 +623,11 @@
     <h3 class="right-title">Explore the Socials<br>of Stackly</h3>
 
     <div class="social-icons">
-      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-facebook-f"></i></a>
 
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-instagram"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-linkedin-in"></i></a>
     </div>
 
     <p class="newsletter-label"><i class="fa-regular fa-envelope"></i> Newsletter</p>

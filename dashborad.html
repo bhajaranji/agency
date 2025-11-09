@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Stackly – Creative Dashboard</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <style>
+    /* ===== SCOPE EVERYTHING UNDER .dash (no root collisions) ===== */
+    :where(.dash *){ box-sizing:border-box; }
+    .dash{
+      --radius:16px; --gap:14px;
+      --bg:#0c0d0f; --panel:#121316; --text:#fff; --muted:#aeb2b8;
+      --brand:#7c5cff; --mint:#3dd9b2; --amber:#ffd166; --danger:#ff6b6b;
+      background:var(--bg); color:var(--text); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      min-height:100svh; display:grid; grid-template-columns:260px 1fr; grid-template-rows:auto 1fr;
+      grid-template-areas:"sidebar header" "sidebar main";
+    }
+
+    /* ===== SIDEBAR ===== */
+    .dash__sidebar{ grid-area:sidebar; position:sticky; top:0; height:100svh; padding:18px;
+      background:linear-gradient(180deg,#14151a,#0e0f13); border-right:1px solid rgba(255,255,255,.06);
+      display:flex; flex-direction:column; gap:14px; }
+    .brand{ display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; background:rgba(255,255,255,.03); }
+    .brand__logo{ width:28px;height:28px;border-radius:8px;background:conic-gradient(from 180deg at 50% 50%, var(--brand), var(--mint)); box-shadow:0 8px 24px rgba(124,92,255,.35); }
+    .brand__name{ margin:0; font-size:15px; letter-spacing:.2px; }
+    .nav{ display:grid; gap:6px; }
+    .nav a{ display:grid; grid-template-columns:28px 1fr auto; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; text-decoration:none; color:inherit; border:1px solid transparent; }
+    .nav a:hover{ background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.06); }
+    .nav a.is-active{ background:rgba(124,92,255,.14); border-color:rgba(124,92,255,.35); box-shadow:0 0 0 3px rgba(124,92,255,.28); }
+    .nav__icon{ width:24px; height:24px; display:grid; place-items:center; border-radius:8px; background:rgba(255,255,255,.06); font-size:12px; }
+    .sep{ height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent); margin:2px 0; }
+    .sidebar-foot{ margin-top:auto; display:grid; gap:8px; }
+    .sidebar-foot .mini{ display:flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid rgba(255,255,255,.06); background:rgba(255,255,255,.02); border-radius:12px; }
+    .btn{ padding:10px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03); color:var(--text); cursor:pointer; }
+
+    /* collapse */
+    .dash.is-collapsed{ grid-template-columns:84px 1fr; }
+    .dash.is-collapsed .brand__name, .dash.is-collapsed .nav span, .dash.is-collapsed .sidebar-foot .mini strong, .dash.is-collapsed .sidebar-foot .mini small { display:none; }
+
+    /* ===== HEADER ===== */
+    .dash__header{ grid-area:header; display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:10px;
+      padding:14px 18px; border-bottom:1px solid rgba(255,255,255,.06);
+      background:rgba(18,19,22,.6); backdrop-filter:saturate(160%) blur(10px); position:sticky; top:0; z-index:10; }
+    .search{ display:flex; align-items:center; gap:10px; background:#0f1014; border:1px solid rgba(255,255,255,.07); border-radius:12px; padding:10px 12px; }
+    .search input{ background:transparent; border:0; outline:0; color:var(--text); width:100%; }
+    .btn--brand{ background:linear-gradient(135deg,var(--brand),#9b7dff); border-color:transparent; }
+
+    /* ===== MAIN GRID ===== */
+    .dash__main{ grid-area:main; padding:18px; display:grid; gap:var(--gap); grid-template-columns:repeat(12,1fr); align-content:start; }
+    .card{ background:var(--panel); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:16px; box-shadow:0 10px 40px rgba(0,0,0,.22); }
+    .card__head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+    .card__title{ font-size:13px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; }
+
+    /* KPIs */
+    .kpis{ grid-column:1 / -1; display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gap); }
+    .kpi{ display:grid; gap:8px; }
+    .kpi .value{ font-size:28px; font-weight:800; letter-spacing:-.02em; }
+    .kpi .delta{ font-size:12px; color:#4ee2b7; }
+    /* Layout */
+    .chart-lg{ grid-column:span 8; }
+    .chart-sm{ grid-column:span 4; }
+    .table-wrap{ grid-column:span 7; }
+    .activity{ grid-column:span 5; }
+    canvas{ width:100% !important; height:320px !important; }
+
+    /* Table */
+    table{ width:100%; border-collapse:collapse; font-size:14px; }
+    thead th{ text-align:left; padding:10px; color:var(--muted); border-bottom:1px solid rgba(255,255,255,.07); }
+    tbody td{ padding:12px 10px; border-bottom:1px dashed rgba(255,255,255,.06); }
+    tbody tr:hover{ background:rgba(255,255,255,.03); }
+
+    /* Activity */
+    .timeline{ display:grid; gap:12px; }
+    .tick{ display:grid; grid-template-columns:28px 1fr auto; gap:12px; align-items:center; }
+    .dot{ width:10px;height:10px;border-radius:50%; background:var(--mint); box-shadow:0 0 0 4px rgba(61,217,178,.18); }
+    .muted{ color:var(--muted); font-size:12px; }
+
+    /* Responsive */
+    @media (max-width:1200px){ .chart-lg{ grid-column:1 / -1; } .chart-sm{ grid-column:span 6; } .table-wrap{ grid-column:1 / -1; } .activity{ grid-column:1 / -1; } .kpis{ grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:900px){ .dash{ grid-template-columns:84px 1fr; } }
+    @media (max-width:700px){ .dash__main{ grid-template-columns:repeat(6,1fr); } .chart-sm{ grid-column:span 6; } .kpis{ grid-template-columns:1fr; } }
+
+
+
+  </style>
+</head>
+
+<body class="dash">
+  <!-- ==== Sidebar (keep this separate from your site header/footer) ==== -->
+  <aside class="dash__sidebar">
+    <div class="brand"><div class="brand__logo"></div><h1 class="brand__name">Stackly Admin</h1></div>
+    <nav class="nav">
+      <a class="is-active" href="#"><span class="nav__icon">🏠</span><span>Overview</span><span></span></a>
+      <a href="404page.html"><span class="nav__icon">📈</span><span>Analytics</span></a>
+      <a href="404page.html"><span class="nav__icon">🎨</span><span>Creative</span></a>
+      <a href="404page.html"><span class="nav__icon">🧾</span><span>Invoices</span></a>
+      <a href="404page.html"><span class="nav__icon">👥</span><span>Clients</span></a>
+      <a href="404page.html"><span class="nav__icon">⚙️</span><span>Settings</span></a>
+      <a href="/"><span class="nav__icon">↩️</span><span>Back to Website</span></a>
+    </nav>
+    <div class="sep"></div>
+    <div class="sidebar-foot">
+      <div class="mini"><div class="nav__icon">💎</div><div><strong>Pro Widgets</strong><br><small class="muted">Unlock charts & AI</small></div></div>
+      <button class="btn" id="collapse">Toggle Sidebar</button>
+    </div>
+  </aside>
+
+  <!-- ==== Header (local to dashboard) ==== -->
+  <header class="dash__header">
+    <div class="search"><span>🔎</span><input type="text" placeholder="Search reports, clients, invoices..." /></div>
+    <button class="btn" id="theme">🌙</button>
+    <button class="btn btn--brand">New Report</button>
+  </header>
+
+  <!-- ==== Main ==== -->
+  <main class="dash__main">
+    <!-- KPIs -->
+    <section class="kpis">
+      <div class="card kpi">
+        <div class="card__head"><span class="card__title">Monthly Revenue</span><span>⋯</span></div>
+        <div class="value">₹ 12.4L</div><div class="delta">▲ +8.2% MoM</div>
+      </div>
+      <div class="card kpi">
+        <div class="card__head"><span class="card__title">Active Projects</span><span>⋯</span></div>
+        <div class="value">28</div><div class="delta">▲ +2 this week</div>
+      </div>
+      <div class="card kpi">
+        <div class="card__head"><span class="card__title">Leads</span><span>⋯</span></div>
+        <div class="value">143</div><div class="delta" style="color:#ffd166">• steady</div>
+      </div>
+      <div class="card kpi">
+        <div class="card__head"><span class="card__title">Avg. Turnaround</span><span>⋯</span></div>
+        <div class="value">4.2 days</div><div class="delta" style="color:#ff6b6b">▼ -0.3d</div>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="card chart-lg">
+      <div class="card__head"><span class="card__title">Revenue vs Costs</span><span>📊</span></div>
+      <canvas id="chartLine"></canvas>
+    </section>
+
+    <section class="card chart-sm">
+      <div class="card__head"><span class="card__title">Service Mix</span><span>🎛️</span></div>
+      <canvas id="chartDough"></canvas>
+    </section>
+
+    <section class="card chart-sm">
+      <div class="card__head"><span class="card__title">Weekly Leads</span><span>📈</span></div>
+      <canvas id="chartBar"></canvas>
+    </section>
+
+    <!-- Table -->
+    <section class="card table-wrap">
+      <div class="card__head"><span class="card__title">Top Clients</span><button class="btn" id="export">Export CSV</button></div>
+      <table>
+        <thead><tr><th>Client</th><th>Service</th><th>Budget</th><th>Status</th></tr></thead>
+        <tbody id="tbodyClients">
+          <tr><td>Acme Labs</td><td>Brand & Web</td><td>₹ 12,00,000</td><td>Active</td></tr>
+          <tr><td>Nova Studio</td><td>Packaging</td><td>₹ 7,80,000</td><td>Active</td></tr>
+          <tr><td>Pixel Hive</td><td>Product Design</td><td>₹ 6,50,000</td><td>Pending</td></tr>
+          <tr><td>Delta Corp</td><td>Web + SEO</td><td>₹ 5,40,000</td><td>Active</td></tr>
+          <tr><td>Orbitly</td><td>Campaign</td><td>₹ 4,00,000</td><td>Churned</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Activity -->
+    <section class="card activity">
+      <div class="card__head"><span class="card__title">Activity</span><span>⚡</span></div>
+      <div class="timeline">
+        <div class="tick"><span class="dot"></span><p>Payment received from <strong>Acme Labs</strong></p><span class="muted">2m</span></div>
+        <div class="tick"><span class="dot" style="background:#ffd166; box-shadow:0 0 0 4px rgba(255,209,102,.2)"></span><p><strong>Nova Studio</strong> approved concept</p><span class="muted">1h</span></div>
+        <div class="tick"><span class="dot" style="background:#ff6b6b; box-shadow:0 0 0 4px rgba(255,107,107,.2)"></span><p>Revisions requested by <strong>Pixel Hive</strong></p><span class="muted">3h</span></div>
+        <div class="tick"><span class="dot"></span><p>New lead created <strong>Zen Biotech</strong></p><span class="muted">5h</span></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // ===== Sidebar collapse & theme toggle (dark/light) =====
+    (function(){
+      const root = document.body;
+      document.getElementById('collapse').addEventListener('click', ()=> root.classList.toggle('is-collapsed'));
+      document.getElementById('theme').addEventListener('click', ()=>{
+        const isLight = getComputedStyle(root).getPropertyValue('--bg').trim()==='#f6f7fb';
+        if(isLight){
+          root.style.removeProperty('--bg'); root.style.removeProperty('--panel'); root.style.removeProperty('--text'); root.style.removeProperty('--muted');
+          document.getElementById('theme').textContent='🌙';
+        }else{
+          root.style.setProperty('--bg','#f6f7fb'); root.style.setProperty('--panel','#ffffff'); root.style.setProperty('--text','#0b0c0f'); root.style.setProperty('--muted','#5a5f6a');
+          document.getElementById('theme').textContent='☀️';
+        }
+      });
+    })();
+
+    // ===== Charts (Chart.js) =====
+    (function(){
+      const text = getComputedStyle(document.body).getPropertyValue('--text').trim() || '#fff';
+      const grid = 'rgba(255,255,255,.08)';
+
+      // Line: Revenue vs Costs
+      new Chart(document.getElementById('chartLine'), {
+        type: 'line',
+        data: {
+          labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+          datasets: [
+            { label:'Revenue', data:[12,14,16,18,21,24,22,26,29,31,33,36], tension:.35, fill:true, borderColor:'#7c5cff', backgroundColor:'rgba(124,92,255,.18)', pointRadius:0 },
+            { label:'Costs',   data:[9,10,11,12,13,14,14,15,16,17,18,20],  tension:.35, fill:true, borderColor:'#3dd9b2', backgroundColor:'rgba(61,217,178,.15)', pointRadius:0 }
+          ]
+        },
+        options: {
+          responsive:true, maintainAspectRatio:false,
+          scales:{ x:{ grid:{ color:grid }, ticks:{ color:text } }, y:{ grid:{ color:grid }, ticks:{ color:text } } },
+          plugins:{ legend:{ labels:{ color:text } }, tooltip:{ intersect:false, mode:'index' } }
+        }
+      });
+
+      // Doughnut: Service Mix
+      new Chart(document.getElementById('chartDough'), {
+        type:'doughnut',
+        data:{ labels:['Brand','Web','Packaging','Product'], datasets:[{ data:[38,32,18,12], backgroundColor:['#7c5cff','#3dd9b2','#ffd166','#ff6b6b'] }] },
+        options:{ plugins:{ legend:{ position:'bottom', labels:{ color:text } } }, cutout:'62%' }
+      });
+
+      // Bar: Weekly Leads
+      new Chart(document.getElementById('chartBar'), {
+        type:'bar',
+        data:{ labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], datasets:[{ label:'Leads', data:[22,28,26,34,39,42,31], backgroundColor:'#7c5cff' }] },
+        options:{ scales:{ x:{ grid:{ display:false }, ticks:{ color:text } }, y:{ grid:{ color:grid }, ticks:{ color:text } } }, plugins:{ legend:{ labels:{ color:text } } } }
+      });
+    })();
+
+    // ===== Export table to CSV =====
+    document.getElementById('export').addEventListener('click', ()=>{
+      const rows = [...document.querySelectorAll('#tbodyClients tr')].map(tr => [...tr.children].map(td => `"${td.textContent}"`).join(','));
+      const csv  = ['"Client","Service","Budget","Status"', ...rows].join('\n');
+      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'stackly-clients.csv'; a.click(); URL.revokeObjectURL(a.href);
+    });
+  </script>
+</body>
+</html>

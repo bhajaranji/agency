@@ -14,7 +14,7 @@
 
   <!-- Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
+<link rel="icon" type="image/png" href="assets/images/logo1.webp">
 
  
 
@@ -25,8 +25,9 @@
 <header class="site-header">
   <div class="container nav-wrap">
     <!-- Left: Logo -->
-    <a class="logo" href="#"><span class="logo-dot"></span>stackly</a>
-
+    <a class="logo" href="home.html">
+  <img src="assets/images/logobogo.webp" alt="Stackly logo">
+</a>
     <!-- Hamburger (mobile only) -->
     <button id="menuToggle"
             class="hamburger"
@@ -68,12 +69,12 @@
             <button class="caret" aria-label="Expand Pages"></button>
           </a>
           <div class="dropdown">
-            <a href="#">About Us</a>
-            <a href="#">Services</a>
-            <a href="#">Our Team</a>
-            <a href="#">Pricing</a>
-            <a href="#">FAQs</a>
-            <a href="#contact">Contact Us</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="ourteam.html">Our Team</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="faq.html">FAQs</a>
+            <a href="contact.html">Contact Us</a>
           </div>
         </div>
 
@@ -85,34 +86,32 @@
             <button class="caret" aria-label="Expand Works"></button>
           </a>
           <div class="dropdown">
-            <a href="#">Parallax Slider</a>
-            <a href="#">Carousel</a>
-            <a href="#">Parallax</a>
-            <a href="#">Cards</a>
-            <a href="#">Elegant</a>
-            <a href="#">Interactive</a>
-            <a href="#">Work Grids</a>
-            <a href="#">Gallery</a>
-            <a href="#">Project Details</a>
+            <a href="parallexslider.html">Parallax Slider</a>
+            <a href="carousel.html">Carousel</a>
+            <a href="parallax.html">Parallax</a>
+            <a href="cards.html">Cards</a>
+            <a href="elegant.html">Elegant</a>
+             <a href="dashborad.html">DashBoard</a>
+            
           </div>
         </div>
 
         <!-- BLOGS -->
         <div class="nav-item has-menu">
-          <a href="#blog" class="nav-link" data-text="Blogs">
+          <a href="blog.html" class="nav-link" data-text="Blogs">
             <span class="t">Blogs</span><span class="orb"></span>
             <span class="arrow"></span>
             <button class="caret" aria-label="Expand Blogs"></button>
           </a>
           <div class="dropdown">
-            <a href="#">Blogs</a>
-            <a href="#">Blog Details</a>
+            <a href="blog.html">Blogs</a>
+            <a href="blogdetails.html">Blog Details</a>
           </div>
         </div>
 
         <!-- CONTACT (no dropdown) -->
         <div class="nav-item">
-          <a href="#contact" class="nav-link" data-text="Contact Us">
+          <a href="contact.html" class="nav-link" data-text="Contact Us">
             <span class="t">Contact Us</span><span class="orb"></span>
           </a>
         </div>
@@ -124,6 +123,319 @@
   <!-- Backdrop for mobile drawer -->
   <div id="navBackdrop" class="nav-backdrop" hidden></div>
 </header>
+
+
+<!-- Section 1: Big "Hi there" (normal scroll) -->
+<section class="intro">
+  <div class="intro-wrap">
+    <h1 class="intro-title">Hi<br>there</h1>
+  </div>
+</section>
+
+<!-- Section 2: Content + Image + Info list -->
+<section class="hero">
+  <div class="hero-left">
+    <h2>We're a design<br>and branding firm<br>more than a logo.</h2>
+    <a href="404page.html" class="btn">View Projects →</a>
+  </div>
+
+  <div class="hero-right">
+    <!-- Replace with your image -->
+    <img src="assets/images/suitman.webp" alt="Person" class="hero-img">
+
+    <div class="hero-info">
+      <p>We design modern, user-friendly websites that reflect your brand and drive engagement.</p>
+      <ul>
+        <li>Brand identity</li>
+        <li>Creative direction</li>
+        <li>Motion design</li>
+        <li>Figma</li>
+        <li>Development</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="works-7grid">
+
+  <!-- Row 1 -->
+  <div class="row row-1">
+    <img src="assets/images/m.webp" class="square">
+    <img src="assets/images/grenn.webp" class="square">
+    <img src="assets/images/red.webp" class="tall-rect">
+  </div>
+
+  <!-- Row 2 (center tall rectangle) -->
+  <div class="row row-2">
+    <img src="assets/images/cap.webp" class="tall-center">
+  </div>
+
+  <!-- Row 3 -->
+  <div class="row row-3">
+    <img src="assets/images/coffee.webp" class="tall-rect">
+    <img src="assets/images/jacket.webp" class="square">
+    <img src="assets/images/box.webp" class="square">
+  </div>
+
+</section>
+
+<section class="services">
+  <div class="services-left">
+    <p class="eyebrow">• OUR SERVICES</p>
+    <p class="desc">
+      Our agency offers a range of services aimed
+      at helping businesses establish.
+    </p>
+  </div>
+
+  <div class="services-right">
+    <ul class="service-list">
+
+      <li data-num="01" data-preview="assets/images/circle.jpg">UI/UX DESIGN</li>
+      <li data-num="02" data-preview="assets/images/circle2.jpg">DEVELOPMENT</li>
+      <li data-num="03" data-preview="assets/images/circle3.jpg">MARKETING</li>
+      <li data-num="04" data-preview="assets/images/circle4.jpg">SEO SERVICES</li>
+      <li data-num="05" data-preview="assets/images/circle3.jpg">AI PRODUCTION</li>
+      <li data-num="06" data-preview="assets/images/circle3.jpg">MOBILE APP</li>
+
+    </ul>
+
+    <a class="more-link" href="services.html">+12 MORE</a>
+  </div>
+
+  <!-- floating circle image -->
+  <div class="hover-preview">
+    <img alt="">
+  </div>
+</section>
+
+<script>
+const items = document.querySelectorAll(".service-list li");
+const preview = document.querySelector(".hover-preview");
+const previewImg = preview.querySelector("img");
+
+items.forEach(item => {
+  item.addEventListener("mouseenter", (e) => {
+    // active style
+    items.forEach(li => li.classList.remove("is-active"));
+    item.classList.add("is-active");
+
+    // set image
+    previewImg.src = item.dataset.preview;
+
+    // show circle
+    preview.classList.add("is-visible");
+  });
+
+  item.addEventListener("mousemove", (e) => {
+    // move circle
+    preview.style.left = (e.clientX + 25) + "px";
+    preview.style.top = (e.clientY - 10) + "px";
+  });
+
+  item.addEventListener("mouseleave", () => {
+    preview.classList.remove("is-visible");
+    item.classList.remove("is-active");
+  });
+});
+</script>
+
+
+<div class="big-hero-img">
+  <img src="assets/images/bigmobile.webp" alt="Team working with brand circles">
+</div>
+
+
+
+<h2 class="section-head">clients testimonials</h2>
+
+<section class="t-viewport" id="testRail">
+  <div class="t-track" id="tTrack">
+    <!-- Slide 1 -->
+    <article class="t-card">
+      <div class="t-top">
+        <div class="t-person">
+          <img class="t-avatar" src="assets/images/boy1.webp" alt="">
+          <div>
+            <div class="t-name">Denis Slavska</div>
+            <div class="t-role">CTO, Alltic</div>
+          </div>
+        </div>
+        <img src="assets/images/logo2.png" alt="" class="brand-logo">
+
+      </div>
+      <p class="t-quote">“Working with was an outstanding experience. Their ability to understand our vision.”</p>
+      <div class="t-meta">New York City, New York</div>
+    </article>
+
+    <!-- Slide 2 -->
+    <article class="t-card">
+      <div class="t-top">
+        <div class="t-person">
+          <img class="t-avatar" src="assets/images/bpy2.jpg" alt="">
+          <div>
+            <div class="t-name">Carol Buyers</div>
+            <div class="t-role">Project Manager, Buildwave</div>
+          </div>
+        </div>
+        <img src="assets/images/logo2.png" alt="" class="brand-logo">
+
+      </div>
+      <p class="t-quote">“They captured our brand perfectly and kept delivery on point. Highly recommended.”</p>
+      <div class="t-meta">New York City, New York</div>
+    </article>
+
+    <!-- Slide 3 -->
+    <article class="t-card">
+      <div class="t-top">
+        <div class="t-person">
+          <img class="t-avatar" src="assets/images/boy3.webp" alt="">
+          <div>
+            <div class="t-name">B. Gordon</div>
+            <div class="t-role">Operations, Archin</div>
+          </div>
+        </div>
+       <img src="assets/images/logo2.png" alt="" class="brand-logo">
+
+      </div>
+      <p class="t-quote">“Awesome! Working with the team transformed our operations.”</p>
+      <div class="t-meta">London, UK</div>
+    </article>
+
+    <!-- Slide 4 -->
+    <article class="t-card">
+      <div class="t-top">
+        <div class="t-person">
+          <img class="t-avatar" src="assets/images/gir1.webp" alt="">
+          <div>
+            <div class="t-name">Priya N.</div>
+            <div class="t-role">Marketing Head, Auric</div>
+          </div>
+        </div>
+   <img src="assets/images/logo2.png" alt="" class="brand-logo">
+
+      </div>
+      <p class="t-quote">“From strategy to execution everything felt thoughtful and high quality.”</p>
+      <div class="t-meta">Bengaluru, India</div>
+    </article>
+  </div>
+</section>
+
+<script>
+(() => {
+  const viewport = document.getElementById('testRail');
+  const track    = document.getElementById('tTrack');
+
+  // Duplicate slides once for seamless loop
+  const originals = Array.from(track.children);
+  originals.forEach(slide => track.appendChild(slide.cloneNode(true)));
+
+  let index = 0;
+  let stepSize = 0; // pixel distance per slide (card width + gap)
+
+  function computeStep() {
+    const first = track.children[0];
+    const cardW = first.getBoundingClientRect().width;
+    const gap   = parseFloat(getComputedStyle(track).getPropertyValue('--gap')) || 0;
+    stepSize = cardW + gap;
+  }
+  computeStep();
+  window.addEventListener('resize', computeStep);
+
+  function goNext() {
+    index++;
+    track.style.transition = 'transform .60s cubic-bezier(.2,.7,0,1)';
+    track.style.transform  = `translateX(${-index * stepSize}px)`;
+
+    // when we cross the original set, snap back to start
+    if (index === originals.length) {
+      setTimeout(() => {
+        track.style.transition = 'none';
+        index = 0;
+        track.style.transform = 'translateX(0)';
+      }, 610);
+    }
+  }
+
+  let timer = setInterval(goNext, 1000);
+
+  // Pause on hover
+  viewport.addEventListener('mouseenter', () => clearInterval(timer));
+  viewport.addEventListener('mouseleave', () => (timer = setInterval(goNext, 1000)));
+})();
+</script>
+
+
+
+
+
+
+<section class="blog-hero">
+  <div class="blog-top-row">
+
+    <!-- Left Title Section -->
+    <div class="blog-left">
+      <span class="blog-label">• OUR BLOG</span>
+      <h1 class="blog-heading">
+        LATEST<br>
+        CREATIVE THINKING<br>
+        JOURNALS.
+      </h1>
+    </div>
+
+    <!-- Right Link Button -->
+    <div class="blog-right">
+      <a href="blog.html" class="all-posts-btn">ALL POSTS</a>
+      <button class="arrow-btn">→</button>
+    </div>
+  </div>
+
+<section class="works-4up" id="works4">
+  <div class="w4-viewport">
+    <div class="w4-track">
+      <!-- 8+ cards total. 4 are visible, the rest hidden in the viewport -->
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj.webp" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">The top Digital Marketing for business growth</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj2.webp" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">How to furnish and decorate a creative agency</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj3.webp" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">The top Digital Marketing for business growth</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj4.webp" alt=""></div>
+        <div class="w4-meta">Design | 25 Aug 2024</div>
+        <h3 class="w4-title">Campaign strategy that actually converts</h3>
+      </article>
+
+      <!-- hidden initially, will appear on slide -->
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj5.webp" alt=""></div>
+        <div class="w4-meta">Branding | 12 Sep 2024</div>
+        <h3 class="w4-title">Product shots with minimal light</h3>
+      </article>
+
+      <article class="w4-card">
+        <div class="w4-media"><img src="assets/images/aj6.webp" alt=""></div>
+        <div class="w4-meta">UI/UX | 04 Oct 2024</div>
+        <h3 class="w4-title">Mobile app interface exploration</h3>
+      </article>
+
+    </div>
+  </div>
+</section>
 
 
 
@@ -146,11 +458,11 @@
     </p>
 
     <div class="hero-tags">
-      <a href="#">services</a>
-      <a href="#">portfolio</a>
-      <a href="#">about us</a>
-      <a href="#">blog</a>
-      <a href="#">contact</a>
+      <a href="services.html">services</a>
+      <a href="portoflio.html">portfolio</a>
+      <a href="about.html">about us</a>
+      <a href="blog.html">blog</a>
+      <a href="contact.html">contact</a>
     </div>
   </div>
 
@@ -163,11 +475,11 @@
     <h3 class="right-title">Explore the Socials<br>of Stackly</h3>
 
     <div class="social-icons">
-      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-facebook-f"></i></a>
 
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-instagram"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-linkedin-in"></i></a>
     </div>
 
     <p class="newsletter-label"><i class="fa-regular fa-envelope"></i> Newsletter</p>

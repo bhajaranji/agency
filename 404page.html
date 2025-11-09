@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="icon" type="image/png" href="assets/images/logo1.webp">
+<head>
+<meta charset="UTF-8">
+<title>404 - Page Not Found</title>
+<style>
+
+  /* PAGE BASE */
+  body{
+    margin:0;
+    padding:0;
+    background:#171717;
+    font-family: 'Inter', sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    overflow:hidden;
+    color:white;
+  }
+
+  .wrap{
+    text-align:center;
+    animation: fadeIn 1.2s ease;
+  }
+
+  /* BIG 404 */
+  .error-code{
+    font-size: clamp(100px, 20vw, 240px);
+    font-weight:900;
+    color:#C8FF3F;              /* ✅ neon green */
+    text-shadow: 
+      0 0 20px #c8ff3f80,
+      0 0 40px #c8ff3fa0,
+      0 0 80px #c8ff3f60;
+    margin:0;
+    line-height:1;
+  }
+
+  /* SUBTEXT */
+  .error-msg{
+    font-size:26px;
+    opacity:.8;
+    margin-top:10px;
+  }
+
+  /* BUTTON */
+  .home-btn{
+    display:inline-block;
+    margin-top:32px;
+    padding:12px 26px;
+    background:#C8FF3F;
+    color:#000;
+    border-radius:40px;
+    font-size:18px;
+    font-weight:700;
+    text-decoration:none;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+
+  .home-btn:hover{
+    transform: translateY(-4px);
+    box-shadow:0 10px 30px #c8ff3f50;
+  }
+
+  /* ANIMATION */
+  @keyframes fadeIn{
+    from{ opacity:0; transform: translateY(20px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1 class="error-code">404</h1>
+  <p class="error-msg">Oops! The page you're looking for doesn’t exist.</p>
+
+  <a href="home.html" class="home-btn">
+    Go Back Home →
+  </a>
+</div>
+
+</body>
+</html>

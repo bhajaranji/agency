@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Stackly — Creative Agency</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+     <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="assets/images/logo1.webp">
+ 
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <!-- Left: Logo -->
+    <a class="logo" href="home.html">
+  <img src="assets/images/logobogo.png" alt="Stackly logo">
+</a>
+
+    <!-- Hamburger (mobile only) -->
+    <button id="menuToggle"
+            class="hamburger"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Center: nav (desktop) / drawer (mobile) -->
+    <div id="mobileNav" class="nav-shelf" role="navigation">
+      <nav class="nav">
+
+        <!-- HOME -->
+        <div class="nav-item has-menu">
+          <a href="home.html" class="nav-link" data-text="Home">
+            <span class="t">Home</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <!-- caret shows only on mobile -->
+            <button class="caret" aria-label="Expand Home"></button>
+          </a>
+          <div class="dropdown">
+            <a href="main.html">Main home</a>
+            <a href="creativeagency.html">Creative Agency</a>
+            <a href="digitalagency.html">Digital Agency</a>
+            <a href="modernagency.html">Modern Agency</a>
+            <a href="desginstudio.html">Design Studio</a>
+            <a href="portoflio.html">Creative Portfolio</a>
+            <a href="freelancer.html">Freelancer</a>
+            <a href="personal.html">Personal</a>
+          </div>
+        </div>
+
+        <!-- PAGES -->
+        <div class="nav-item has-menu">
+          <a href="#services" class="nav-link" data-text="Pages">
+            <span class="t">Pages</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Pages"></button>
+          </a>
+          <div class="dropdown">
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="ourteam.html">Our Team</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="faq.html">FAQs</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- WORKS -->
+        <div class="nav-item has-menu">
+          <a href="#works" class="nav-link" data-text="Works">
+            <span class="t">Works</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Works"></button>
+          </a>
+          <div class="dropdown">
+            <a href="parallexslider.html">Parallax Slider</a>
+            <a href="carousel.html">Carousel</a>
+            <a href="parallax.html">Parallax</a>
+            <a href="cards.html">Cards</a>
+            <a href="elegant.html">Elegant</a>
+             <a href="dashborad.html">DashBoard</a>
+            
+          </div>
+        </div>
+
+        <!-- BLOGS -->
+        <div class="nav-item has-menu">
+          <a href="blog.html" class="nav-link" data-text="Blogs">
+            <span class="t">Blogs</span><span class="orb"></span>
+            <span class="arrow"></span>
+            <button class="caret" aria-label="Expand Blogs"></button>
+          </a>
+          <div class="dropdown">
+            <a href="blog.html">Blogs</a>
+            <a href="blogdetails.html">Blog Details</a>
+          </div>
+        </div>
+
+        <!-- CONTACT (no dropdown) -->
+        <div class="nav-item">
+          <a href="contact.html" class="nav-link" data-text="Contact Us">
+            <span class="t">Contact Us</span><span class="orb"></span>
+          </a>
+        </div>
+
+      </nav>
+    </div>
+  </div>
+
+  <!-- Backdrop for mobile drawer -->
+  <div id="navBackdrop" class="nav-backdrop hidden" ></div>
+</header>
+
+
+<!-- ⬇️ SLIDER SECTION (overlay is pinned only here) -->
+<section class="vps" id="vps">
+  <div class="vps-overlay">
+    <div class="vps-left">
+      <h1 id="vpsTitle" class="vps-title"></h1>
+    </div>
+
+    <div class="vps-center">
+      <div class="vps-circle">
+        <img id="vpsCircle" src="assets/images/carback.webp" alt="circle">
+      </div>
+    </div>
+
+    <div class="vps-right">
+      <div class="vps-tags">
+        <button class="vps-tag">Branding</button>
+        <button class="vps-tag">Web design</button>
+        <button class="vps-tag">Development</button>
+        <button class="vps-tag">Mobile app</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="vps-slides">
+    <section class="vps-slide"
+      data-title="Kantha"
+      data-circle="assets/images/aj6.webp"
+      style="--slide-bg:url('assets/images/9.webp')">
+      <span class="vps-num">001</span>
+    </section>
+
+    <section class="vps-slide"
+      data-title="Matts Studios"
+      data-circle="assets/images/rocksmall.webp"
+      style="--slide-bg:url('assets/images/rock.webp')">
+      <span class="vps-num">002</span>
+    </section>
+
+    <section class="vps-slide"
+      data-title="Inkzio Branding"
+      data-circle="assets/images/capsmall.webp"
+      style="--slide-bg:url('assets/images/cap.webp')">
+      <span class="vps-num">003</span>
+    </section>
+
+    <section class="vps-slide"
+      data-title="Wizard Illustrations"
+      data-circle="assets/images/skullsmall.webp"
+      style="--slide-bg:url('assets/images/skull.webp')">
+      <span class="vps-num">004</span>
+    </section>
+  </div>
+</section>
+
+
+<script>
+// --- Scoped to the slider section only ---
+const slider    = document.getElementById('vps');
+if (!slider) throw new Error('#vps not found');
+
+const slides    = slider.querySelectorAll('.vps-slide');
+const titleEl   = slider.querySelector('#vpsTitle');
+const circleImg = slider.querySelector('#vpsCircle');
+
+// Helper: swap circle image safely
+function swapCircle(src) {
+  if (!src) return;
+  // If it's already the same file, skip
+  const current = circleImg.getAttribute('src');
+  if (current === src) return;
+
+  circleImg.style.opacity = '0';
+  // Small delay to let the fade-out start
+  setTimeout(() => {
+    circleImg.src = src;
+    if (circleImg.complete) {
+      circleImg.style.opacity = '1';
+    } else {
+      circleImg.onload = () => (circleImg.style.opacity = '1');
+    }
+  }, 80);
+}
+
+// IntersectionObserver scoped to the slider (no page-wide effects)
+const io = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const s = entry.target;
+      const nextTitle  = s.dataset.title  || '';
+      const nextCircle = s.dataset.circle || '';
+
+      // Update title text inside the slider only
+      if (titleEl && titleEl.textContent !== nextTitle) {
+        titleEl.textContent = nextTitle;
+      }
+
+      // Update circle image
+      if (circleImg && nextCircle) {
+        swapCircle(nextCircle);
+      }
+    });
+  },
+  {
+    // Observe relative to the viewport, but only react when the slide is centered-ish
+    root: null,
+    rootMargin: '-30% 0px -30% 0px',
+    threshold: 0.25
+  }
+);
+
+// Bind each slide
+slides.forEach((s) => io.observe(s));
+
+</script>
+
+
+
+
+
+
+
+
+
+<!-- ================= HERO SECTION ================= -->
+ <!--footer page-->
+<section class="hero-wrapper">
+
+  <!-- LEFT SIDE -->
+  <div class="hero-left">
+    <p class="mini-title">Let’s</p>
+    <h1 class="big-title">Start your project</h1>
+    <hr class="hero-line">
+
+    <h2 class="brand-name">Stackly</h2>
+    <p class="tagline">
+      WE HOPE TO EMPOWER USER AND SIMPLIFY<br>
+      THEIR EVERYDAY LIVES
+    </p>
+
+    <div class="hero-tags">
+      <a href="services.html">services</a>
+      <a href="portoflio.html">portfolio</a>
+      <a href="about.html">about us</a>
+      <a href="blog.html">blog</a>
+      <a href="contact.html">contact</a>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="hero-right">
+    <a href="home.html" class="hero-btn">
+      GET IN TOUCH <span><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+
+    <h3 class="right-title">Explore the Socials<br>of Stackly</h3>
+
+    <div class="social-icons">
+      <a href="404page.html"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-facebook-f"></i></a>
+
+      <a href="404page.html"><i class="fa-brands fa-instagram"></i></a>
+      <a href="404page.html"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+
+    <p class="newsletter-label"><i class="fa-regular fa-envelope"></i> Newsletter</p>
+    <div class="newsletter-box">
+      <input type="email" placeholder="Enter your email address">
+      <button><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+    <p class="privacy-text">By subscribing, you're accept our <a href="#">Privacy Policy</a></p>
+  </div>
+
+</section>
+<footer class="footer">
+  <p>© <span id="year"></span> Stackly Creative Agency — All rights reserved.</p>
+</footer>
+
+
+<!-- ================= FOOTER ================= -->
+
+
+<script src="app.js"></script>
+    
+    
+</body>
+</html>
