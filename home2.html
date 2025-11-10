@@ -21,7 +21,7 @@
         <li class="dropdown">
           <a href="home2.html" class="dropbtn">Home ▾</a>
           <ul class="dropdown-content">
-            <li><a href="index.html">home</a></li>
+            <li><a href="index.html">home1 </a></li>
           
           </ul>
         </li>
@@ -45,14 +45,14 @@
 <!-- 🧭 Hero Section -->
 <section class="agency-hero">
   <!-- Two images for smooth crossfade -->
-  <img id="hero-bg-1" src="assets/images/home21.webp" class="hero-bg active" alt="Hero Image 1">
-  <img id="hero-bg-2" src="assets/images/home22.webp" class="hero-bg" alt="Hero Image 2">
+  <img id="hero-bg-1" src="assets/images/pixel3.jpg" class="hero-bg active" alt="Hero Image 1">
+  <img id="hero-bg-2" src="assets/images/pixel6" class="hero-bg" alt="Hero Image 2">
 
   <div class="hero-content">
     <h1>Building Creative <span> Digital Experiences for Modern Brands</span></h1>
     <p>  Stackly is a creative agency focused on sharp design, smooth user journeys, and solid development.  
   We turn ideas into fast, modern, and meaningful digital products that help brands stand out and grow.</p>
-    <button class="cta-btn" onclick="window.location.href='404agency.html'">
+    <button class="cta-btn" onclick="window.location.href='404page.html'">
       JOIN NOW <i class="fa-solid fa-arrow-right"></i>
     </button>
   </div>
@@ -112,7 +112,6 @@
 <p>
   Work that fits you, not the other way around. We design and build tailored digital solutions shaped to your goals, your style, and your audience.
 </p>
-/p>
       </div>
 
       <div class="finance-card">
@@ -149,10 +148,7 @@ See how our expert trainers, modern equipment, and personalized programs help yo
       <!-- CTA Button -->
       <a href="404page.html" class="cta-btn">Start a Demo</a>
 
-      <!-- Play Button -->
-      <button id="playVideoBtn" class="play-btn">▶</button>
-    </div>
-  </div>
+     
 </section>
 
 <!-- ========================
@@ -160,9 +156,14 @@ See how our expert trainers, modern equipment, and personalized programs help yo
 ========================= -->
 <div class="video-popup" id="videoPopup">
   <div class="video-wrapper">
-
     <span class="close-btn" id="closePopup">&times;</span>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/vaDguNVPUMU?si=CYFzaYDOaDFAaxCn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe
+      id="videoFrame"
+      src="https://www.youtube.com/embed/cO73XRRnytQ?si=Xhe_NScaHPmFW4dt"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
   </div>
 </div>
 <!-- ========================
@@ -462,9 +463,9 @@ Your site should feel light on its feet. Our code is built for speed, stability,
 <!-- ✅ JavaScript for Background Slideshow -->
 <script>
   const images = [
-    'assets/images/home21.webp',
-    'assets/images/home22.webp',
-    'assets/images/home33.webp'
+    'assets/images/pixel3.webp',
+    'assets/images/pixel6.webp',
+    'assets/images/pixel13.webp'
   ];
 
   let index = 0;

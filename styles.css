@@ -7899,6 +7899,117 @@ demos{
 }
 
 
+/* /* ============ MOBILE NAV: top sheet ============ */
+@media (max-width: 900px){
+  /* the button you already have */
+  .hamburger{ display:inline-flex; }
+
+  /* turn shelf into a top drawer */
+  .nav-shelf{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100dvh;                        /* full device height */
+    background: #111;                      /* or var(--card) */
+    transform: translateY(-100%);          /* hidden above */
+    transition: transform .35s cubic-bezier(.2,.7,0,1);
+    z-index: 1000;
+    padding: calc(10px + env(safe-area-inset-top)) 16px 20px;
+    display: block;                        /* stack items vertically */
+    overflow-y: auto;                      /* can scroll entire menu */
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 24px 60px rgba(0,0,0,.6);
+  }
+
+  /* when open */
+  .nav-shelf.is-open{
+    transform: translateY(0);
+  }
+
+  /* body lock while menu open (optional) */
+  body.nav-lock{
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  /* backdrop */
+  .nav-backdrop{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, visibility 0s linear .25s;
+  }
+  .nav-backdrop.show{
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .25s ease;
+  }
+
+  /* vertical nav list */
+  .nav{
+    display: block;
+    padding: 12px 6px 40px;
+  }
+  .nav-item{ justify-content: flex-start; }
+
+  /* make dropdowns expand INSIDE the drawer */
+  .dropdown{
+    position: static;
+    width: auto;
+    margin: 8px 0 14px;
+    padding: 6px 10px;
+    background: transparent;
+    border-radius: 12px;
+    box-shadow: none;
+    opacity: 1; visibility: visible; pointer-events: auto;
+    transform: none;
+  }
+  .dropdown a{
+    padding: 10px 8px;
+    border-radius: 8px;
+  }
+  .dropdown a:hover{
+    background: #1b1b1b;
+    transform: none;
+  }
+
+  /* small tweaks for link visuals in drawer */
+  .nav-link{
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 8px;
+    height: auto; line-height: 1.2;
+    color: #fff;
+  }
+  .nav-link .orb{ display: none; }
+  .nav-link::before{ content: none; }
+  .nav-link .t{ animation: none !important; }
+
+  /* optional caret button you have */
+  .caret{
+    margin-left: auto;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid #2a2a2a;
+    background: #171717;
+  }
+}
+
+
+
+/* footer logo – make it taller */
+.footer-logo img{
+  height: 80px;      /* <-- change this value to what you want */
+  width: auto;       /* keep aspect ratio */
+  object-fit: contain;
+}
+
+
+
 
 /* === Force key sections to use theme variables === */
 .site-header,

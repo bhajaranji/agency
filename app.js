@@ -304,3 +304,79 @@ window.addEventListener("scroll", () => {
   timer = setInterval(next, 5000);
 })();
 
+  const toggle = document.getElementById("menuToggle");
+  const shelf = document.getElementById("mobileNav");
+  const backdrop = document.getElementById("navBackdrop");
+
+  function openMenu(){
+    shelf.classList.add("is-open");
+    backdrop.classList.add("active");
+    document.body.classList.add("no-scroll");
+  }
+
+  function closeMenu(){
+    shelf.classList.remove("is-open");
+    backdrop.classList.remove("active");
+    document.body.classList.remove("no-scroll");
+  }
+
+  toggle.addEventListener("click", () => {
+    const isOpen = shelf.classList.contains("is-open");
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  backdrop.addEventListener("click", closeMenu);
+
+
+
+  <!-- put this after your existing script or at the end of body -->
+
+  (function(){
+    const btn = document.getElementById('menuToggle');
+    const shelf = document.getElementById('mobileNav');
+    const backdrop = document.getElementById('navBackdrop');
+
+    function openNav(){
+      shelf.classList.add('is-open');
+      backdrop.classList.add('show');
+      document.body.classList.add('nav-lock');
+      btn.setAttribute('aria-expanded','true');
+    }
+    function closeNav(){
+      shelf.classList.remove('is-open');
+      backdrop.classList.remove('show');
+      document.body.classList.remove('nav-lock');
+      btn.setAttribute('aria-expanded','false');
+    }
+
+    if(btn && shelf && backdrop){
+      btn.addEventListener('click', e=>{
+        shelf.classList.contains('is-open') ? closeNav() : openNav();
+      });
+      backdrop.addEventListener('click', closeNav);
+    }
+
+    // Expand/collapse groups & auto-scroll into view
+    document.querySelectorAll('.nav-item.has-menu > .nav-link, .caret').forEach(trig=>{
+      trig.addEventListener('click', e=>{
+        // Toggle a simple "open" class on the parent nav-item
+        const item = e.currentTarget.closest('.nav-item');
+        if(!item) return;
+        item.classList.toggle('open');
+
+        // Ensure dropdown is visible (no CSS animation height needed because we keep dropdowns static on mobile)
+        const rect = item.getBoundingClientRect();
+        const topPad = 10; // little offset
+        const overflowTop = rect.top - (parseFloat(getComputedStyle(shelf).paddingTop) || 0);
+        if(overflowTop < 0){
+          shelf.scrollBy({ top: overflowTop - topPad, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ====== Safety: avoid errors when querying elements that may not exist ======
+    // (Fixes "Cannot read properties of null (reading 'getBoundingClientRect')" in app.js:192)
+    // If you have code that does: el.getBoundingClientRect(), wrap it like:
+    window.safeRect = el => el ? el.getBoundingClientRect() : {top:0,left:0,bottom:0,right:0,width:0,height:0};
+  })();
+
