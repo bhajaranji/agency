@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stackly — Login & Register</title>
+  <link rel="icon" type="image/png" href="assets/images/logo1.webp">
+
+  <style>
+    :root{
+      --bg: #0b0f0d;
+      --card: #0f1412;
+      --muted: #9aa4a0;
+      --fg: #e7f5ee;
+      --accent: #16d17d;
+      --accent-2: #0ea45b;
+      --danger: #ef4444;
+      --border: #173329;
+      --ring: rgba(22, 209, 125, .35);
+      --radius: 18px;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
+
+    *{box-sizing: border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--fg);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(22,209,125,.15), transparent 60%),
+                  radial-gradient(900px 600px at -10% 90%, rgba(14,164,91,.18), transparent 55%),
+                  linear-gradient(180deg, #0a0f0d, #0b0f0d 30%, #0a0e0c);
+      overflow-x:hidden;
+    }
+
+    /* Subtle animated grid */
+    .bg-grid::before{
+      content:"";
+      position:fixed; inset:0;
+      background-image: radial-gradient(#12231b 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity:.6;
+      animation: scrollGrid 40s linear infinite;
+      pointer-events:none;
+      z-index:-1;
+    }
+    @keyframes scrollGrid{
+      from{transform: translateY(0)}
+      to{transform: translateY(24px)}
+    }
+
+    /* Floating blobs */
+    .blob {
+      position: fixed; filter: blur(36px); opacity:.55; mix-blend-mode: screen; z-index:-1;
+      animation: float 16s ease-in-out infinite;
+    }
+    .blob.one { width:420px;height:420px; background: radial-gradient(circle at 30% 30%, #16d17d 0%, transparent 60%); top: -120px; right: -90px; }
+    .blob.two { width:360px;height:360px; background: radial-gradient(circle at 70% 70%, #0ea45b 0%, transparent 60%); bottom: -120px; left: -90px; animation-delay: -6s;}
+    @keyframes float{
+      0%,100%{transform: translate(0,0) scale(1)}
+      50%{transform: translate(15px,-10px) scale(1.05)}
+    }
+
+    .wrap{
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      padding: 48px 20px;
+    }
+
+    .card{
+      width: min(980px, 96vw);
+      background: linear-gradient(180deg, rgba(22,209,125,.07), transparent 45%) , var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display:grid;
+      grid-template-columns: 1.2fr 1fr;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* Left: visual panel */
+    .panel{
+      position:relative;
+      padding: clamp(28px, 4vw, 44px);
+      background:
+        radial-gradient(850px 480px at 10% 10%, rgba(22,209,125,.12), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), transparent);
+      border-right: 1px solid var(--border);
+      display:flex; flex-direction:column; justify-content:space-between;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .brand img.logo{
+      width:40px; height:40px; object-fit:contain; border-radius:10px;
+      background:#0c1310; border:1px solid #143024;
+    }
+    .brand .name{
+      font-weight:800; letter-spacing:.3px; font-size:1.05rem;
+    }
+    .pitch{
+      margin: 28px 0 8px;
+      font-size: clamp(26px, 2.6vw, 34px);
+      line-height: 1.2;
+      font-weight: 800;
+    }
+    .bullets{
+      margin: 8px 0 0; padding:0; list-style:none; color:var(--muted); font-size:.98rem;
+    }
+    .bullets li{display:flex; align-items:flex-start; gap:10px; margin:10px 0;}
+    .bullets .tick{color: var(--accent); margin-top:2px;}
+
+    .panel-footer{
+      display:flex; gap:10px; align-items:center; color: var(--muted);
+      font-size:.9rem; border-top:1px dashed #153024; padding-top:14px; margin-top:16px;
+    }
+
+    /* Right: forms */
+    .forms{
+      position:relative;
+      overflow:hidden;
+      display:grid;
+      place-items:stretch;
+      min-height: 560px;
+    }
+
+    .form-slide{
+      position:absolute; inset:0;
+      padding: clamp(22px,3.5vw,34px);
+      display:grid; align-content:center;
+      transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
+      will-change: transform, opacity;
+    }
+    .form-slide.hidden{ pointer-events:none; opacity:0; transform: translateX(24px) scale(.98); }
+    .form-slide.active{ pointer-events:auto; opacity:1; transform: translateX(0) scale(1); }
+
+    h2{
+      margin:0 0 6px; font-size: clamp(22px, 2.2vw, 28px); font-weight:800;
+    }
+    .sub{color:var(--muted); margin-bottom:22px; font-size:.96rem;}
+
+    .f{
+      display:grid; gap:14px;
+    }
+    .row{display:grid; gap:12px;}
+    .row.two{grid-template-columns: 1fr 1fr;}
+    @media (max-width: 820px){
+      .card{grid-template-columns: 1fr}
+      .panel{border-right:0; border-bottom: 1px solid var(--border);}
+      .forms{min-height:520px}
+      .row.two{grid-template-columns: 1fr}
+    }
+
+    label{font-size:.9rem; color:#cfe7dc;}
+    .control{
+      position:relative;
+    }
+    .control input{
+      width:100%;
+      padding: 12px 14px 12px 44px;
+      border-radius: 12px;
+      background:#0a1210;
+      color:var(--fg);
+      border:1px solid #133324;
+      outline:none;
+      box-shadow: 0 0 0 0 var(--ring);
+      transition: border-color .2s, box-shadow .2s, background .2s, transform .05s;
+    }
+    .control input:focus{
+      border-color: #1f9a67;
+      box-shadow: 0 0 0 6px var(--ring);
+    }
+    .icon{
+      position:absolute; left:12px; top:50%; transform: translateY(-50%);
+      width:20px; height:20px; opacity:.9;
+    }
+
+    .actions{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:6px;}
+    .link-btn{
+      background:none; border:0; color:var(--accent); font-weight:700; cursor:pointer;
+    }
+    .submit{
+      appearance:none; cursor:pointer; border:0;
+      padding: 12px 16px; border-radius: 12px; font-weight:800; letter-spacing:.2px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#06100c;
+      box-shadow: 0 10px 30px rgba(22,209,125,.35);
+      transition: transform .06s ease, box-shadow .2s ease;
+    }
+    .submit:hover{ filter: brightness(1.05) }
+    .submit:active{ transform: translateY(1px) }
+
+    .muted{ color: var(--muted); font-size:.9rem; }
+    .error{ color: var(--danger); font-size:.88rem; margin-top:6px; display:none; }
+    .error.show{ display:block; }
+
+    .hint{ font-size:.86rem; color:#b9d7cc; margin-top:6px; }
+    .toggle-pass{
+      position:absolute; right:10px; top:50%; transform:translateY(-50%);
+      background:none; border:0; color:#bfe9d6; cursor:pointer; font-size:.9rem;
+    }
+
+    /* strength meter */
+    .meter{
+      display:grid; grid-template-columns: repeat(4, 1fr); gap:6px; margin-top:8px;
+    }
+    .meter span{
+      height:7px; border-radius: 999px; background:#1a2a23; border:1px solid #193628;
+      transition: background .25s, border-color .25s;
+    }
+    .meter .on{ background: #16d17d; border-color:#16d17d; }
+
+    /* Toast */
+    .toast{
+      position: fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(16px);
+      background: #0e1512; border:1px solid #173329; padding: 12px 16px; border-radius: 12px;
+      color: var(--fg); font-weight:700; box-shadow: var(--shadow);
+      opacity:0; pointer-events:none; transition: .35s ease;
+    }
+    .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+    /* Small helper badges */
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 10px; border-radius: 999px; border:1px solid #1a3a2c; background:#0c1512;
+      font-size:.85rem; color:#a1d2c0;
+    }
+    .kbd{
+      padding:1px 6px; border-radius:6px; border:1px solid #244b3a; background:#0b1612; color:#bfe9d6;
+      font-weight:800; font-size:.8rem;
+    }
+    a.simple { color: var(--accent); text-decoration:none; font-weight:700; }
+  </style>
+</head>
+<body class="bg-grid">
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+
+  <div class="wrap">
+    <section class="card" aria-live="polite">
+      <!-- Left visual panel -->
+      <aside class="panel">
+        <div>
+          <div class="brand">
+            <!-- Replace with your logo if you want a different image on this panel -->
+            <img class="logo" src="assets/images/logobogo.webp" alt="Stackly" />
+            
+          </div>
+          <h1 class="pitch">Welcome back to <span style="color:var(--accent)">Stackly</span></h1>
+          <ul class="bullets">
+            <li><span class="tick">✔</span> One account for projects, quotes, and support</li>
+            <li><span class="tick">✔</span> Secure, privacy-first authentication</li>
+            <li><span class="tick">✔</span> Smooth, keyboard-friendly forms</li>
+          </ul>
+        </div>
+        <div class="panel-footer">
+          <span class="badge">Tip: press <span class="kbd">Tab</span> to move fields</span>
+        </div>
+      </aside>
+
+      <!-- Right forms area -->
+      <div class="forms" id="forms">
+        <!-- LOGIN -->
+        <form class="form-slide active" id="loginForm" novalidate>
+          <h2>Log in</h2>
+          <p class="sub">Access your dashboard and continue building.</p>
+
+          <div class="f">
+            <div class="row">
+              <label for="loginEmail">Email</label>
+              <div class="control">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6.5l8.7 6.5c.8.6 1.9.6 2.7 0L23 6.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <input id="loginEmail" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <label for="loginPassword">Password</label>
+              <div class="control">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10V7a6 6 0 1 1 12 0v3M6 10h12v9a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-9Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <input id="loginPassword" name="password" type="password" placeholder="••••••••" autocomplete="current-password" minlength="6" required>
+                <button class="toggle-pass" type="button" data-target="loginPassword">Show</button>
+              </div>
+              <div class="actions">
+                <button type="button" class="link-btn" id="forgotBtn">Forgot password?</button>
+                <button class="submit" type="submit">Log in</button>
+              </div>
+              <p class="error" id="loginError">Invalid email or password.</p>
+            </div>
+          </div>
+
+          <p class="muted" style="margin-top:16px">New here? <button class="link-btn" type="button" data-switch="register">Create an account</button></p>
+          <!-- Optional different logo for login -->
+          <img class="logo" src="assets/images/logobogo.webp" alt="Stackly logo" style="width:100px;height:100px;opacity:.75;margin-top:6px">
+        </form>
+
+        <!-- REGISTER -->
+        <form class="form-slide hidden" id="registerForm" novalidate>
+          <h2>Create account</h2>
+          <p class="sub">Join Stackly and get rolling in minutes.</p>
+
+          <div class="f">
+            <div class="row two">
+              <div>
+                <label for="firstName">First name</label>
+                <div class="control">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm-7 9a7 7 0 0 1 14 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <input id="firstName" name="first" type="text" placeholder="Abhinay" autocomplete="given-name" required>
+                </div>
+              </div>
+              <div>
+                <label for="lastName">Last name</label>
+                <div class="control">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm-7 9a7 7 0 0 1 14 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <input id="lastName" name="last" type="text" placeholder="Kolkur" autocomplete="family-name" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <label for="regEmail">Email</label>
+              <div class="control">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6.5l8.7 6.5c.8.6 1.9.6 2.7 0L23 6.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <input id="regEmail" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <label for="regPassword">Password</label>
+              <div class="control">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10V7a6 6 0 1 1 12 0v3M6 10h12v9a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-9Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <input id="regPassword" name="password" type="password" placeholder="At least 8 chars" autocomplete="new-password" minlength="8" required>
+                <button class="toggle-pass" type="button" data-target="regPassword">Show</button>
+              </div>
+              <div class="meter" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+              <p class="hint">Use 8+ chars with a mix of letters, numbers, & symbols.</p>
+            </div>
+
+            <div class="row">
+              <label for="regConfirm">Confirm password</label>
+              <div class="control">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10V7a6 6 0 1 1 12 0v3M6 10h12v9a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-9Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <input id="regConfirm" name="confirm" type="password" placeholder="Re-type password" autocomplete="new-password" minlength="8" required>
+                <button class="toggle-pass" type="button" data-target="regConfirm">Show</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions" style="margin-top:6px">
+            <button class="submit" type="submit">Create account</button>
+            <span class="muted">Have an account? <button class="link-btn" type="button" data-switch="login">Log in</button></span>
+          </div>
+          <p class="error" id="regError">Please fix the highlighted fields.</p>
+
+          <!-- Optional different logo for register -->
+          <img class="logo" src="assets/images/logo1.webp" alt="Stackly logo" style="width:26px;height:26px;opacity:.75;margin-top:10px">
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function(){
+      const forms = {
+        login: document.getElementById('loginForm'),
+        register: document.getElementById('registerForm')
+      };
+
+      const slides = document.querySelectorAll('.form-slide');
+      function switchTo(which){
+        slides.forEach(s=>{
+          s.classList.toggle('active', s.id === (which+'Form'));
+          s.classList.toggle('hidden', s.id !== (which+'Form'));
+        });
+      }
+
+      // Buttons that switch between login/register
+      document.querySelectorAll('[data-switch]').forEach(btn=>{
+        btn.addEventListener('click', ()=> switchTo(btn.dataset.switch));
+      });
+
+      // Show/Hide password toggles
+      document.querySelectorAll('.toggle-pass').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const id = btn.getAttribute('data-target');
+          const input = document.getElementById(id);
+          const isPw = input.type === 'password';
+          input.type = isPw ? 'text' : 'password';
+          btn.textContent = isPw ? 'Hide' : 'Show';
+          input.focus();
+        });
+      });
+
+      // Strength meter
+      const pw = document.getElementById('regPassword');
+      const meterBars = document.querySelectorAll('.meter span');
+      function scorePassword(v){
+        let score = 0;
+        if(!v) return 0;
+        // basic heuristics
+        if (v.length >= 8) score++;
+        if (/[A-Z]/.test(v)) score++;
+        if (/\d/.test(v)) score++;
+        if (/[^A-Za-z0-9]/.test(v)) score++;
+        return Math.min(score, 4);
+      }
+      function renderMeter(score){
+        meterBars.forEach((bar,i)=> bar.classList.toggle('on', i < score));
+      }
+      pw && pw.addEventListener('input', e=> renderMeter(scorePassword(e.target.value)));
+
+      // Toast helper
+      const toast = document.getElementById('toast');
+      function showToast(msg){
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(()=> toast.classList.remove('show'), 2200);
+      }
+
+      // Simple local validations (demo only)
+      function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) }
+
+      // LOGIN handler
+      forms.login.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value.trim();
+        const pass = document.getElementById('loginPassword').value;
+        const err = document.getElementById('loginError');
+
+        let ok = true;
+        err.classList.remove('show');
+
+        if(!validEmail(email)) ok = false;
+        if(!pass || pass.length < 6) ok = false;
+
+        if(!ok){
+          err.textContent = 'Invalid email or password.';
+          err.classList.add('show');
+          return;
+        }
+
+        // Replace with your real auth call
+        showToast('Logged in ✅ Redirecting…');
+
+        // Demo redirect to your dashboard
+        setTimeout(()=> window.location.href = '404page.html', 600);
+      });
+
+      // REGISTER handler
+      forms.register.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const first = document.getElementById('firstName').value.trim();
+        const last  = document.getElementById('lastName').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        const pass  = document.getElementById('regPassword').value;
+        const conf  = document.getElementById('regConfirm').value;
+        const err   = document.getElementById('regError');
+
+        err.classList.remove('show');
+
+        let messages = [];
+        if(!first) messages.push('First name is required.');
+        if(!last) messages.push('Last name is required.');
+        if(!validEmail(email)) messages.push('Enter a valid email.');
+        if(pass.length < 8) messages.push('Password must be at least 8 characters.');
+        if(pass !== conf) messages.push('Passwords do not match.');
+
+        if(messages.length){
+          err.textContent = messages.join(' ');
+          err.classList.add('show');
+          return;
+        }
+
+        // Replace with your real API call
+        showToast('Account created 🎉 Logging you in…');
+
+        // Demo: persist a flag (so you can check later)
+        localStorage.setItem('stacklyUser', JSON.stringify({first, last, email}));
+
+        setTimeout(()=> window.location.href = '404page.html', 900);
+      });
+
+      // “Forgot password” demo
+      document.getElementById('forgotBtn').addEventListener('click', ()=>{
+        const email = prompt('Enter your account email:');
+        if(!email) return;
+        if(!validEmail(email)) { showToast('Please enter a valid email.'); return; }
+        // In real app, call your backend to send reset
+        showToast('Reset link sent to ' + email);
+      });
+
+      // Accessibility: allow Ctrl/Cmd + / to toggle forms
+      window.addEventListener('keydown', (e)=>{
+        if((e.ctrlKey || e.metaKey) && e.key === '/'){
+          const isLogin = document.getElementById('loginForm').classList.contains('active');
+          switchTo(isLogin ? 'register' : 'login');
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>

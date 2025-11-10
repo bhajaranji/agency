@@ -7861,6 +7861,33 @@ demos{
   transform:scale(1.05);
 }
 
+
+
+/* GET STARTED BUTTON */
+.btn-get-started {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #0a0a0a;
+  color: #00ff7b;
+  border: 2px solid #00ff7b;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-get-started:hover {
+  background: #00ff7b;
+  color: #0a0a0a;
+  transform: translateY(-3px);
+  box-shadow: 0 0 12px rgba(0, 255, 123, 0.6);
+}
+
+/* Make sure it aligns inside navbar on desktop & mobile */
+.nav-item .btn-get-started {
+  margin-left: 8px;
+}
+
 /* Mobile responsive */
 @media(max-width:768px){
   .two-vertical-cards{

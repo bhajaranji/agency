@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stackly Creative Agency</title>
+  <link rel="icon" href="assets/images/logo1.webp" type="image/png">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- 🔹 Header with Home Dropdown (Fitness & Agency) -->
+<header class="site-header light center-nav">
+  <div class="container">
+    <a class="logo" href="index.html">
+      <img src="assets/images/logostyackly.png" alt="Stackly logo"> 
+    </a>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul>
+        <li class="dropdown">
+          <a href="home2.html" class="dropbtn">Home ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="index.html">home</a></li>
+          
+          </ul>
+        </li>
+        <li><a href="service2.html">Services</a></li>
+        <li><a href="about2.html">About Us</a></li>
+        <li><a href="blog2.html">Blog</a></li>
+        <li><a href="contact2.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="btn neon header-join" href="login.html">JOIN STACKLY</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- 🧭 Hero Section -->
+<section class="agency-hero">
+  <!-- Two images for smooth crossfade -->
+  <img id="hero-bg-1" src="assets/images/home21.webp" class="hero-bg active" alt="Hero Image 1">
+  <img id="hero-bg-2" src="assets/images/home22.webp" class="hero-bg" alt="Hero Image 2">
+
+  <div class="hero-content">
+    <h1>Building Creative <span> Digital Experiences for Modern Brands</span></h1>
+    <p>  Stackly is a creative agency focused on sharp design, smooth user journeys, and solid development.  
+  We turn ideas into fast, modern, and meaningful digital products that help brands stand out and grow.</p>
+    <button class="cta-btn" onclick="window.location.href='404agency.html'">
+      JOIN NOW <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+</section>
+
+
+<!-- 🧭 About Us Section -->
+<section class="about-us">
+  <div class="about-container">
+    <div class="about-left slide-right">
+      <img src="assets/images/about3.webp" alt="About Stackly Agency">
+    </div>
+
+    <div class="about-right slide-left">
+      <h4>About Us</h4>
+      <h2>Where Strength Meets Lifestyle</h2>
+      <p>
+      Stackly began with a simple belief: great ideas deserve great execution. We’re a creative digital agency that blends design, strategy, and technology to build experiences people actually enjoy using.
+      <p>
+     Our team works like a well-tuned workshop. Designers shape the look and feel, developers turn concepts into smooth interfaces, and strategists make sure every piece fits your brand’s goals. The result is work that feels fresh, fast, and focused
+      </p>
+
+      <ul class="about-points">
+        <li><i class="fa-solid fa-check"></i> "We create digital work that looks good, works fast, and feels effortless." </li>
+        <li><i class="fa-solid fa-check"></i> </li>
+      </ul>
+
+      <a href="404page.html" class="about-btn">
+        Learn More <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!--ACCOUNTS-->
+<section id="accounts" class="account-section">
+  <div class="container">
+    <div class="heading-box">
+      <h5 class="sub-heading">Gym & Fitness</h5>
+      <h2 class="main-heading">Stronger Bodies. Sharper Minds.</h2>
+    </div>
+
+    <div class="card-wrapper">
+      <div class="finance-card">
+        <div class="icon">🎨</div>   <!-- Creativity / Design -->
+
+       <h3>Custom Creative Solutions</h3>
+<p>
+  Work built around your brand. We craft tailored digital strategies, designs, and experiences that move with your goals. Every project is shaped to fit your vision, pace, and growth path.
+</p>
+</div>
+
+      <div class="finance-card">
+        <div class="icon">💡</div>   
+       <h3>Custom Digital Experiences</h3>
+<p>
+  Work that fits you, not the other way around. We design and build tailored digital solutions shaped to your goals, your style, and your audience.
+</p>
+/p>
+      </div>
+
+      <div class="finance-card">
+        <div class="icon">🚀</div>  
+        <h3>Tailored Creative Strategy</h3>
+<p>
+  Every brand has its own rhythm. We turn yours into focused design, smart storytelling, and digital experiences built for real growth.
+</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================
+     HERO VIDEO SECTION
+========================= -->
+<section class="hero-section" style="position: relative; height: 90vh;">
+  <!-- Background image -->
+  <img src="assets/images/teamback2.webp"    
+       alt="background image" 
+       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(60%); z-index: 0;">
+  
+  <!-- Text content -->
+   <!-- Text content -->
+  <div class="hero-content">
+    <h5 class="hero-subtitle">WATCH VIDEO</h5>
+    <h1 class="hero-title">Exclusive Video Presentation</h1>
+    <p class="hero-text">
+      Experience the Power of Fitness
+See how our expert trainers, modern equipment, and personalized programs help you achieve your fitness goals faster and smart.
+    </p>
+
+    <div class="hero-buttons">
+      <!-- CTA Button -->
+      <a href="404page.html" class="cta-btn">Start a Demo</a>
+
+      <!-- Play Button -->
+      <button id="playVideoBtn" class="play-btn">▶</button>
+    </div>
+  </div>
+</section>
+
+<!-- ========================
+     VIDEO POPUP
+========================= -->
+<div class="video-popup" id="videoPopup">
+  <div class="video-wrapper">
+
+    <span class="close-btn" id="closePopup">&times;</span>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/vaDguNVPUMU?si=CYFzaYDOaDFAaxCn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</div>
+<!-- ========================
+     SERVICES / FEATURES SECTION
+========================= -->
+<section class="features-section">
+  <div class="container">
+    <h5 class="section-subtitle">— Our Core Features —</h5>
+    <h2 class="section-title">Delivering Modern Digital Experiences</h2>
+
+    <div class="features-grid">
+      <!-- Row 1 -->
+      <div class="feature-card">
+        <img src="assets/images/desgin2.webp" alt="Tax Consulting">
+        <div class="card-content">
+          <h3> Sharp Creative Direction</h3>
+          <p>We shape ideas with clarity and purpose. Every concept is crafted to match your brand’s voice and help you stand apart in a crowded digital world.</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <img src="assets/images/desgin3.webp" alt="Business Accounting">
+        <div class="card-content">
+          <h3>. Modern UI/UX Design</h3>
+          <p>Design that feels simple, smooth, and human. We build interfaces that guide users naturally and leave a clear, memorable impression..</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <img src="assets/images/desgin4.webp" alt="Payroll Management">
+        <div class="card-content">
+          <h3>Growth-Focused Delivery</h3>
+          <p>
+
+Your site should feel light on its feet. Our code is built for speed, stability, and smooth performance on every device..</p>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="feature-card">
+        <img src="assets/images/design.webp" alt="Financial Planning">
+        <div class="card-content">
+          <h3>High-Quality Development</h3>
+          <p>Your story matters. We align visuals, content, and structure so your brand speaks with confidence and consistency.</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <img src="assets/images/design5.webp" alt="Auditing">
+        <div class="card-content">
+          <h3> Brand-First Strategy</h3>
+          <p>No one-size-fits-all templates. Everything we create is shaped around your goals, your style, and your audience.</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <img src="assets/images/design6.webp" alt="Budgeting">
+        <div class="card-content">
+          <h3>Custom Digital Solutions</h3>
+          <p>Our work goes beyond “looks good.” We craft experiences that support real growth, spark engagement, and turn attention into action..</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Why Choose Us Section -->
+<section class="why-choose-us" id="why-choose-us">
+  <div class="why-choose-us-container">
+    <!-- Left: Image -->
+    <div class="why-choose-us-image">
+      <img src="assets/images/whych.webp" alt="Why Choose Us">
+    </div>
+
+    <!-- Right: Content -->
+    <div class="why-choose-us-content ">
+     <h2>Why Choose Stackly</h2>
+  <p>We blend brand clarity with engineering discipline to deliver work that looks great—and performs even better.</p>
+  <ul>
+    <li>✔ <strong>Senior-Led Teams</strong> — Direct access to strategists, designers, and developers who ship.</li>
+    <li>✔ <strong>Speed with Rigor</strong> — Weekly drops, documented decisions, and clear acceptance criteria.</li>
+    <li>✔ <strong>Measurable Outcomes</strong> — Targets set up-front; dashboards track CAC, CTR, CVR, and ROI.</li>
+    <li>✔ <strong>Ownable Assets</strong> — You keep files, components, and rights—no lock-in.</li>
+    <li>✔ <strong>Scalable Engagements</strong> — From one sprint to full-funnel retainers as you grow.</li>
+  </ul>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="testimonial-section">
+  <div class="testimonial-container">
+    <!-- Left Side -->
+    <div class="testimonial-left">
+      <div class="quote-icon">“</div>
+      <div class="client-images">
+        <img src="assets/images/clienhome2.webp" alt="Main Client" class="client-main">
+        <img src="assets/images/clenthome3.webp" alt="Client Small" class="client-small">
+      </div>
+    </div>
+
+    <!-- Right Side -->
+    <div class="testimonial-right">
+      <h5 class="testimonial-subtitle">Trusted by Brands & Growing Businesses</h5>
+      <h2 class="testimonial-title">
+     Real Impact & Meaningful Outcomes
+      </h2>
+      <p class="testimonial-text">
+        Partnering with Stackly has completely changed how we build and present our brand. Their design clarity, smart strategy, and fast execution helped us move quicker, communicate better, and launch with confidence. It’s more than creative work. It’s a partnership built for real, measurable growth.”
+      </p>
+      <div class="testimonial-author">
+        <img src="assets/images/baby.jpg" alt="David Carter">
+        <div>
+          <h4>David Carter</h4>
+          <span>Chief Financial Officer, stackly</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="team-section" id="team">
+  <div class="team-container">
+    <h2 class="team-title">Meet Our Team</h2>
+
+    <div class="team-grid">
+      <!-- Member 1 -->
+      <div class="team-card reveal-left">
+        <div class="team-image">
+          <img src="assets/images/team2.webp" alt="John N. Holmes">
+          <div class="image-overlay"></div> 
+         
+        </div>
+        <div class="team-info">
+          <h3>John N. Holmes</h3>
+        </div>
+      </div>
+
+      <!-- Member 2 -->
+      <div class="team-card reveal-left">
+        <div class="team-image">
+          <img src="assets/images/team2.3.webp" alt="Kenneth A. Spencer">
+          <div class="image-overlay"></div> 
+          
+        </div>
+        <div class="team-info">
+          <h3>Kenneth A. Spencer</h3>
+          
+        </div>
+      </div>
+
+      <!-- Member 3 -->
+      <div class="team-card reveal-right">
+        <div class="team-image">
+          <img src="assets/images/team2.4.webp" alt="David K. Marble">
+          <div class="image-overlay"></div> 
+          
+        </div>
+        <div class="team-info">
+          <h3>David K. Marble</h3>
+        
+        </div>
+      </div>
+
+      <!-- Member 4 -->
+      <div class="team-card reveal-right">
+        <div class="team-image">
+          <img src="assets/images/team2.5.webp" alt="Raymond Grimes">
+          <div class="image-overlay"></div> 
+         
+        </div>
+        <div class="team-info">
+          <h3>Raymond Grimes</h3>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- CTA BANNER SECTION -->
+<section class="cta-banner">
+  <div class="cta-banner-content">
+    <p class="cta-subtext">Get a Quote</p>
+    <h1 class="cta-title"> Design that speaks clearly
+  development that performs consistently.</h1>
+    <a href="404page.html" class="cta-button">Get Started Now</a>
+  </div>
+</section>
+
+<!-- BRAND LOGO MARQUEE SECTION -->
+<section class="brand-slider">
+  <div class="brand-track">
+    <img src="assets/images/marque1.webp" alt="Company 1">
+    <img src="assets/images/marque2.webp" alt="Company 2">
+    <img src="assets/images/marque3.webp" alt="Company 3">
+    <img src="assets/images/marque4.webp" alt="Company 4">
+    <img src="assets/images/marque5.webp" alt="Company 5">
+    <img src="assets/images/marque6.webp" alt="Company 6">
+    <!-- Duplicate for smooth infinite loop -->
+    <img src="assets/images/marque1.webp" alt="Company 1">
+    <img src="assets/images/marque2.webp" alt="Company 2">
+    <img src="assets/images/marque3.webp" alt="Company 3">
+    <img src="assets/images/marque4.webp" alt="Company 4">
+    <img src="assets/images/marque5.webp" alt="Company 5">
+    <img src="assets/images/marque6.webp" alt="Company 6">
+  </div>
+</section>
+
+
+
+
+
+
+<!-- =======================
+         FOOTER
+======================= -->
+<footer class="footer reveal">
+  <div class="footer-container">
+
+    <!-- 1. Brand Column -->
+    <div class="footer-col footer-brand reveal">
+      <a href="index.html" class="footer-logo">
+        <img src="assets/images/logobogo.webp" alt="Stackly Logo">
+     
+      </a>
+      <p>We build powerful fitness experiences that help you reach your goals faster. Our expert team blends training, strategy, and motivation to deliver real, lasting results.</p>
+    </div>
+
+    <!-- 2. Quick Links -->
+    <div class="footer-col reveal">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="home2.html">Home</a></li>
+        <li><a href="about2.html">About Us</a></li>
+        <li><a href="service2.html">Services</a></li>
+        <li><a href="blog2.html">Blog</a></li>
+        <li><a href="contact2.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- 3. Services -->
+    <div class="footer-col reveal">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="404page.html">UI/UX design</a></li>
+        <li><a href="404page.html">Software Development</a></li>
+        <li><a href="404page.html">SEO </a></li>
+        <li><a href="404page.html">Digital Marketing</a></li>
+        <li><a href="404page.html">Brand identity design</a></li>
+        <li><a href="404page.html">Unique Creative Solutions</a></li>
+      </ul>
+    </div>
+
+    <!-- 4. Newsletter / Contact -->
+    <div class="footer-col reveal">
+      <h4>Stay Connected</h4>
+      <p>Subscribe to our newsletter to get the latest digital trends and insights.</p>
+      <form class="footer-newsletter">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+
+      <div class="social-links">
+        <a href="404page.html"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="404page.html"><i class="fa-brands fa-twitter"></i></a>
+        <a href="404page.html"><i class="fa-brands fa-instagram"></i></a>
+        <a href="404page.html"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom reveal">
+    <p>© 2025 Stackly Digital Agency | All Rights Reserved | <a href="#">Privacy Policy</a></p>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+<!-- ✅ JavaScript for Background Slideshow -->
+<script>
+  const images = [
+    'assets/images/home21.webp',
+    'assets/images/home22.webp',
+    'assets/images/home33.webp'
+  ];
+
+  let index = 0;
+  const img1 = document.getElementById('hero-bg-1');
+  const img2 = document.getElementById('hero-bg-2');
+  let showingFirst = true;
+
+  setInterval(() => {
+    index = (index + 1) % images.length;
+
+    if (showingFirst) {
+      img2.src = images[index];
+      img2.classList.add('active');
+      img1.classList.remove('active');
+    } else {
+      img1.src = images[index];
+      img1.classList.add('active');
+      img2.classList.remove('active');
+    }
+
+    showingFirst = !showingFirst;
+  }, 4000); // change every 4 seconds (you can adjust)
+
+
+
+
+
+  // Select all elements with slide animation
+  const slideElements = document.querySelectorAll('.slide-left, .slide-right');
+
+  const scrollTrigger = () => {
+    slideElements.forEach((el) => {
+      const elementTop = el.getBoundingClientRect().top;
+      const triggerPoint = window.innerHeight - 100;
+
+      if (elementTop < triggerPoint) {
+        el.classList.add('show');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', scrollTrigger);
+  // Run once in case section is already visible
+  scrollTrigger();
+
+
+
+
+// Simple inline function as backup
+document.addEventListener('DOMContentLoaded', () => {
+  const playBtn = document.getElementById('playVideoBtn');
+  const videoPopup = document.getElementById('videoPopup');
+  const closePopup = document.getElementById('closePopup');
+  const videoFrame = document.getElementById('videoFrame');
+
+  const videoURL = "https://www.youtube.com/embed/digpucxFbMo?autoplay=1&si=i5XZONAZM2mBjTM-";
+
+  playBtn.addEventListener('click', () => {
+    videoFrame.src = videoURL;
+    videoPopup.classList.add('active');
+  });
+
+  closePopup.addEventListener('click', () => {
+    videoPopup.classList.remove('active');
+    videoFrame.src = "";
+  });
+
+  videoPopup.addEventListener('click', (e) => {
+    if (e.target === videoPopup) {
+      videoPopup.classList.remove('active');
+      videoFrame.src = "";
+    }
+  });
+});
+
+// ✅ Grab ALL reveal elements — from any section
+const revealElements = document.querySelectorAll(
+  ".reveal, .reveal-left, .reveal-right"
+);
+
+// ✅ One scroll function to handle everything
+function revealOnScroll() {
+  const windowHeight = window.innerHeight;
+  const revealPoint = 100;
+
+  revealElements.forEach((el) => {
+    const elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - revealPoint) {
+      el.classList.add("reveal-active");
+    } else {
+      el.classList.remove("reveal-active"); // optional
+    }
+  });
+}
+
+// ✅ Attach one listener
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll(); // trigger once when page loads
+
+
+
+
+const reveals = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      } else {
+        entry.target.classList.remove("active");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  reveals.forEach((el) => observer.observe(el));
+
+
+
+
+  //toogle function//
+
+
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('site-nav');
+
+  hamburger.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    hamburger.classList.toggle('active');
+  });
+
+
+
+
+
+
+</script>
+</body>
+</html>
