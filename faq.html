@@ -22,39 +22,43 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- HEADER -->
+ <!-- ✅ PLACE THIS HEADER INSTEAD OF YOUR CURRENT ONE -->
 <header class="site-header">
+  <!-- 1) Hidden toggle for the mobile drawer -->
+  <input id="navToggle" class="nav-toggle" type="checkbox" hidden>
+
   <div class="container nav-wrap">
     <!-- Left: Logo -->
-     <a class="logo" href="index.html">
+    <a class="logo" href="index.html">
+      <img src="assets/images/logobogo.png" alt="Stackly logo">
+    </a>
 
-  <img src="assets/images/logobogo.webp" alt="Stackly logo">
-</a>
-    <!-- Hamburger (mobile only) -->
-    <button id="menuToggle"
-            class="hamburger"
-            aria-label="Open menu"
-            aria-expanded="false"
-            aria-controls="mobileNav">
+    <!-- 2) Hamburger label (controls the hidden checkbox) -->
+    <label for="navToggle"
+           class="hamburger"
+           aria-label="Open menu"
+           aria-controls="mobileNav">
       <span></span><span></span><span></span>
-    </button>
+    </label>
 
-    <!-- Center: nav (desktop) / drawer (mobile) -->
-    <div id="mobileNav" class="nav-shelf" role="navigation">
+    <!-- 3) Drawer (same id/class you used) -->
+    <div id="mobileNav" class="nav-shelf" role="navigation" aria-labelledby="menuToggle">
+      <!-- Close “×” that also unchecks the checkbox -->
+      <label for="navToggle" class="drawer-close" aria-label="Close menu">&times;</label>
+
+      <!-- 4) Nav: use <details> so dropdowns open without JS on mobile -->
       <nav class="nav">
 
         <!-- HOME -->
-        <div class="nav-item has-menu">
-          <a href="index.html" class="nav-link" data-text="Home">
+        <details class="nav-item has-menu">
+          <summary class="nav-link">
             <span class="t">Home</span><span class="orb"></span>
             <span class="arrow"></span>
-            <!-- caret shows only on mobile -->
-            <button class="caret" aria-label="Expand Home"></button>
-          </a>
+            <span class="caret" aria-hidden="true"></span>
+          </summary>
           <div class="dropdown">
             <a href="home2.html">Home 2</a>
             <a href="main.html">Main home</a>
-
             <a href="creativeagency.html">Creative Agency</a>
             <a href="digitalagency.html">Digital Agency</a>
             <a href="modernagency.html">Modern Agency</a>
@@ -63,80 +67,73 @@
             <a href="freelancer.html">Freelancer</a>
             <a href="personal.html">Personal</a>
           </div>
-        </div>
+        </details>
 
         <!-- PAGES -->
-        <div class="nav-item has-menu">
-          <a href="#services" class="nav-link" data-text="Pages">
+        <details class="nav-item has-menu">
+          <summary class="nav-link">
             <span class="t">Pages</span><span class="orb"></span>
             <span class="arrow"></span>
-            <button class="caret" aria-label="Expand Pages"></button>
-          </a>
+            <span class="caret" aria-hidden="true"></span>
+          </summary>
           <div class="dropdown">
             <a href="about.html">About Us</a>
             <a href="services.html">Services</a>
             <a href="ourteam.html">Our Team</a>
             <a href="pricing.html">Pricing</a>
             <a href="faq.html">FAQs</a>
-           
           </div>
-        </div>
+        </details>
 
         <!-- WORKS -->
-        <div class="nav-item has-menu">
-          <a href="#works" class="nav-link" data-text="Works">
+        <details class="nav-item has-menu">
+          <summary class="nav-link">
             <span class="t">Works</span><span class="orb"></span>
             <span class="arrow"></span>
-            <button class="caret" aria-label="Expand Works"></button>
-          </a>
+            <span class="caret" aria-hidden="true"></span>
+          </summary>
           <div class="dropdown">
             <a href="parallexslider.html">Parallax Slider</a>
             <a href="carousel.html">Carousel</a>
             <a href="parallax.html">Parallax</a>
-            <a href="cards.htmls">Cards</a>
+            <a href="cards.html">Cards</a>
             <a href="elegant.html">Elegant</a>
-           
           </div>
-        </div>
+        </details>
 
         <!-- BLOGS -->
-        <div class="nav-item has-menu">
-          <a href="blog.html" class="nav-link" data-text="Blogs">
+        <details class="nav-item has-menu">
+          <summary class="nav-link">
             <span class="t">Blogs</span><span class="orb"></span>
             <span class="arrow"></span>
-            <button class="caret" aria-label="Expand Blogs"></button>
-          </a>
+            <span class="caret" aria-hidden="true"></span>
+          </summary>
           <div class="dropdown">
             <a href="blog.html">Blogs</a>
             <a href="blogdetails.html">Blog Details</a>
           </div>
-        </div>
-
+        </details>
 
         <!-- CONTACT (no dropdown) -->
         <div class="nav-item">
-          <a href="contact.html" class="nav-link" data-text="Contact Us">
-            <span class="t">Contact Us</span><span class="orb"></span>
-          </a>
+          <a href="contact.html" class="nav-link"><span class="t">Contact Us</span><span class="orb"></span></a>
         </div>
+
         <div class="nav-item">
-          <a href="dashborad.html" class="nav-link" data-text="Contact Us">
-            <span class="t">dashboard</span><span class="orb"></span>
-          </a>
-         
-                  <div class="nav-item">
-  <a href="login.html" class="btn-get-started">Get Started</a>
-</div>
+          <a href="dashborad.html" class="nav-link"><span class="t">dashboard</span><span class="orb"></span></a>
+        </div>
+
+        <div class="nav-item">
+          <a href="login.html" class="btn-get-started">Get Started</a>
         </div>
 
       </nav>
     </div>
   </div>
 
-  <!-- Backdrop for mobile drawer -->
-  <div id="navBackdrop" class="nav-backdrop hidden" ></div>
+  <!-- 5) Backdrop that also toggles the checkbox off -->
+  <label for="navToggle" id="navBackdrop" class="nav-backdrop hidden"></label>
 </header>
-
 
 <section class="faq-hero">
     <button class="faq-tag">• FAQS</button>

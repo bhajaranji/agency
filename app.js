@@ -327,9 +327,7 @@ window.addEventListener("scroll", () => {
 
   backdrop.addEventListener("click", closeMenu);
 
-
-
-  <!-- put this after your existing script or at the end of body -->
+ 
 
   (function(){
     const btn = document.getElementById('menuToggle');
@@ -380,3 +378,91 @@ window.addEventListener("scroll", () => {
     window.safeRect = el => el ? el.getBoundingClientRect() : {top:0,left:0,bottom:0,right:0,width:0,height:0};
   })();
 
+
+
+
+
+(function () {
+  const menuBtn  = document.getElementById('menuToggle');
+  const shelf    = document.getElementById('mobileNav');
+  const backdrop = document.getElementById('navBackdrop');
+  const closeBtn = shelf ? shelf.querySelector('.drawer-close') : null;
+  const body     = document.body;
+
+  if (!menuBtn || !shelf || !backdrop) return; // safety
+
+  const isDesktop = () => window.innerWidth >= 992;
+  const isOpen = () => shelf.classList.contains('open');
+
+  function openMenu(){
+    shelf.classList.add('open');
+    backdrop.classList.add('show');
+    backdrop.classList.remove('hidden');
+    menuBtn.classList.add('active');
+    menuBtn.setAttribute('aria-expanded','true');
+    shelf.setAttribute('aria-hidden','false');
+    body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    shelf.classList.remove('open');
+    backdrop.classList.remove('show');
+    menuBtn.classList.remove('active');
+    menuBtn.setAttribute('aria-expanded','false');
+    shelf.setAttribute('aria-hidden','true');
+    body.style.overflow = '';
+  }
+
+  // Toggle main menu
+  menuBtn.addEventListener('click', () => (isOpen() ? closeMenu() : openMenu()));
+
+  // Close menu actions
+  backdrop.addEventListener('click', closeMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isOpen()) closeMenu(); });
+
+  // --- MOBILE DROPDOWNS (fix: caret is inside <a>) ---
+  // 1) Caret click should only toggle, not navigate
+  shelf.querySelectorAll('.nav-item.has-menu .caret').forEach(btn => {
+    btn.setAttribute('type', 'button'); // be explicit
+    btn.addEventListener('click', (e) => {
+      if (isDesktop()) return;          // desktop: let hover CSS handle it
+      e.preventDefault();
+      e.stopPropagation();               // stop the parent <a> from handling
+      const item = e.currentTarget.closest('.nav-item');
+      item.classList.toggle('open');
+      setTimeout(() => item.scrollIntoView({ block: 'nearest' }), 100);
+    });
+  });
+
+  // 2) Parent link click (on mobile) should toggle, not navigate
+  shelf.querySelectorAll('.nav-item.has-menu > a.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (isDesktop()) return;           // desktop: allow normal navigation/hover dropdowns
+      e.preventDefault();                // don't navigate on mobile tap
+      const item = e.currentTarget.closest('.nav-item');
+      item.classList.toggle('open');
+      setTimeout(() => item.scrollIntoView({ block: 'nearest' }), 100);
+    });
+  });
+
+  // Close menu after clicking any actual leaf link on mobile
+  shelf.querySelectorAll('.dropdown a, .nav-item:not(.has-menu) > a').forEach(a => {
+    a.addEventListener('click', () => { if (!isDesktop() && isOpen()) closeMenu(); });
+  });
+
+  // Reset state on resize (prevents stuck/clipped behaviors)
+  window.addEventListener('resize', () => {
+    if (isDesktop()) {
+      backdrop.classList.remove('show');
+      shelf.classList.remove('open');
+      menuBtn.classList.remove('active');
+      menuBtn.setAttribute('aria-expanded','false');
+      shelf.setAttribute('aria-hidden','false');
+      body.style.overflow = '';
+      // collapse any mobile-opened submenus when going to desktop
+      shelf.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('open'));
+    } else {
+      shelf.setAttribute('aria-hidden', isOpen() ? 'false' : 'true');
+    }
+  });
+})();
