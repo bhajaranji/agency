@@ -2821,3 +2821,93 @@ body.no-scroll { overflow: hidden; }
 }
 
 
+/* Hide the hamburger when overlay is open (prevents double X) */
+.hamburger[aria-expanded="true"] { visibility: hidden; }
+
+/* Make the close X fixed at top-right and always clickable */
+#nav-close{
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 2147483647; /* above everything */
+}
+
+/* Center the mobile overlay list and its submenus */
+#site-nav .nav-overlay-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+/* Remove ul padding in the submenu and center links */
+#site-nav .dropdown > .dropdown-content{
+  list-style: none;
+  margin: 6px 0 0 0;
+  padding: 0;
+  position: static !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Make submenu links centered with smaller height */
+#site-nav .dropdown-content a{
+  display: inline-block;         /* so text-align works cleanly */
+  padding: 8px 14px;             /* smaller height */
+  line-height: 1.2;
+  font-size: 15px;               /* a bit smaller if you like */
+  text-align: center;
+}
+
+/* Keep desktop dropdown floating above hero */
+.nav-desktop .dropdown-content{ z-index: 10010 !important; }
+
+/* Mobile: only show submenu when LI has .open */
+@media (max-width:900px){
+  #site-nav .dropdown .dropdown-content{ display: none !important; }
+  #site-nav .dropdown.open .dropdown-content{ display: block !important; }
+}
+
+
+
+
+
+/* ========== DESKTOP DROPDOWN: smaller & tidy ========== */
+.nav-desktop .dropdown-content{
+  min-width: 180px;              /* was 220+ */
+  padding: 6px;                  /* tighter box */
+  border-radius: 10px;
+}
+.nav-desktop .dropdown-content a{
+  font-size: 14px;               /* smaller text */
+  padding: 8px 10px;             /* smaller row height */
+  line-height: 1.2;
+}
+
+/* We'll show menu when .is-open is set by JS (gives us hover delay) */
+.nav-desktop .dropdown > .dropdown-content{
+  opacity: 0; visibility: hidden; transform: translateY(6px);
+  transition: opacity .16s ease, transform .16s ease, visibility 0s .16s;
+}
+.nav-desktop .dropdown.is-open > .dropdown-content{
+  opacity: 1; visibility: visible; transform: translateY(0);
+  transition: opacity .16s ease, transform .16s ease;
+}
+
+/* ========== MOBILE: center the submenu text ========== */
+#site-nav .dropdown-content { text-align: center; }
+#site-nav .dropdown-content a { display:block; }
+
+/* ========== CLOSE BUTTON: ensure only one X shows ========== */
+.nav-close{ display:none; }                 /* hidden by default */
+.site-nav.open .nav-close{ display:block; } /* only when overlay open */
+
+/* Make sure the hamburger turns into X only when expanded */
+#hamburger[aria-expanded="true"] .hamburger-line:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+#hamburger[aria-expanded="true"] .hamburger-line:nth-child(2){ opacity:0; }
+#hamburger[aria-expanded="true"] .hamburger-line:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
