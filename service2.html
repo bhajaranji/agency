@@ -10,19 +10,20 @@
 </head>
 <body>
 
-<!-- 🔹 Header with Home Dropdown (Fitness & Agency) -->
-<header class="site-header light center-nav">
-  <div class="container">
-    <a class="logo" href="index.html">
-      <img src="assets/images/logostyackly.png" alt="Stackly logo"> 
+<header class="site-header">
+  <div class="container nav-container">
+    <!-- Logo -->
+    <a class="logo" href="index.html" aria-label="Stackly Home">
+      <img src="assets/images/logostyackly.png" alt="Stackly logo">
     </a>
-    <nav id="site-nav" class="site-nav" aria-label="Primary">
-      <ul>
+
+    <!-- Desktop nav (visible ≥900px) -->
+    <nav class="nav-desktop desktop-only" aria-label="Primary">
+      <ul class="nav-list">
         <li class="dropdown">
           <a href="home2.html" class="dropbtn">Home ▾</a>
           <ul class="dropdown-content">
-            <li><a href="index.html">Home 1 </a></li>
-          
+            <li><a href="index.html">home1</a></li>
           </ul>
         </li>
         <li><a href="service2.html">Services</a></li>
@@ -31,16 +32,37 @@
         <li><a href="contact2.html">Contact</a></li>
       </ul>
     </nav>
-    <div class="header-actions">
-      <a class="btn neon header-join" href="login.html">JOIN STACKLY </a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </div>
+
+    <!-- Desktop CTA -->
+    <a href="login.html" class="btn neon desktop-only">JOIN STACKLY</a>
+
+    <!-- Hamburger (visible <900px) -->
+    <button id="hamburger" class="hamburger mobile-only" aria-label="Open menu" aria-controls="site-nav" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
   </div>
+
+  <!-- Mobile overlay nav -->
+  <nav id="site-nav" class="site-nav mobile-only" aria-label="Primary" aria-hidden="true">
+    <button class="nav-close" id="nav-close" aria-label="Close menu">✕</button>
+    <ul class="nav-overlay-list">
+      <li class="dropdown">
+        <a href="home2.html" class="dropbtn">Home ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="index.html">home1</a></li>
+        </ul>
+      </li>
+      <li><a href="service2.html">Services</a></li>
+      <li><a href="about2.html">About Us</a></li>
+      <li><a href="blog2.html">Blog</a></li>
+      <li><a href="contact2.html">Contact</a></li>
+      <li><a href="login.html" class="btn neon">JOIN STACKLY</a></li>
+    </ul>
+  </nav>
 </header>
+
 
 
 
@@ -352,15 +374,6 @@
 
 
 
-//toogle function
-    const hamburger = document.getElementById('hamburger');
-  const nav = document.getElementById('site-nav');
-
-  hamburger.addEventListener('click', () => {
-    nav.classList.toggle('open');
-    hamburger.classList.toggle('active');
-  });
-
 
 
 
@@ -372,5 +385,6 @@
 
 
 </script>
+<script src="main.js " defer></script>
 </body>
 </html>

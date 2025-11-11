@@ -10,118 +10,61 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-<!-- ✅ PLACE THIS HEADER INSTEAD OF YOUR CURRENT ONE -->
-<header class="site-header">
-  <!-- 1) Hidden toggle for the mobile drawer -->
-  <input id="navToggle" class="nav-toggle" type="checkbox" hidden>
 
-  <div class="container nav-wrap">
-    <!-- Left: Logo -->
-    <a class="logo" href="index.html">
-      <img src="assets/images/logobogo.png" alt="Stackly logo">
+<header class="site-header">
+  <div class="container nav-container">
+    <!-- Logo -->
+    <a class="logo" href="index.html" aria-label="Stackly Home">
+      <img src="assets/images/logostyackly.png" alt="Stackly logo">
     </a>
 
-    <!-- 2) Hamburger label (controls the hidden checkbox) -->
-    <label for="navToggle"
-           class="hamburger"
-           aria-label="Open menu"
-           aria-controls="mobileNav">
-      <span></span><span></span><span></span>
-    </label>
+    <!-- Desktop nav (visible ≥900px) -->
+    <nav class="nav-desktop desktop-only" aria-label="Primary">
+      <ul class="nav-list">
+        <li class="dropdown">
+          <a href="home2.html" class="dropbtn">Home ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="index.html">home1</a></li>
+          </ul>
+        </li>
+        <li><a href="service2.html">Services</a></li>
+        <li><a href="about2.html">About Us</a></li>
+        <li><a href="blog2.html">Blog</a></li>
+        <li><a href="contact2.html">Contact</a></li>
+      </ul>
+    </nav>
 
-    <!-- 3) Drawer (same id/class you used) -->
-    <div id="mobileNav" class="nav-shelf" role="navigation" aria-labelledby="menuToggle">
-      <!-- Close “×” that also unchecks the checkbox -->
-      <label for="navToggle" class="drawer-close" aria-label="Close menu">&times;</label>
+    <!-- Desktop CTA -->
+    <a href="login.html" class="btn neon desktop-only">JOIN STACKLY</a>
 
-      <!-- 4) Nav: use <details> so dropdowns open without JS on mobile -->
-      <nav class="nav">
-
-        <!-- HOME -->
-        <details class="nav-item has-menu">
-          <summary class="nav-link">
-            <span class="t">Home</span><span class="orb"></span>
-            <span class="arrow"></span>
-            <span class="caret" aria-hidden="true"></span>
-          </summary>
-          <div class="dropdown">
-            <a href="home2.html">Home 2</a>
-            <a href="main.html">Main home</a>
-            <a href="creativeagency.html">Creative Agency</a>
-            <a href="digitalagency.html">Digital Agency</a>
-            <a href="modernagency.html">Modern Agency</a>
-            <a href="desginstudio.html">Design Studio</a>
-            <a href="portoflio.html">Creative Portfolio</a>
-            <a href="freelancer.html">Freelancer</a>
-            <a href="personal.html">Personal</a>
-          </div>
-        </details>
-
-        <!-- PAGES -->
-        <details class="nav-item has-menu">
-          <summary class="nav-link">
-            <span class="t">Pages</span><span class="orb"></span>
-            <span class="arrow"></span>
-            <span class="caret" aria-hidden="true"></span>
-          </summary>
-          <div class="dropdown">
-            <a href="about.html">About Us</a>
-            <a href="services.html">Services</a>
-            <a href="ourteam.html">Our Team</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="faq.html">FAQs</a>
-          </div>
-        </details>
-
-        <!-- WORKS -->
-        <details class="nav-item has-menu">
-          <summary class="nav-link">
-            <span class="t">Works</span><span class="orb"></span>
-            <span class="arrow"></span>
-            <span class="caret" aria-hidden="true"></span>
-          </summary>
-          <div class="dropdown">
-            <a href="parallexslider.html">Parallax Slider</a>
-            <a href="carousel.html">Carousel</a>
-            <a href="parallax.html">Parallax</a>
-            <a href="cards.html">Cards</a>
-            <a href="elegant.html">Elegant</a>
-          </div>
-        </details>
-
-        <!-- BLOGS -->
-        <details class="nav-item has-menu">
-          <summary class="nav-link">
-            <span class="t">Blogs</span><span class="orb"></span>
-            <span class="arrow"></span>
-            <span class="caret" aria-hidden="true"></span>
-          </summary>
-          <div class="dropdown">
-            <a href="blog.html">Blogs</a>
-            <a href="blogdetails.html">Blog Details</a>
-          </div>
-        </details>
-
-        <!-- CONTACT (no dropdown) -->
-        <div class="nav-item">
-          <a href="contact.html" class="nav-link"><span class="t">Contact Us</span><span class="orb"></span></a>
-        </div>
-
-        <div class="nav-item">
-          <a href="dashborad.html" class="nav-link"><span class="t">dashboard</span><span class="orb"></span></a>
-        </div>
-
-        <div class="nav-item">
-          <a href="login.html" class="btn-get-started">Get Started</a>
-        </div>
-
-      </nav>
-    </div>
+    <!-- Hamburger (visible <900px) -->
+    <button id="hamburger" class="hamburger mobile-only" aria-label="Open menu" aria-controls="site-nav" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
   </div>
 
-  <!-- 5) Backdrop that also toggles the checkbox off -->
-  <label for="navToggle" id="navBackdrop" class="nav-backdrop hidden"></label>
+  <!-- Mobile overlay nav -->
+  <nav id="site-nav" class="site-nav mobile-only" aria-label="Primary" aria-hidden="true">
+    <button class="nav-close" id="nav-close" aria-label="Close menu">✕</button>
+    <ul class="nav-overlay-list">
+      <li class="dropdown">
+        <a href="home2.html" class="dropbtn">Home ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="index.html">home1</a></li>
+        </ul>
+      </li>
+      <li><a href="service2.html">Services</a></li>
+      <li><a href="about2.html">About Us</a></li>
+      <li><a href="blog2.html">Blog</a></li>
+      <li><a href="contact2.html">Contact</a></li>
+      <li><a href="login.html" class="btn neon">JOIN STACKLY</a></li>
+    </ul>
+  </nav>
 </header>
+
+
 
 
 <section class="page-hero">
@@ -379,15 +322,6 @@
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll)
 
-//toogle function //
-
-    const hamburger = document.getElementById('hamburger');
-  const nav = document.getElementById('site-nav');
-
-  hamburger.addEventListener('click', () => {
-    nav.classList.toggle('open');
-    hamburger.classList.toggle('active');
-  });
 
 
 
@@ -398,5 +332,6 @@
 
 
 </script>
+<script src="main.js " defer></script>
 </body>
 </html>
