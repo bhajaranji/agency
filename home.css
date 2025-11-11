@@ -2911,3 +2911,168 @@ body.no-scroll { overflow: hidden; }
 #hamburger[aria-expanded="true"] .hamburger-line:nth-child(1){ transform: translateY(6px) rotate(45deg); }
 #hamburger[aria-expanded="true"] .hamburger-line:nth-child(2){ opacity:0; }
 #hamburger[aria-expanded="true"] .hamburger-line:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+
+
+
+
+
+
+
+
+/* ========== DESKTOP DROPDOWN: align, smaller, and "wait" friendly ========== */
+.nav-desktop .dropdown { position: relative; }
+.nav-desktop .dropdown-content{
+  position: absolute; top: calc(100% + 8px); left: 0;
+  min-width: 180px;              /* smaller */
+  padding: 6px;                  /* tighter padding */
+  border-radius: 12px;
+  background: #111218;
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  opacity: 0; visibility: hidden; transform: translateY(6px);
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+  pointer-events: none;          /* prevents flicker when leaving the button */
+  z-index: 10010;
+}
+.nav-desktop .dropdown-content a{
+  display:block; padding: 6px 10px;   /* smaller item height */
+  font-size: 14px; line-height: 1.25;
+  border-radius: 8px; color:#d9dee7;
+}
+.nav-desktop .dropdown-content a:hover{ background: rgba(255,255,255,.08); }
+
+/* class set by JS to hold the menu open with a tiny delay */
+.nav-desktop .dropdown.hover-open > .dropdown-content{
+  opacity: 1; visibility: visible; transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ========== MOBILE OVERLAY CLEANUP ========== */
+/* When menu is open, hide the hamburger so you don’t see two X icons */
+body.menu-open #hamburger{ visibility: hidden; }
+
+/* Mobile accordion inside overlay */
+@media (max-width: 900px){
+  #site-nav .dropdown { width: 100%; }
+  #site-nav .dropdown > .dropdown-content{
+    position: static !important;
+    display: none;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 6px 0 8px;
+    margin-top: 4px;
+  }
+  #site-nav .dropdown.open > .dropdown-content{ display:block; }
+  #site-nav .dropdown-content a{ color:#000; } /* your white overlay uses dark text */
+}
+
+/* Make sure nothing clips over the hamburger */
+.site-header, .site-header .container, .nav-container{
+  position:relative; overflow:visible !important;
+}
+
+
+
+.nav-item.has-dropdown { position: relative; }
+.nav-item .nav-link { padding: 10px 14px; cursor: pointer; }
+
+.nav-item .dropdown{
+  position: absolute;           /* stays anchored under Home */
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 180px;
+  max-height: 240px;            /* compact; scroll if long */
+  overflow: auto;
+  padding: 6px;
+  border-radius: 12px;
+  background: #151515;
+  box-shadow: 0 12px 28px rgba(0,0,0,.35);
+  z-index: 1000;
+  opacity: 0; visibility: hidden; transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+}
+.nav-item .dropdown a{ display:block; padding:6px 12px; line-height:1.2; color:#f3f3f3; text-decoration:none; border-radius:8px; }
+.nav-item .dropdown a:hover{ background:rgba(255,255,255,.06); }
+
+/* OPEN = fixed visible until a click closes it */
+.nav-item.open > .dropdown{
+  opacity: 1; visibility: visible; transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity .18s ease, transform .18s ease, visibility 0s;
+}
+
+/* remove any hover-open behavior you might have */
+@media (hover:hover){ .nav-item.has-dropdown:hover > .dropdown{ opacity:0; visibility:hidden; pointer-events:none; transform:translateY(4px); } }
+
+
+/* hidden by default */
+.dropdown .dropdown-content {
+  opacity: 0; visibility: hidden; transform: translateY(4px);
+  pointer-events: none;
+  position: absolute; top: calc(100% + 6px); left: 0;
+  z-index: 1000;
+  transition: opacity .18s, transform .18s, visibility 0s linear .18s;
+}
+
+/* visible when toggled */
+.dropdown.open > .dropdown-content {
+  opacity: 1; visibility: visible; transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity .18s, transform .18s, visibility 0s;
+}
+
+
+
+
+/* ==== DESKTOP ONLY (≥900px) ==== */
+@media (min-width: 900px) {
+  .nav-desktop .dropdown { position: relative; }
+
+  .nav-desktop .dropbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    cursor: pointer;
+  }
+
+  /* Panel */
+  .nav-desktop .dropdown-content {
+    position: absolute;
+    top: calc(100% + 6px);   /* small offset; prevents hover gap flicker */
+    left: 0;
+    min-width: 180px;
+    padding: 6px;
+    border-radius: 12px;
+    background: #151515;
+    box-shadow: 0 12px 28px rgba(0,0,0,.35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    pointer-events: none;     /* off until opened */
+    z-index: 1000;            /* above header so links are clickable */
+    transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+  }
+
+  .nav-desktop .dropdown-content a {
+    display: block;
+    padding: 6px 12px;        /* compact height */
+    line-height: 1.2;
+    color: #f3f3f3;
+    text-decoration: none;
+    border-radius: 8px;
+  }
+  .nav-desktop .dropdown-content a:hover {
+    background: rgba(255,255,255,.06);
+  }
+
+  /* Open state via JS */
+  .nav-desktop .dropdown.open > .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition: opacity .18s ease, transform .18s ease, visibility 0s;
+  }
+}

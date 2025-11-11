@@ -455,10 +455,13 @@ Your site should feel light on its feet. Our code is built for speed, stability,
     <div class="footer-col reveal">
       <h4>Stay Connected</h4>
       <p>Subscribe to our newsletter to get the latest digital trends and insights.</p>
-      <form class="footer-newsletter">
-        <input type="email" placeholder="Enter your email" required>
-        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
-      </form>
+      <form class="footer-newsletter" onsubmit="event.preventDefault(); window.location.href='404page.html';">
+  <input type="email" placeholder="Enter your email" required>
+  <button type="submit">
+    <i class="fa-solid fa-paper-plane"></i>
+  </button>
+</form>
+
 
       <div class="social-links">
         <a href="404page.html"><i class="fa-brands fa-facebook-f"></i></a>
