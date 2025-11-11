@@ -113,38 +113,8 @@ a {
   border-radius: 8px;
 }
 
-/* =====================
-   DROPDOWN
-===================== */
-.dropdown {
-  position: relative;
-}
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background: var(--light);
-  box-shadow: var(--shadow);
-  border-radius: var(--radius);
-  top: 35px;
-  min-width: 180px;
-  animation: fadeIn 0.3s ease;
-}
 
-.dropdown-content li a {
-  display: block;
-  padding: 12px 15px;
-  color: var(--dark);
-}
-
-.dropdown-content li a:hover {
-  background: var(--accent);
-  color: var(--dark);
-}
-
-@media (min-width: 901px){
-  .dropdown:hover > .dropdown-content { display:block; }
-}
 
 
 
@@ -2548,23 +2518,7 @@ body.no-scroll { overflow: hidden; }
   box-shadow: 0 0 10px var(--accent, #b7ff00);
 }
 
-/* Desktop dropdown */
-.dropdown { position: relative; }
-.dropdown-content {
-  position: absolute;
-  top: 34px; left: 0;
-  min-width: 180px;
-  background: var(--light, #fff);
-  border-radius: 10px;
-  box-shadow: 0 10px 24px rgba(0,0,0,.12);
-  display: none;
-}
-.dropdown-content a {
-  display: block;
-  padding: 10px 14px;
-  color: var(--dark, #000);
-}
-.dropdown:hover > .dropdown-content { display: block; }
+
 
 /* CTA button look */
 .btn.neon {
@@ -3025,54 +2979,48 @@ body.menu-open #hamburger{ visibility: hidden; }
 
 
 
-/* ==== DESKTOP ONLY (≥900px) ==== */
-@media (min-width: 900px) {
-  .nav-desktop .dropdown { position: relative; }
+/* === FINAL DESKTOP DROPDOWN (≥901px) — no flicker, stays while you move === */
+@media (min-width: 901px) {
+  .nav-desktop .nav-list > .dropdown { position: relative; }
 
-  .nav-desktop .dropbtn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 14px;
-    cursor: pointer;
-  }
-
-  /* Panel */
-  .nav-desktop .dropdown-content {
+  .nav-desktop .dropdown > .dropdown-content {
     position: absolute;
-    top: calc(100% + 6px);   /* small offset; prevents hover gap flicker */
+    top: calc(100% + 8px);
     left: 0;
     min-width: 180px;
     padding: 6px;
     border-radius: 12px;
     background: #151515;
+    border: 1px solid rgba(255,255,255,.1);
     box-shadow: 0 12px 28px rgba(0,0,0,.35);
+    z-index: 10010;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(4px);
-    pointer-events: none;     /* off until opened */
-    z-index: 1000;            /* above header so links are clickable */
+    transform: translateY(6px);
+    pointer-events: none; /* prevents “fast close” flicker gap */
     transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
   }
 
-  .nav-desktop .dropdown-content a {
-    display: block;
-    padding: 6px 12px;        /* compact height */
-    line-height: 1.2;
-    color: #f3f3f3;
-    text-decoration: none;
-    border-radius: 8px;
-  }
-  .nav-desktop .dropdown-content a:hover {
-    background: rgba(255,255,255,.06);
-  }
-
-  /* Open state via JS */
-  .nav-desktop .dropdown.open > .dropdown-content {
+  .nav-desktop .dropdown:hover > .dropdown-content,
+  .nav-desktop .dropdown.hover-open > .dropdown-content {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
     pointer-events: auto;
     transition: opacity .18s ease, transform .18s ease, visibility 0s;
   }
+
+  .nav-desktop .dropdown-content a {
+    display: block;
+    padding: 8px 12px;
+    line-height: 1.25;
+    color: #f3f3f3;
+    border-radius: 8px;
+  }
+  .nav-desktop .dropdown-content a:hover {
+    background: rgba(255,255,255,.08);
+  }
+
+  /* make sure nothing clips it */
+  .site-header, .site-header .container, .nav-container { overflow: visible !important; }
 }

@@ -82,120 +82,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+
+// === FINAL DESKTOP HOVER INTENT (no effect on mobile overlay) ===
 (function () {
-  document.querySelectorAll('.nav-item.has-dropdown').forEach(function (item) {
-    const btn  = item.querySelector('.nav-link');
-    const menu = item.querySelector('.dropdown');
+  const isDesktop = () => window.matchMedia('(min-width: 901px)').matches;
 
-    function setOpen(state){
-      item.classList.toggle('open', state);
-      btn.setAttribute('aria-expanded', String(state));
-    }
+  const items = document.querySelectorAll('.nav-desktop .dropdown');
+  items.forEach((item) => {
+    const btn  = item.querySelector('.dropbtn');
+    const menu = item.querySelector('.dropdown-content');
+    if (!btn || !menu) return;
 
-    // Toggle on button click
-    btn.addEventListener('click', function (e){
-      e.preventDefault();
-      const willOpen = !item.classList.contains('open');
-      // close other open menus
-      document.querySelectorAll('.nav-item.has-dropdown.open').forEach(el => {
-        if (el !== item) el.classList.remove('open');
-      });
-      setOpen(willOpen);
+    let hideTimer = null;
+    let showTimer = null;
+
+    const open = () => {
+      clearTimeout(hideTimer);
+      if (!item.classList.contains('hover-open')) {
+        showTimer = setTimeout(() => item.classList.add('hover-open'), 60); // small delay feels stable
+      }
+    };
+    const close = () => {
+      clearTimeout(showTimer);
+      hideTimer = setTimeout(() => item.classList.remove('hover-open'), 220); // wait before hiding
+    };
+
+    // Only run this behavior on desktop
+    ['mouseenter', 'focusin'].forEach(evt => {
+      item.addEventListener(evt, () => { if (isDesktop()) open(); });
     });
-
-    // Close on outside click
-    document.addEventListener('click', function(e){
-      if (!item.contains(e.target)) setOpen(false);
-    });
-
-    // Close on Escape
-    document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape') setOpen(false);
-    });
-  });
-
-})();
-
-
-
-
-
-(function () {
-  // Desktop-only behavior
-  const mq = window.matchMedia('(min-width: 900px)');
-
-  function wireDesktopDropdowns() {
-    // Clean any previous handlers by cloning (simple reset when crossing breakpoints)
-    document.querySelectorAll('.nav-desktop .dropdown').forEach((item) => {
-      const btn  = item.querySelector('.dropbtn');
-      const menu = item.querySelector('.dropdown-content');
-      if (!btn || !menu) return;
-
-      // remove old cloned state if any
-      let hideTimer = null;
-
-      const open = () => {
-        clearTimeout(hideTimer);
-        item.classList.add('open');
-      };
-      const scheduleClose = () => {
-        clearTimeout(hideTimer);
-        hideTimer = setTimeout(() => {
-          item.classList.remove('open');
-        }, 250); // <-- keeps it from "going fast" when mouse moves
-      };
-
-      // Ensure we start closed
-      item.classList.remove('open');
-
-      // Keep open while pointer is over button OR menu
-      btn.addEventListener('mouseenter', open);
-      menu.addEventListener('mouseenter', open);
-
-      btn.addEventListener('mouseleave', scheduleClose);
-      menu.addEventListener('mouseleave', scheduleClose);
-
-      // Click should navigate normally; do not preventDefault on links
-      // But stop the outside-click closer from firing immediately
-      btn.addEventListener('click', (e) => {
-        // If your .dropbtn is an <a> to a page (home2.html), let it navigate.
-        // No toggle here; the menu is hover-controlled on desktop.
-        e.stopPropagation();
-      });
-      menu.addEventListener('click', (e) => {
-        e.stopPropagation(); // allow clicking links without closing too early
-      });
-    });
-  }
-
-  function unWireDesktopDropdowns() {
-    // Close all when leaving desktop to avoid leftover states
-    document.querySelectorAll('.nav-desktop .dropdown.open')
-      .forEach((el) => el.classList.remove('open'));
-  }
-
-  // Initial attach
-  if (mq.matches) wireDesktopDropdowns();
-
-  // Re-run when crossing the 900px boundary
-  mq.addEventListener('change', (e) => {
-    if (e.matches) {
-      wireDesktopDropdowns();
-    } else {
-      unWireDesktopDropdowns();
-    }
-  });
-
-  // Outside click (desktop): close if open and click outside
-  document.addEventListener('click', (e) => {
-    if (!mq.matches) return; // desktop only
-    document.querySelectorAll('.nav-desktop .dropdown.open').forEach((item) => {
-      if (!item.contains(e.target)) item.classList.remove('open');
+    ['mouseleave', 'focusout'].forEach(evt => {
+      item.addEventListener(evt, () => { if (isDesktop()) close(); });
     });
   });
 })();
-
-
-
-
-
