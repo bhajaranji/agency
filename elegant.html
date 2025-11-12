@@ -231,13 +231,34 @@
       <a href="404page.html"><i class="fa-brands fa-instagram"></i></a>
       <a href="404page.html"><i class="fa-brands fa-linkedin-in"></i></a>
     </div>
-
-    <p class="newsletter-label"><i class="fa-regular fa-envelope"></i> Newsletter</p>
-    <div class="newsletter-box">
+ <p class="newsletter-label"><i class="fa-regular fa-envelope"></i> Newsletter</p>
+   <div class="newsletter-box">
   <input type="email" id="newsEmail" placeholder="Enter your email address">
-  <button onclick="window.location.href='404page.html'">
+  <button id="newsButton">
     <i class="fa-solid fa-paper-plane"></i>
   </button>
+
+
+<script>
+  document.getElementById("newsButton").addEventListener("click", function () {
+    const emailInput = document.getElementById("newsEmail");
+    const emailValue = emailInput.value.trim();
+
+    if (emailValue === "") {
+      alert("⚠️ Please fill out this field.");
+      emailInput.focus();
+    } 
+    else if (!emailInput.checkValidity()) {
+      alert("⚠️ Please enter a valid email address.");
+      emailInput.focus();
+    } 
+    else {
+      // Valid email -> redirect
+      window.location.href = "404page.html";
+    }
+  });
+</script>
+
 </div>
 </section>
 <footer class="footer">
