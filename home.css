@@ -3024,3 +3024,21 @@ body.menu-open #hamburger{ visibility: hidden; }
   /* make sure nothing clips it */
   .site-header, .site-header .container, .nav-container { overflow: visible !important; }
 }
+
+
+
+
+/* Remove outline or border around the hamburger button */
+#hamburger {
+  outline: none;
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+/* Also remove it on focus and active states */
+#hamburger:focus,
+#hamburger:active {
+  outline: none;
+  box-shadow: none;
+}
