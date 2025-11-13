@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+    
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -84,6 +85,116 @@
     @media (max-width:900px){ .dash{ grid-template-columns:84px 1fr; } }
     @media (max-width:700px){ .dash__main{ grid-template-columns:repeat(6,1fr); } .chart-sm{ grid-column:span 6; } .kpis{ grid-template-columns:1fr; } }
 
+    /* ----- Mobile off-canvas sidebar (override for small screens) ----- */
+    @media (max-width: 900px) {
+      /* make main content full width and remove left column grid */
+      .dash {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "main";
+      }
+
+      /* header spans full width */
+      .dash__header { grid-column: 1 / -1; }
+
+      /* sidebar becomes fixed off-canvas panel */
+      .dash__sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 84%;
+        max-width: 340px;
+        transform: translateX(-110%);
+        transition: transform 280ms ease, opacity 280ms ease;
+        z-index: 2000;
+        box-shadow: 0 18px 40px rgba(2,6,23,.65);
+        border-right: none; /* remove desktop border */
+        padding-top: 18px;
+        background: linear-gradient(180deg,#14151a,#0e0f13);
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      /* when open, slide back in */
+      .dash__sidebar.open {
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+      }
+
+      /* reduce sidebar width content for mobile */
+      .dash__sidebar .brand { padding-left: 16px; padding-right: 16px; }
+      .nav a { padding-left: 12px; padding-right: 12px; }
+
+      /* overlay behind the panel */
+      .mobile-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.45);
+        z-index: 1990;
+        display: none;
+      }
+      .mobile-overlay.visible { display: block; }
+
+      /* hide sticky behavior for sidebar while off-canvas */
+      .dash__sidebar { position: fixed; }
+
+      /* small visual: hide collapse button (desktop affordance) */
+      .sidebar-foot #collapse { display: none; }
+
+      /* ensure main content is scrollable below header */
+      .dash__main { padding-top: 12px; }
+
+      /* add a small left-space to header content to prevent hamburger overlap */
+      .dash__header { padding-left: 56px; }
+
+      /* show the injected mobile toggle (hamburger) on small screens */
+      .mobile-toggle { display: flex !important; }
+    }
+
+    /* mobile toggle (hidden by default on desktop) */
+    .mobile-toggle {
+      display: none;
+      position: absolute;
+      left: 16px;
+      top: 12px;
+      z-index: 2010;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      cursor: pointer;
+    }
+
+    /* ---------- ensure mobile toggle and sidebar inherit theme colors ---------- */
+.mobile-toggle,
+.mobile-toggle * {
+  color: var(--text) !important;
+  fill: currentColor !important;   /* for SVG icons */
+}
+
+/* make buttons inherit color too (robust fallback) */
+.btn, .btn * { color: var(--text) !important; }
+
+/* ensure sidebar text uses theme color */
+.dash__sidebar { color: var(--text); }
+
+/* make sidebar background use the panel variable (so it can switch on theme) */
+.dash__sidebar {
+  /* keep your gradient look if you want — use var(--panel) to switch easily */
+  background: linear-gradient(180deg, color-mix(in srgb, var(--panel) 10%, #0e0f13), var(--panel));
+}
+
+/* if you use SVG icons inside nav__icon, make them inherit */
+.nav__icon svg { fill: currentColor; }
+
+/* small safety: when light theme class is present you can target special cases */
+.dash.is-light .dash__header,
+.dash.is-light .dash__sidebar { /* optional tweaks for light mode if needed */ }
 
 
   </style>
@@ -94,13 +205,13 @@
   <aside class="dash__sidebar">
     <div class="brand"><div class="brand__logo"></div><h1 class="brand__name">Stackly Admin</h1></div>
     <nav class="nav">
-      <a class="is-active" href="#"><span class="nav__icon">🏠</span><span>Overview</span><span></span></a>
+      <a class="is-active" href="404page.html"><span class="nav__icon">🏠</span><span>Overview</span><span></span></a>
       <a href="404page.html"><span class="nav__icon">📈</span><span>Analytics</span></a>
       <a href="404page.html"><span class="nav__icon">🎨</span><span>Creative</span></a>
       <a href="404page.html"><span class="nav__icon">🧾</span><span>Invoices</span></a>
       <a href="404page.html"><span class="nav__icon">👥</span><span>Clients</span></a>
       <a href="404page.html"><span class="nav__icon">⚙️</span><span>Settings</span></a>
-      <a href="/"><span class="nav__icon">↩️</span><span>Back to Website</span></a>
+      <a href="index.html"><span class="nav__icon">↩️</span><span>Back to Website</span></a>
     </nav>
     <div class="sep"></div>
     <div class="sidebar-foot">
@@ -183,20 +294,41 @@
 
   <script>
     // ===== Sidebar collapse & theme toggle (dark/light) =====
-    (function(){
-      const root = document.body;
-      document.getElementById('collapse').addEventListener('click', ()=> root.classList.toggle('is-collapsed'));
-      document.getElementById('theme').addEventListener('click', ()=>{
-        const isLight = getComputedStyle(root).getPropertyValue('--bg').trim()==='#f6f7fb';
-        if(isLight){
-          root.style.removeProperty('--bg'); root.style.removeProperty('--panel'); root.style.removeProperty('--text'); root.style.removeProperty('--muted');
-          document.getElementById('theme').textContent='🌙';
-        }else{
-          root.style.setProperty('--bg','#f6f7fb'); root.style.setProperty('--panel','#ffffff'); root.style.setProperty('--text','#0b0c0f'); root.style.setProperty('--muted','#5a5f6a');
-          document.getElementById('theme').textContent='☀️';
-        }
-      });
-    })();
+  // ===== Sidebar collapse & theme toggle (dark/light) =====
+(function(){
+  const root = document.body;                  // root element with CSS vars
+  const dash = document.querySelector('.dash'); // element to get helper class
+  // collapse button (keep same behavior)
+  document.getElementById('collapse').addEventListener('click', ()=> root.classList.toggle('is-collapsed'));
+
+  // improved theme toggle: sets CSS vars AND adds a class for light mode
+  document.getElementById('theme').addEventListener('click', ()=> {
+    const isLight = getComputedStyle(root).getPropertyValue('--bg').trim() === '#f6f7fb';
+
+    if (isLight) {
+      // switch to dark
+      root.style.removeProperty('--bg');
+      root.style.removeProperty('--panel');
+      root.style.removeProperty('--text');
+      root.style.removeProperty('--muted');
+      if (dash) dash.classList.remove('is-light');
+      document.getElementById('theme').textContent = '🌙';
+    } else {
+      // switch to light
+      root.style.setProperty('--bg', '#f6f7fb');
+      root.style.setProperty('--panel', '#ffffff');
+      root.style.setProperty('--text', '#0b0c0f');
+      root.style.setProperty('--muted', '#5a5f6a');
+      if (dash) dash.classList.add('is-light');
+      document.getElementById('theme').textContent = '☀️';
+    }
+
+    // force the injected mobile-toggle to pick up the new color immediately
+    const mbtn = document.querySelector('.mobile-toggle');
+    if (mbtn) mbtn.style.color = getComputedStyle(root).getPropertyValue('--text');
+  });
+})();
+
 
     // ===== Charts (Chart.js) =====
     (function(){
@@ -236,12 +368,55 @@
     })();
 
     // ===== Export table to CSV =====
-    document.getElementById('export').addEventListener('click', ()=>{
+    document.getElementById('export').addEventListener('click', ()=> {
       const rows = [...document.querySelectorAll('#tbodyClients tr')].map(tr => [...tr.children].map(td => `"${td.textContent}"`).join(','));
       const csv  = ['"Client","Service","Budget","Status"', ...rows].join('\n');
       const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
       const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'stackly-clients.csv'; a.click(); URL.revokeObjectURL(a.href);
     });
   </script>
+
+  <!-- ===== single mobile toggle script (no duplicates) ===== -->
+  <script>
+    (function(){
+      const header = document.querySelector('.dash__header');
+      const sidebar = document.querySelector('.dash__sidebar');
+      if (!header || !sidebar) return;
+
+      // create hamburger button with class (styled via CSS)
+      const btn = document.createElement('button');
+      btn.id = 'mobileToggle';
+      btn.className = 'mobile-toggle';
+      btn.setAttribute('aria-label','Open menu');
+      btn.innerHTML = '☰';
+      header.appendChild(btn);
+
+      // overlay (hidden by default)
+      const overlay = document.createElement('div');
+      overlay.className = 'mobile-overlay';
+      document.body.appendChild(overlay);
+
+      function openSidebar(){
+        sidebar.classList.add('open');
+        overlay.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeSidebar(){
+        sidebar.classList.remove('open');
+        overlay.classList.remove('visible');
+        document.body.style.overflow = '';
+      }
+
+      btn.addEventListener('click', (e)=> {
+        e.preventDefault();
+        sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+      });
+      overlay.addEventListener('click', closeSidebar);
+      sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setTimeout(closeSidebar, 50)));
+      document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') closeSidebar(); });
+
+    })();
+  </script>
+
 </body>
 </html>
